@@ -1,24 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Foam — a fresh start" },
+      {
+        name: "description",
+        content: "Foam is a freshly initialized project, ready to be built on.",
+      },
+      { property: "og:title", content: "Foam — a fresh start" },
+      {
+        property: "og:description",
+        content: "Foam is a freshly initialized project, ready to be built on.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
+      <h1 className="text-5xl font-semibold tracking-tight text-foreground">foam</h1>
+      <p className="max-w-md text-sm text-muted-foreground">
+        Project initialized. Ready for the next step.
+      </p>
+    </main>
   );
 }
