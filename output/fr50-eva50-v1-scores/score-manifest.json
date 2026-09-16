@@ -1,0 +1,28 @@
+{
+  "studyId": "fr50-eva50-v1",
+  "sourceSummary": "summary.json",
+  "sourceSummarySha256": "cd10b238278b39e501c999a33f5599dde016ce35e068ec1e266ef115cc3b2e3f",
+  "method": "outcome-rank-percentile-v1",
+  "directions": {
+    "weight": "lower",
+    "peak": "lower",
+    "early": "lower",
+    "time": "higher",
+    "remaining": "higher",
+    "energy": "lower"
+  },
+  "counts": {
+    "weight": 7910,
+    "peak": 7910,
+    "early": 7910,
+    "time": 7910,
+    "remaining": 7910,
+    "energy": 7910
+  },
+  "sources": {
+    "engine.js": "324a376365cda1c42d2abcf2b11168570f45b19663f76a47d1c25179f0febe8c",
+    "impact_engine.js": "474f536967b2752fa4088136b850743a269725854ff7a78af692c9b076b803bd",
+    "sweep.js": "f82bb7c12df79c46331ead01a0732f77e104809254421878b4b0ee6bb2f24ee4",
+    "package.json": "a51bff776fdd53226e2e67d8f654d17dadfe3decc8bf8bf869cba3aff9813826"
+  }
+}

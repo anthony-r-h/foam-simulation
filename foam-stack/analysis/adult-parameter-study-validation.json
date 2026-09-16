@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "caseCount": 9855,
+  "designCount": 365,
+  "checks": [
+    "sequential unique test numbering",
+    "complete matched 3-target by 9-scenario coverage",
+    "fixed horizontal adult mass and speed",
+    "retail layer inputs invariant across uncertainty scenarios",
+    "30 x 30 mm specimen mass",
+    "force and missing-peak semantics",
+    "capped early-loading sample and ratio",
+    "energy and impulse conservation"
+  ],
+  "maxEnergyResidualJ": 5.763922672485933e-11,
+  "maxImpulseResidualNs": 0,
+  "maxMassResidualG": 8.881784197001252e-16,
+  "csvBytes": 26067813,
+  "embeddedSummaryBytes": 455575
+}

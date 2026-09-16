@@ -1,0 +1,20 @@
+{
+  "studyId": "fr50-eva50-v1",
+  "studyName": "Four-Role 50 mm / EVA75 50 mm - v1",
+  "createdAt": "2026-09-15T23:47:26.886Z",
+  "designCount": 7910,
+  "caseCount": 7910,
+  "roleAssignmentCount": 32760,
+  "roleThicknessPatternCount": 39,
+  "planSha256": "fc0e44948ead7687c740241a2e30ab0e4ac9a53f146af60116260f5168d671cf",
+  "sources": {
+    "engine.js": "d3af5365d6350bc58edf74a8d457a7108a7341128ac8a6ee833281357912ce13",
+    "impact_engine.js": "202f5a59583238117f91b508e7ef4aa8e132ee288ed043f5b27c5772f06973b4",
+    "sweep.js": "1a31b16fa95d6f744c88352bbdc864b803a8674d0c2a2175c741bf5628c30487",
+    "run_sweep.cjs": "48d2342bf3cd10d91b9aae9a20799a50177840ad5a7136198feb0bdf1704b5d2",
+    "package.json": "a51bff776fdd53226e2e67d8f654d17dadfe3decc8bf8bf869cba3aff9813826"
+  },
+  "nodeVersion": "v24.14.0",
+  "platform": "win32",
+  "architecture": "x64"
+}

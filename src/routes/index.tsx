@@ -3,15 +3,17 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Foam — a fresh start" },
+      { title: "Glove Foam Mechanics" },
       {
         name: "description",
-        content: "Foam is a freshly initialized project, ready to be built on.",
+        content:
+          "Explore foam compositions and their response to impact, with layered compression models and rigid or heavy-bag targets.",
       },
-      { property: "og:title", content: "Foam — a fresh start" },
+      { property: "og:title", content: "Glove Foam Mechanics" },
       {
         property: "og:description",
-        content: "Foam is a freshly initialized project, ready to be built on.",
+        content:
+          "Explore foam compositions and their response to impact, with layered compression models and rigid or heavy-bag targets.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -22,11 +24,13 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
-      <h1 className="text-5xl font-semibold tracking-tight text-foreground">foam</h1>
-      <p className="max-w-md text-sm text-muted-foreground">
-        Project initialized. Ready for the next step.
-      </p>
+    <main className="h-dvh w-full overflow-hidden">
+      <h1 className="sr-only">Glove Foam Mechanics</h1>
+      <iframe
+        title="Glove Foam Mechanics"
+        src="/foam-stack/foam_stack_builder_v12.html"
+        className="block h-full w-full border-0"
+      />
     </main>
   );
 }

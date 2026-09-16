@@ -1,0 +1,187 @@
+{
+  "numerics": {
+    "nr": 48,
+    "nt": 40,
+    "resolution": 1100,
+    "steps": 480,
+    "loadingDurationMs": 0
+  },
+  "scope": "Lowest five peaks and first twenty frontier designs; other near ties unverified",
+  "results": [
+    {
+      "designId": "soft-5_qualux-40_ev30-1_ev50-4",
+      "status": "resolved",
+      "coarsePeakN": 3325.204052305548,
+      "finePeakN": 3325.1981291996553,
+      "peakChangePercent": -0.0001781275915546665
+    },
+    {
+      "designId": "soft-10_qualux-35_ev30-1_ev50-4",
+      "status": "resolved",
+      "coarsePeakN": 3326.0345620853495,
+      "finePeakN": 3326.0547382129084,
+      "peakChangePercent": 0.000606612083609015
+    },
+    {
+      "designId": "soft-5_qualux-40_ev30-2_ev50-3",
+      "status": "resolved",
+      "coarsePeakN": 3326.7803281217543,
+      "finePeakN": 3326.776120523062,
+      "peakChangePercent": -0.00012647660131426264
+    },
+    {
+      "designId": "soft-15_qualux-30_ev30-1_ev50-4",
+      "status": "resolved",
+      "coarsePeakN": 3327.6711014012717,
+      "finePeakN": 3327.6574648585947,
+      "peakChangePercent": -0.0004097923821611005
+    },
+    {
+      "designId": "soft-10_qualux-35_ev30-2_ev50-3",
+      "status": "resolved",
+      "coarsePeakN": 3327.7188142303453,
+      "finePeakN": 3327.743115894086,
+      "peakChangePercent": 0.0007302799634567592
+    },
+    {
+      "designId": "soft-5_hd36-1_lux-4_ev30-40",
+      "status": "resolved",
+      "coarsePeakN": 4066.483588898664,
+      "finePeakN": 4066.726668158292,
+      "peakChangePercent": 0.005977627950870534
+    },
+    {
+      "designId": "soft-5_lux-4_qualux-1_ev30-40",
+      "status": "resolved",
+      "coarsePeakN": 3967.8399225546127,
+      "finePeakN": 3968.1789265202374,
+      "peakChangePercent": 0.008543791388793132
+    },
+    {
+      "designId": "soft-5_lux-3_qualux-2_ev30-40",
+      "status": "resolved",
+      "coarsePeakN": 3889.2510837070117,
+      "finePeakN": 3889.581576757391,
+      "peakChangePercent": 0.008497601293044887
+    },
+    {
+      "designId": "soft-5_lux-2_qualux-3_ev30-40",
+      "status": "resolved",
+      "coarsePeakN": 3821.225360510995,
+      "finePeakN": 3821.571712163302,
+      "peakChangePercent": 0.009063889711558026
+    },
+    {
+      "designId": "soft-5_lux-1_qualux-4_ev30-40",
+      "status": "resolved",
+      "coarsePeakN": 3762.464037495964,
+      "finePeakN": 3762.614836955358,
+      "peakChangePercent": 0.0040079973626649945
+    },
+    {
+      "designId": "soft-5_qualux-4_ev30-40_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3737.3819442354174,
+      "finePeakN": 3737.5920762068695,
+      "peakChangePercent": 0.005622437700703031
+    },
+    {
+      "designId": "soft-4_qualux-5_ev30-40_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3716.16200983544,
+      "finePeakN": 3716.270796859763,
+      "peakChangePercent": 0.0029274026276171483
+    },
+    {
+      "designId": "soft-10_qualux-4_ev30-35_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3694.3245230031293,
+      "finePeakN": 3694.499570732626,
+      "peakChangePercent": 0.004738287836025812
+    },
+    {
+      "designId": "soft-15_lux-1_qualux-4_ev30-30",
+      "status": "resolved",
+      "coarsePeakN": 3675.473979067955,
+      "finePeakN": 3675.6421439716582,
+      "peakChangePercent": 0.004575325649458506
+    },
+    {
+      "designId": "soft-15_qualux-4_ev30-30_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3650.736544457536,
+      "finePeakN": 3650.8437822798373,
+      "peakChangePercent": 0.0029374297760176304
+    },
+    {
+      "designId": "soft-4_lux-1_qualux-10_ev30-35",
+      "status": "resolved",
+      "coarsePeakN": 3625.8537109227955,
+      "finePeakN": 3625.918860651312,
+      "peakChangePercent": 0.0017968107295818214
+    },
+    {
+      "designId": "soft-4_qualux-10_ev30-35_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3606.2062703361084,
+      "finePeakN": 3606.2305300144044,
+      "peakChangePercent": 0.0006727202072509542
+    },
+    {
+      "designId": "soft-25_lux-1_qualux-4_ev30-20",
+      "status": "resolved",
+      "coarsePeakN": 3586.024761458937,
+      "finePeakN": 3586.195981746266,
+      "peakChangePercent": 0.00477465435178015
+    },
+    {
+      "designId": "soft-25_qualux-4_ev30-20_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3561.429715025885,
+      "finePeakN": 3561.612174429087,
+      "peakChangePercent": 0.0051232066277329125
+    },
+    {
+      "designId": "soft-4_lux-1_qualux-15_ev30-30",
+      "status": "resolved",
+      "coarsePeakN": 3548.092779800254,
+      "finePeakN": 3548.152947699862,
+      "peakChangePercent": 0.001695781461830137
+    },
+    {
+      "designId": "soft-4_qualux-15_ev30-30_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3530.9097205060184,
+      "finePeakN": 3530.962107045597,
+      "peakChangePercent": 0.001483655593759181
+    },
+    {
+      "designId": "soft-30_qualux-4_ev30-15_ev50-1",
+      "status": "resolved",
+      "coarsePeakN": 3515.8451818807166,
+      "finePeakN": 3516.030785482423,
+      "peakChangePercent": 0.0052790607124375555
+    },
+    {
+      "designId": "soft-5_qualux-15_ev30-25_ev50-5",
+      "status": "resolved",
+      "coarsePeakN": 3514.880687227996,
+      "finePeakN": 3514.9283256248877,
+      "peakChangePercent": 0.0013553346793537813
+    },
+    {
+      "designId": "soft-35_lux-1_qualux-4_ev30-10",
+      "status": "resolved",
+      "coarsePeakN": 3493.947414849176,
+      "finePeakN": 3494.0140673941264,
+      "peakChangePercent": 0.001907657358191095
+    },
+    {
+      "designId": "soft-4_lux-1_qualux-20_ev30-25",
+      "status": "resolved",
+      "coarsePeakN": 3489.6809879487296,
+      "finePeakN": 3489.695142273999,
+      "peakChangePercent": 0.00040560513463461234
+    }
+  ]
+}

@@ -1,0 +1,418 @@
+{
+  "caseCount": 9855,
+  "resolvedCount": 8515,
+  "unresolvedCount": 1340,
+  "eligibleDesignCount": 134,
+  "dominatedDesignCount": 78,
+  "excludedDesignCount": 231,
+  "frontierCount": 56,
+  "strongSameThicknessDominancePairCount": 237,
+  "strongDominanceExamples": [
+    {
+      "dominator": "soft-qualux-75-h70",
+      "dominated": "hd36-qualux-75-h70",
+      "thicknessMm": 70,
+      "dominatorWeightG": 2.6742824602826216,
+      "dominatedWeightG": 2.901344178608505,
+      "massReductionPct": 7.826086956521749,
+      "minimumPeakReductionPct": 13.565060814808346,
+      "maximumPeakReductionPct": 65.20272613523659,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 3855.2382979421645,
+          "dominated": 7125.719658637809
+        },
+        "eva50": {
+          "dominator": 2778.6054899104734,
+          "dominated": 4373.342834300219
+        },
+        "bag": {
+          "dominator": 1748.299183338827,
+          "dominated": 2080.998078910433
+        }
+      }
+    },
+    {
+      "dominator": "soft-h70",
+      "dominated": "lux-ev50-50-h70",
+      "thicknessMm": 70,
+      "dominatorWeightG": 2.5229079813986997,
+      "dominatedWeightG": 2.9878284695832713,
+      "massReductionPct": 15.560481229681056,
+      "minimumPeakReductionPct": 11.761053125887878,
+      "maximumPeakReductionPct": 80.85791196065267,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 5393.543332241643,
+          "dominated": 15506.423336776383
+        },
+        "eva50": {
+          "dominator": 2571.8938508990555,
+          "dominated": 4527.766649177978
+        },
+        "bag": {
+          "dominator": 1635.671970597192,
+          "dominated": 1932.3687113944786
+        }
+      }
+    },
+    {
+      "dominator": "soft-qualux-75-h70",
+      "dominated": "lux-qualux-75-h70",
+      "thicknessMm": 70,
+      "dominatorWeightG": 2.6742824602826216,
+      "dominatedWeightG": 2.901344178608505,
+      "massReductionPct": 7.826086956521749,
+      "minimumPeakReductionPct": 11.646765807332898,
+      "maximumPeakReductionPct": 50.92608245628963,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 3855.2382979421645,
+          "dominated": 6075.631157526896
+        },
+        "eva50": {
+          "dominator": 2778.6054899104734,
+          "dominated": 4072.391372420752
+        },
+        "bag": {
+          "dominator": 1748.299183338827,
+          "dominated": 2022.0400486630538
+        }
+      }
+    },
+    {
+      "dominator": "soft-qualux-75-h60",
+      "dominated": "hd36-qualux-75-h60",
+      "thicknessMm": 60,
+      "dominatorWeightG": 2.2922421088136757,
+      "dominatedWeightG": 2.486866438807289,
+      "massReductionPct": 7.826086956521716,
+      "minimumPeakReductionPct": 11.287885266801895,
+      "maximumPeakReductionPct": 86.72505119926493,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 4556.288694000498,
+          "dominated": 11144.436365854286
+        },
+        "eva50": {
+          "dominator": 3190.362642792756,
+          "dominated": 4872.5075501094725
+        },
+        "bag": {
+          "dominator": 1838.2848454015952,
+          "dominated": 2122.659930486651
+        }
+      }
+    },
+    {
+      "dominator": "soft-ev50-75-h70",
+      "dominated": "lux-ev50-50-h70",
+      "thicknessMm": 70,
+      "dominatorWeightG": 2.6796809860490245,
+      "dominatedWeightG": 2.9878284695832713,
+      "massReductionPct": 10.313426177950092,
+      "minimumPeakReductionPct": 10.414875144532086,
+      "maximumPeakReductionPct": 82.71730215554985,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 5578.256132966487,
+          "dominated": 15506.423336776383
+        },
+        "eva50": {
+          "dominator": 2721.8172668152365,
+          "dominated": 4527.766649177978
+        },
+        "bag": {
+          "dominator": 1688.658617440492,
+          "dominated": 1932.3687113944786
+        }
+      }
+    },
+    {
+      "dominator": "soft-qualux-50-h70",
+      "dominated": "hd36-qualux-75-h70",
+      "thicknessMm": 70,
+      "dominatorWeightG": 2.825656939166544,
+      "dominatedWeightG": 2.901344178608505,
+      "massReductionPct": 2.608695652173909,
+      "minimumPeakReductionPct": 10.277360153779902,
+      "maximumPeakReductionPct": 69.28191686445997,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 3670.475295357323,
+          "dominated": 7125.719658637809
+        },
+        "eva50": {
+          "dominator": 2909.178928178644,
+          "dominated": 4373.342834300219
+        },
+        "bag": {
+          "dominator": 1853.4785761775915,
+          "dominated": 2080.998078910433
+        }
+      }
+    },
+    {
+      "dominator": "soft-ev30-75-h70",
+      "dominated": "lux-ev50-50-h70",
+      "thicknessMm": 70,
+      "dominatorWeightG": 2.3646809860490245,
+      "dominatedWeightG": 2.9878284695832713,
+      "massReductionPct": 20.85620007567438,
+      "minimumPeakReductionPct": 9.93587023505637,
+      "maximumPeakReductionPct": 82.75621878756982,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 5760.88797103848,
+          "dominated": 15506.423336776383
+        },
+        "eva50": {
+          "dominator": 2771.259020231701,
+          "dominated": 4527.766649177978
+        },
+        "bag": {
+          "dominator": 1695.808140650895,
+          "dominated": 1932.3687113944786
+        }
+      }
+    },
+    {
+      "dominator": "soft-h70",
+      "dominated": "ev30-latex-50-h70",
+      "thicknessMm": 70,
+      "dominatorWeightG": 2.5229079813986997,
+      "dominatedWeightG": 3.2660753428868037,
+      "massReductionPct": 22.754140167239278,
+      "minimumPeakReductionPct": 9.660384408028706,
+      "maximumPeakReductionPct": 52.56458382622428,
+      "dominatorFrontier": true,
+      "baselinePeakN": {
+        "eva25": {
+          "dominator": 5393.543332241643,
+          "dominated": 10809.691806983303
+        },
+        "eva50": {
+          "dominator": 2571.8938508990555,
+          "dominated": 3946.4375777339874
+        },
+        "bag": {
+          "dominator": 1635.671970597192,
+          "dominated": 1874.1631165639685
+        }
+      }
+    }
+  ],
+  "baselineLeaderGaps": [
+    {
+      "target": "eva25",
+      "leader": "qualux-h70",
+      "runnerUp": "soft-qualux-25-h70",
+      "leaderPeakN": 3536.9461813874796,
+      "runnerUpPeakN": 3586.3678539174307,
+      "runnerUpGapPct": 1.3972978381753043
+    },
+    {
+      "target": "eva50",
+      "leader": "soft-h70",
+      "runnerUp": "soft-ev50-75-h70",
+      "leaderPeakN": 2571.8938508990555,
+      "runnerUpPeakN": 2721.8172668152365,
+      "runnerUpGapPct": 5.829300298057505
+    },
+    {
+      "target": "bag",
+      "leader": "soft-h70",
+      "runnerUp": "soft-ev50-75-h70",
+      "leaderPeakN": 1635.671970597192,
+      "runnerUpPeakN": 1688.658617440492,
+      "runnerUpGapPct": 3.2394421250584893
+    }
+  ],
+  "crossTargetExamples": [
+    {
+      "id": "soft-h70",
+      "foamWeightG": 2.5229079813986997,
+      "targets": [
+        {
+          "id": "eva25",
+          "baselinePeakN": 5393.543332241643,
+          "baselineEarlyPercent": 23.710595538037833,
+          "baselineTimeMs": 15.17443237036749,
+          "baselineFoamLeftMm": 4.7363988355073445,
+          "baselineFistSpeed": 0,
+          "baselineImpulseNs": 19.9969,
+          "minPeakN": 3270.0549299427616,
+          "maxPeakN": 11082.164358884163,
+          "resolvedScenarios": 9
+        },
+        {
+          "id": "eva50",
+          "baselinePeakN": 2571.8938508990555,
+          "baselineEarlyPercent": 38.49542413419859,
+          "baselineTimeMs": 19.035314976369065,
+          "baselineFoamLeftMm": 8.193243613258176,
+          "baselineFistSpeed": 0,
+          "baselineImpulseNs": 19.9969,
+          "minPeakN": 2171.469836609229,
+          "maxPeakN": 3637.503735853592,
+          "resolvedScenarios": 9
+        },
+        {
+          "id": "bag",
+          "baselinePeakN": 1635.671970597192,
+          "baselineEarlyPercent": 62.00381932947664,
+          "baselineTimeMs": 19.96090296908363,
+          "baselineFoamLeftMm": 9.976836789634532,
+          "baselineFistSpeed": 0.4586760556919054,
+          "baselineImpulseNs": 18.805718283368122,
+          "minPeakN": 1606.8072344384045,
+          "maxPeakN": 1764.574674174051,
+          "resolvedScenarios": 9
+        }
+      ]
+    },
+    {
+      "id": "qualux-h70",
+      "foamWeightG": 3.128405896934388,
+      "targets": [
+        {
+          "id": "eva25",
+          "baselinePeakN": 3536.9461813874796,
+          "baselineEarlyPercent": 98.47961575813589,
+          "baselineTimeMs": 10.893000617112223,
+          "baselineFoamLeftMm": 32.902286327628005,
+          "baselineFistSpeed": 0,
+          "baselineImpulseNs": 19.9969,
+          "minPeakN": 3194.1418573670085,
+          "maxPeakN": 3846.8522163087728,
+          "resolvedScenarios": 9
+        },
+        {
+          "id": "eva50",
+          "baselinePeakN": 3053.123656778831,
+          "baselineEarlyPercent": 81.33394812865794,
+          "baselineTimeMs": 13.525130976645643,
+          "baselineFoamLeftMm": 37.90167773638303,
+          "baselineFistSpeed": 0,
+          "baselineImpulseNs": 19.9969,
+          "minPeakN": 2794.16403023805,
+          "maxPeakN": 3285.0531637180916,
+          "resolvedScenarios": 9
+        },
+        {
+          "id": "bag",
+          "baselinePeakN": 2042.7807600870535,
+          "baselineEarlyPercent": 85.36839885925559,
+          "baselineTimeMs": 15.026709600759519,
+          "baselineFoamLeftMm": 45.908906357501216,
+          "baselineFistSpeed": 0.4586760556919054,
+          "baselineImpulseNs": 18.805718283368122,
+          "minPeakN": 1977.4400554908166,
+          "maxPeakN": 2089.915393591873,
+          "resolvedScenarios": 9
+        }
+      ]
+    },
+    {
+      "id": "soft-qualux-25-h70",
+      "foamWeightG": 2.9770314180504656,
+      "targets": [
+        {
+          "id": "eva25",
+          "baselinePeakN": 3586.3678539174307,
+          "baselineEarlyPercent": 90.67532710108792,
+          "baselineTimeMs": 12.002094154584782,
+          "baselineFoamLeftMm": 25.448468966504144,
+          "baselineFistSpeed": 0,
+          "baselineImpulseNs": 19.9969,
+          "minPeakN": 3304.4644226189685,
+          "maxPeakN": 3842.9574974649913,
+          "resolvedScenarios": 9
+        },
+        {
+          "id": "eva50",
+          "baselinePeakN": 2994.512111385751,
+          "baselineEarlyPercent": 64.67326269260172,
+          "baselineTimeMs": 14.770481216568758,
+          "baselineFoamLeftMm": 30.403260707979882,
+          "baselineFistSpeed": 0,
+          "baselineImpulseNs": 19.9969,
+          "minPeakN": 2808.4959014084984,
+          "maxPeakN": 3159.227002843602,
+          "resolvedScenarios": 9
+        },
+        {
+          "id": "bag",
+          "baselinePeakN": 1951.6867214056442,
+          "baselineEarlyPercent": 77.94590552858439,
+          "baselineTimeMs": 16.225106970666566,
+          "baselineFoamLeftMm": 36.9155747006413,
+          "baselineFistSpeed": 0.4586760556919054,
+          "baselineImpulseNs": 18.805718283368122,
+          "minPeakN": 1916.7195039166475,
+          "maxPeakN": 1980.0789733025485,
+          "resolvedScenarios": 9
+        }
+      ]
+    }
+  ],
+  "interpretation": [
+    "Robust dominance compares all27 matched target/uncertainty outcomes and sample mass/thickness.",
+    "A lower early-loading percentage is not optimized.",
+    "Reported scenario spreads are assumptions, not confidence intervals.",
+    "Near-tie winners require refined numerical checks and remain dependent on unvalidated material curves."
+  ],
+  "fixedEndpointOutcomes": {
+    "eva25": {
+      "loadingImpulseRangeNs": [
+        19.9969,
+        19.9969
+      ],
+      "fistSpeedAtPeakRangeMPerS": [
+        0.0,
+        0.0
+      ],
+      "interpretation": "With matched masses and incoming speed, conservation fixes these completed-loading endpoint values; they do not distinguish foam designs."
+    },
+    "eva50": {
+      "loadingImpulseRangeNs": [
+        19.9969,
+        19.9969
+      ],
+      "fistSpeedAtPeakRangeMPerS": [
+        0.0,
+        0.0
+      ],
+      "interpretation": "With matched masses and incoming speed, conservation fixes these completed-loading endpoint values; they do not distinguish foam designs."
+    },
+    "bag": {
+      "loadingImpulseRangeNs": [
+        18.805718283368122,
+        18.805718283368122
+      ],
+      "fistSpeedAtPeakRangeMPerS": [
+        0.4586760556919054,
+        0.4586760556919054
+      ],
+      "interpretation": "With matched masses and incoming speed, conservation fixes these completed-loading endpoint values; they do not distinguish foam designs."
+    }
+  },
+  "earlyRatioCounterexample": {
+    "target": "eva25",
+    "softDesign": "soft-h70",
+    "softEarlyPercent": 23.710595538037833,
+    "softPeakN": 5393.543332241643,
+    "firmerDesign": "qualux-h70",
+    "firmerEarlyPercent": 98.47961575813589,
+    "firmerPeakN": 3536.9461813874796,
+    "softPeakIncreasePct": 52.491529574980824,
+    "interpretation": "The lower early percentage coexists with a higher peak; do not minimize this percentage by itself."
+  }
+}

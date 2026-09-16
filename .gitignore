@@ -20,6 +20,14 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Local simulator validation artifacts
+.validation/
+output/playwright/
+output/parameter-study-benchmark/
+output/parameter-study-parallel-check/
+output/parameter-study-summary-input.json
+__pycache__/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

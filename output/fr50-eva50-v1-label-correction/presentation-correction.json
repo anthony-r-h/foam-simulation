@@ -1,0 +1,9 @@
+{
+  "studyId": "fr50-eva50-v1",
+  "presentationCorrection": "Outer contact replaces the incorrect secondary-padding label; display uses outside-to-hand order and plain names. No simulations rerun; all metrics and test identities retained.",
+  "derivedFrom": "output\\fr50-eva50-v1-run-001\\adult-parameter-study.csv",
+  "originalCsvSha256": "f67647349d23993fa47d453f7907d3d6f3af6b9e837cd0e2a121176828e53326",
+  "correctedCsvSha256": "76d40dbf5af81d48353cefdd543a2a11a79c74ee0c582fac0e435ddb11e13241",
+  "testCount": 7910,
+  "createdAt": "2026-09-16T00:06:51.703242+00:00"
+}
