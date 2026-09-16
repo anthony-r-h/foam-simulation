@@ -10,3 +10,4 @@ foam-stack
 public/foam-stack
 .validation
 output/playwright
+output
