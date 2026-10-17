@@ -28,7 +28,7 @@ for row in rows:
     values = "".join(f'<td>{point["forceN"]:.0f} N</td>' for point in row["mainOnlySensitivity"])
     sensitivity.append(f'<tr><td>{row["label"]}</td>{values}</tr>')
 
-method_path = source / "methodology.html"
+method_path = source.parents[1] / "METHODOLOGY.md"
 method = method_path.read_text(encoding="utf-8")
 for name, table_rows in [("PRESET", selection), ("SENSITIVITY", sensitivity)]:
     opening = f"<!--{name}_ROWS_START-->"

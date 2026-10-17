@@ -315,7 +315,6 @@ main > .panel + .panel { margin-top: 22px; }
 <div class="method-body">
 <p class="method-intro">This model estimates the first compression of a layered foam stack against a rigid plate with 25 or 50 mm of EVA75 padding, or an exploratory moving bag. Its purpose is to compare designs under common assumptions. Experimental validation against the selected retail foams, a complete glove, and the bag response has not been performed.</p>
 <nav class="method-nav" aria-label="Methodology sections"><a href="#rig-method">Mechanical model</a><a href="#material-method">Material curves</a><a href="#commercial-method">Commercial inputs</a><a href="#impact-method">Impact cases</a><a href="#numerical-method">Verification</a><a href="#graph-method">Results</a><a href="#preset-method">Preset stacks</a><a href="#study-method">Parameter study</a><a href="#sources-method">References</a></nav>
-
 <section id="rig-method">
 <h3>1. Mechanical model</h3>
 <p>The study targets are a fixed plate covered by 25 or 50 mm of EVA75 foam and a moving bag. All three study impacts are horizontal, with zero gravity along the strike direction. The striker represents a prescribed effective mass; it cannot deform or rotate, and no muscular force acts after contact. The SATRA checks separately retain their original vertical striker and bare cylindrical support.</p>
@@ -404,7 +403,6 @@ x_b&amp;=\frac{m}{m+M}(v_0t-q),&amp;x_f&amp;=x_b+q.
 <div id="bag-sensitivity" class="table-wrap"></div>
 </section>
 </section>
-
 <section id="material-method">
 <h3>2. Material-family loading laws</h3>
 <p>Foam develops resistance through deformation of its cellular skeleton, polymer viscoelasticity, and gas flow or compression [2, 3]. Its loading response typically progresses from initial stiffness through cell collapse to rapid stiffening as void space closes. A compliant collapse region can provide stopping travel at lower force. The curves below approximate that combined loading response; they do not resolve the separate mechanisms.</p>
@@ -441,7 +439,6 @@ K_{\mathrm{eff}}&amp;=K\phi(T/\tau),\\
 <div id="rapid-sensitivity" class="table-wrap"></div>
 <div class="settings"><label>Stress multiplier<input id="rateScale" type="number" min="0.1" max="20" step="0.1"></label><label>Tail exponent<input id="tailPower" type="number" min="1" max="5" step="0.25"></label></div>
 </section>
-
 <section id="commercial-method">
 <h3>3. Commercial specifications and calibration</h3>
 <p>Commercial grades enter through density and one or two slow-test firmness values. The listed support factors are supplier minima, used here as point estimates. They are not nominal measurements with known uncertainty.</p>
@@ -483,7 +480,6 @@ p_{25}+\beta(q-q_1),&amp;q&gt;q_1.
 <h4>Compression curves</h4><div class="controls"><label id="graph-layer-label">Curve<select id="graph-layer"></select></label></div><div id="material-chart" class="chartbox"></div><p id="material-caption" class="caption"></p>
 <p>The whole-stack curve plots force against central foam shortening. Target deformation and hand give are excluded from this horizontal axis. Individual layer curves plot pressure against strain on a common pressure scale. Dashed slow-test curves and supplier points show calibration; shading marks the assumed tail extension. The 20 ms sensitivity remains in its comparison table.</p>
 </section>
-
 <section id="impact-method">
 <h3>4. Impact cases</h3>
 <p>Within the selected target mode, study impacts share the geometry, contact solver, and foam-loading assumption. Mass and initial speed vary; human and custom impacts include the fixed Hand Spring, while mechanical glove-study impacts omit it. Energy is always recomputed from <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>0</mn></msub><mo>=</mo><mi>m</mi><msubsup><mi>v</mi><mn>0</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">E_0=mv_0^2/2</annotation></semantics></math></span>. The main selector contains the five study-based impacts and starts with the Adult reference (gentle) case. The default study target is a rigid plate with 25 mm of EVA75. The automatic 3 J and 10 J checks always use the rigid reference rig without a Hand Spring, including when the study impact uses a bag.</p>
@@ -505,7 +501,6 @@ p_{25}+\beta(q-q_1),&amp;q&gt;q_1.
 <div id="impact-data" class="live-note"></div>
 <div class="settings"><label>Moving mass (kg)<input id="mass" type="number" min="0.1" max="20" step="any"></label><label>Speed at first contact (m/s)<input id="speed" type="number" min="0.1" max="20" step="any"></label></div>
 </section>
-
 <section id="numerical-method">
 <h3>5. Numerical verification and model limits</h3>
 <p>Material tables use 550 reference intervals, 240 extension intervals, and the anchor strains. Taking their union in pressure makes each column piecewise linear in pressure and its work integral piecewise quadratic. The contact grid uses 24 radial by 20 angular cells in a symmetry quadrant. Bisection locates the energy root. A quadratic displacement substitution regularizes the zero-speed endpoint for 240-interval Simpson integration. Time integration uses total closure, including hand give when present; bag motion uses total relative approach <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span> and relative speed.</p>
@@ -515,7 +510,6 @@ p_{25}+\beta(q-q_1),&amp;q&gt;q_1.
 <p>The historical three-target parameter study, before the Hand Spring, additionally checked 63 selected cases at 48 &times; 40 contact sampling and 480 trace steps, against 24 &times; 20 and 240. Maximum peak-force change was 0.060%; selected nominal rankings and one dominance comparison across all 27 conditions were preserved. Those stored checks do not verify new Hand Spring results or every frontier design or near-tie.</p>
 <div id="verification" class="live-note"></div>
 </section>
-
 <section id="graph-method">
 <h3>6. Interpreting results and graphs</h3>
 <p>The four headline results are peak force, force reached by 10 ms as a percentage of peak, time to peak, and contact impulse. Human and custom impact estimates depend on the assumed Hand Spring. Force increases monotonically during the modeled first compression, so its endpoint defines the peak and time to peak. This time describes the loading phase, not full contact duration. An incomplete calculation reports force reached, time reached, and impulse so far.</p>
@@ -568,7 +562,6 @@ p_{25}+\beta(q-q_1),&amp;q&gt;q_1.
 <p>Compression-law diagnostics are in Commercial inputs above. Impulse remains a scalar result. Remaining central foam thickness does not measure unused cushioning capacity: a substantially compressed layer can already be in the steep part of its loading law.</p>
 <p>These outputs support conditional comparisons of thickness, loading shape, and numerical sensitivity. Absolute glove force, energy dissipation, rebound, and injury risk require additional measurements or models. On a fixed support with gravity disabled, equal initial energies give the same maximum compression and peak for a fixed loading law. A moving bag instead depends on relative energy <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">l</mi></mrow></msub><mo>=</mo><msub><mi>E</mi><mn>0</mn></msub><mi>M</mi><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E_{\mathrm{rel}}=E_0M/(m+M)</annotation></semantics></math></span>: equal striker energies with different masses need not give equal peaks. At fixed target and loading laws, equal relative energies give the same compression endpoint; time and impulse still depend on mass and speed.</p>
 </section>
-
 <section id="preset-method">
 <h3>7. Preset stacks</h3>
 <p>Soft, Medium, and Firm are complete preset stacks. Changing total thickness multiplies every layer thickness by the same factor, preserving the composition's thickness fractions. Each resulting layer must remain within the interface range of 0.5&ndash;100 mm. The retained-thickness sensitivity is applied subsequently and is shared across comparisons.</p>
@@ -591,7 +584,6 @@ p_{25}+\beta(q-q_1),&amp;q&gt;q_1.
 </tbody></table></div>
 <p>Useful physical validation would measure loading and unloading of the selected grades at relevant thicknesses and rates, then compare a known stack against measured force&ndash;time and displacement histories. Bag validation also requires local force&ndash;indentation data at the relevant contact size, fill condition, and loading rate, with bulk motion measured separately. Validating the Hand Spring requires hand/wrist force&ndash;deflection measurements; its current stiffness is assumed. These measurements could change the present rankings.</p>
 </section>
-
 <section id="study-method">
 <h3>8. Parameter study and frontier</h3>
 <p><strong>Four-Role 50 mm / EVA75 50 mm - v1</strong> (protocol <code>fr50-eva50-v1</code>) tests exactly four distinct named materials per stack, one per role, with no mixing within a role or reuse across roles. All seven inventory materials can occupy any role.</p>
@@ -611,7 +603,6 @@ p_{25}+\beta(q-q_1),&amp;q&gt;q_1.
 <p>The panel reports standalone and combined survivor counts, with raw outcome ranges for the surviving set. The subset CSV records only survivors, their original ranks and identities, filter settings, reference count, reference values and design IDs, and per-outcome gaps. Clearing filters restores the full population. There is no combined score or outcome weighting.</p>
 <p>Small numerical differences require refinement before ranking; changes in the uncalibrated material and target assumptions can change these comparisons. Conclusions apply to this model and grid.</p>
 </section>
-
 <section id="sources-method">
 <h3>References</h3>
 <ol class="references">
@@ -629,15 +620,15 @@ p_{25}+\beta(q-q_1),&amp;q&gt;q_1.
 <li><a href="https://www.ubuild.co.nz/wp-content/uploads/2022/10/properties-of-low-density-pe-eva-foams-feb-2022.pdf" target="_blank" rel="noopener">Ultralon Foam Group (2022). Properties of low-density PE/EVA foams.</a> EVA75 density and 25% compression-pressure ranges; no full dynamic compression curve.</li>
 </ol>
 </section>
-</div></details>
-
+</div>
+</details>
   <footer>Foam response during impact.</footer>
 </main>
 <script id="foam-engine">/* Material-family curves and legacy stack import. All impacts use impact_engine.js. */
 /* Skinny Fists | Foam stack model v7. Offline, dependency-free.
    Compression phase only. Units internally: Pa, m, N, kg, s, J.
    Published reference fits shape the loading law; commercial anchors set scale.
-   See methodology.html / the application's methodology section for provenance. */
+   See METHODOLOGY.md / the application's methodology section for provenance. */
 'use strict';
 const FoamModel = (() => {
  const PCF=16.01846337396, IFD=4.44822161526/(50*.0254**2), G=9.80665;

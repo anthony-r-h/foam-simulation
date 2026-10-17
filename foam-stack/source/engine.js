@@ -2,7 +2,7 @@
 /* Skinny Fists | Foam stack model v7. Offline, dependency-free.
    Compression phase only. Units internally: Pa, m, N, kg, s, J.
    Published reference fits shape the loading law; commercial anchors set scale.
-   See methodology.html / the application's methodology section for provenance. */
+   See METHODOLOGY.md / the application's methodology section for provenance. */
 'use strict';
 const FoamModel = (() => {
  const PCF=16.01846337396, IFD=4.44822161526/(50*.0254**2), G=9.80665;

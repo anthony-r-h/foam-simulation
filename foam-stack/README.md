@@ -74,7 +74,8 @@ These user-defined bands describe loading rather than glove quality. Preferences
 for feel differ; the bands are not experimentally calibrated feel or injury
 classes. A lower relative early force can result from a higher later peak.
 Published force examples retain their apparatus context.
-The methodology is authored in LaTeX and rendered to native MathML during build.
+The methodology prose is authored in the repository-root `METHODOLOGY.md`. Its
+LaTeX is rendered to native MathML during build.
 
 ## Parameter study and findings
 
@@ -154,8 +155,9 @@ for the new targets. The artificial 1 mm, 5 GPa contact layer is a numerical
 reference with no anatomical hand tissue. It remains only in backend checks.
 
 `source/run_screen.py` reproduces the historical thickness screens.
-`source/refresh_docs.py` refreshes marked preset tables and definitions while
-preserving the reviewed methodology prose. Both use explicit UTF-8. Same-grade
+`source/refresh_docs.py` refreshes marked preset tables in the root methodology
+and preset definitions while preserving the reviewed prose. Both use explicit
+UTF-8. Same-grade
 layers can be combined; layer order has no effect in the independent-column model.
 
 See [MECHANICS_AUDIT.md](MECHANICS_AUDIT.md) for the assumptions, equations, sources

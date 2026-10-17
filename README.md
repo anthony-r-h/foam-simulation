@@ -13,7 +13,7 @@ npm run dev
 npm run build
 ```
 
-Both commands regenerate `public/foam-stack/foam_stack_builder_v12.html` from the editable fragments in `foam-stack/source/`. The generator uses Node.js and the pinned KaTeX build dependency to render LaTeX as native MathML. Lovable builds do not need Python; the generated simulator needs no math scripts, fonts, or network requests. Development changes to simulator fragments require rerunning `npm run build:foam` and reloading the browser.
+Both commands regenerate `public/foam-stack/foam_stack_builder_v12.html` from the editable fragments in `foam-stack/source/` and the root-level [`METHODOLOGY.md`](METHODOLOGY.md). A small build-time renderer converts the methodology's Markdown to HTML, then the pinned KaTeX dependency renders its LaTeX as native MathML. Lovable builds do not need Python; the generated simulator needs no math scripts, fonts, or network requests. Development changes to simulator fragments or the methodology require rerunning `npm run build:foam` and reloading the browser.
 
 To rebuild only the simulator with the build dependencies installed:
 
