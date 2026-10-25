@@ -1,0 +1,78 @@
+{
+  "results": {
+    "path": "/Users/arh/Documents/foam-simulation/data/simulations_2026-10-24_5ms.csv",
+    "sha256": "60661db44fbed2e0b4523b19b9b27ee3d06053bb63e7221af8954ec03e18ee3f"
+  },
+  "conditions": {
+    "mass_kg": "2.597",
+    "speed_m_s": "7.7",
+    "target_foam_id": "cutfoam-eva75",
+    "target_thickness_mm": "50"
+  },
+  "total_thickness_mm": 50,
+  "complete_results": 2206920,
+  "weight_target_g": 2.5,
+  "weight_tolerance_g": 0.05,
+  "reference_stacks": 72202,
+  "eligible_stacks": 3429,
+  "percentile_method": "100 * (number below + half of equal values) / reference count",
+  "reference": "common complete weight-constrained population before protection ceiling",
+  "weights": {
+    "protection": 0.6,
+    "reserve": 0.2,
+    "response": 0.2
+  },
+  "directions": {
+    "peak_force_n": "lower",
+    "maximum_glove_compression_percent": "lower",
+    "force_at_5ms_n": {
+      "pillowy": "lower",
+      "poppy": "higher"
+    }
+  },
+  "peak_force_limit_n": 3026.1109631921804,
+  "default_peak_force_benchmark": "original 50 mm soft recipe at 7.7 m/s",
+  "top_scoring_percentile": 90,
+  "include_cutoff_ties": true,
+  "response_bands_n": {
+    "soft": {
+      "upper_exclusive": 500
+    },
+    "neutral": {
+      "lower_inclusive": 500,
+      "upper_exclusive": 700
+    },
+    "poppy": {
+      "lower_inclusive": 700
+    }
+  },
+  "response_class_counts": {
+    "pillowy": {
+      "within_weight_band": 50457,
+      "within_weight_band_and_protection_ceiling": 34
+    },
+    "neutral": {
+      "within_weight_band": 14254,
+      "within_weight_band_and_protection_ceiling": 2717
+    },
+    "poppy": {
+      "within_weight_band": 7491,
+      "within_weight_band_and_protection_ceiling": 678
+    }
+  },
+  "selections": {
+    "pillowy": {
+      "cutoff": 75.03526218110301,
+      "top_scoring_stacks": 4,
+      "eligible_stacks": 34,
+      "recipe": "foam-factory-lux-hq@10mm|foamonline-high-resilience-soft@34mm|cutfoam-eva240@3mm|foam-factory-super-soft@3mm"
+    },
+    "poppy": {
+      "cutoff": 94.0289188665134,
+      "top_scoring_stacks": 68,
+      "eligible_stacks": 678,
+      "recipe": "cutfoam-hr40-230@5mm|cutfoam-hr36-160@38mm|aortha-eva-a50@4mm|foamonline-high-resilience-very-soft@3mm"
+    }
+  },
+  "top_scoring_overlap": 0
+}

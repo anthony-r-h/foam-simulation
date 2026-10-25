@@ -1,0 +1,76 @@
+# Working model assumptions, not measured properties of the finished glove.
+# Sources and equations: MODEL.md, sections 5-8.
+dome:
+  curvature_radius_mm: 100
+  footprint_radius_mm: 40
+
+# Illustrative combined hand/wrist give. Always present in this punch model.
+hand_stiffness_n_per_mm: 1000
+
+# ILD/IFD force divided by the nominal supplier indenter area.
+# This does not make indentation and compression tests equivalent.
+indenter_area_m2: 0.032258
+pound_force_n: 4.44822161526
+
+# Density is taken directly from the computation catalog. Sheet sizes are ignored.
+# Sample weight is glove foam only; it does not change the striking mass.
+sample_width_mm: 30
+sample_length_mm: 30
+
+# Provisional density-based high-compression extension.
+tail_exponent: 2
+minimum_tail_strain_interval: 0.04
+
+# Slow calibration uses these fixed reference coefficients. Impact uses the
+# no-relaxation PU/latex limit and no-air-leakage EVA limit throughout loading.
+reference_curves:
+  pu55:
+    family: PU
+    solid_density_kg_m3: 1200
+    fit_strain: 0.70
+    relaxation_pa_s: 48000
+    relaxing_stiffness_pa: 33000
+    base_stiffness_pa: 1600
+    rise_scale_pa: 2450
+    rise_exponent: 4
+    slow_strain_rate_per_s: 0.0333
+  hr40:
+    family: PU
+    solid_density_kg_m3: 1200
+    fit_strain: 0.70
+    relaxation_pa_s: 130000
+    relaxing_stiffness_pa: 1200000
+    base_stiffness_pa: 1800
+    rise_scale_pa: 14000
+    rise_exponent: 2
+    slow_strain_rate_per_s: 0.0333
+  latex85:
+    family: Latex
+    solid_density_kg_m3: 920
+    fit_strain: 0.70
+    relaxation_pa_s: 9000
+    relaxing_stiffness_pa: 100000
+    base_stiffness_pa: 6800
+    rise_scale_pa: 14000
+    rise_exponent: 4
+    slow_strain_rate_per_s: 0.0333
+  eva35:
+    family: EVA
+    solid_density_kg_m3: 950
+    fit_strain: 0.80
+    plateau_pa: 12900
+    initial_rise: 20
+    air_pressure_pa: 101325
+    slow_leakage_ratio: 0.19308
+
+metrics:
+  early_time_ms: 10
+  loading_rate_window_ms: 0.5
+
+# Numerical resolution and range, not physical failure thresholds.
+# The pressure ceiling applies to the centre and every foam, including target.
+numerics:
+  maximum_pressure_pa: 1000000000
+  curve_steps: 600
+  tail_steps: 160
+  trajectory_steps: 1000

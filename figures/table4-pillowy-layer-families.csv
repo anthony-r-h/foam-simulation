@@ -1,0 +1,17 @@
+layer,family,all_scored_count,all_scored_share_percent,selected_count,selected_share_percent,selected_percent_of_family
+Outer,PU,31,91.17647058823529,4,100.0,12.903225806451612
+Outer,HR,2,5.882352941176471,0,0.0,0.0
+Outer,EVA,0,0.0,0,0.0,
+Outer,Latex,1,2.9411764705882355,0,0.0,0.0
+Main cushion,PU,0,0.0,0,0.0,
+Main cushion,HR,32,94.11764705882354,4,100.0,12.5
+Main cushion,EVA,2,5.882352941176471,0,0.0,0.0
+Main cushion,Latex,0,0.0,0,0.0,
+Support,PU,0,0.0,0,0.0,
+Support,HR,0,0.0,0,0.0,
+Support,EVA,34,100.0,4,100.0,11.764705882352942
+Support,Latex,0,0.0,0,0.0,
+Comfort,PU,18,52.94117647058823,4,100.0,22.22222222222222
+Comfort,HR,16,47.05882352941177,0,0.0,0.0
+Comfort,EVA,0,0.0,0,0.0,
+Comfort,Latex,0,0.0,0,0.0,

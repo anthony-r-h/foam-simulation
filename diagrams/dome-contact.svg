@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 360" role="img" aria-labelledby="title desc">
+  <title id="title">Rigid dome contact with glove and target foam</title>
+  <desc id="desc">Horizontal cross-section showing a rigid dome moving right into glove foam backed by target foam and a fixed plate. Labels identify central movement q, local stack shortening c of r, dome offset b of r, radial position r, and the growing contact footprint.</desc>
+  <defs>
+    <style>
+      :root {
+        --background: #ffffff;
+        --foreground: #171717;
+        --muted: #666666;
+        --structure: #8a8a8a;
+        --dome: #e5e7eb;
+        --glove: #dbeafe;
+        --target: #f3f4f6;
+        --plate: #b8bec7;
+        --accent: #2563a6;
+      }
+      .bg { fill: var(--background); }
+      .line { fill: none; stroke: var(--foreground); stroke-width: 2; }
+      .guide { fill: none; stroke: var(--structure); stroke-width: 1.5; stroke-dasharray: 6 5; }
+      .measure { fill: none; stroke: var(--accent); stroke-width: 1.8; }
+      .dome { fill: var(--dome); stroke: var(--foreground); stroke-width: 2; }
+      .glove { fill: var(--glove); stroke: var(--foreground); stroke-width: 1.5; }
+      .target { fill: var(--target); stroke: var(--foreground); stroke-width: 1.5; }
+      .plate { fill: var(--plate); stroke: var(--foreground); stroke-width: 1.5; }
+      text { fill: var(--foreground); font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; font-size: 14px; }
+      .small { fill: var(--muted); font-size: 12px; }
+      .math { font-style: italic; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+    </marker>
+    <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="var(--structure)" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect class="bg" width="820" height="360"/>
+
+  <path class="dome" d="M 105 70 L 382 70 Q 502 180 382 290 L 105 290 Z"/>
+  <path class="glove" d="M 382 70 L 600 70 L 600 290 L 382 290 Q 502 180 382 70 Z"/>
+  <rect class="target" x="600" y="70" width="75" height="220"/>
+  <rect class="plate" x="675" y="70" width="24" height="220"/>
+  <rect x="699" y="70" width="38" height="220" fill="url(#hatch)"/>
+
+  <line class="guide" x1="382" y1="52" x2="382" y2="308"/>
+  <line class="guide" x1="105" y1="180" x2="737" y2="180"/>
+
+  <line class="measure" x1="382" y1="180" x2="442" y2="180" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="math" x="408" y="169">q</text>
+
+  <line class="measure" x1="382" y1="111" x2="411" y2="111" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="math" x="385" y="101">c(r)</text>
+
+  <line class="measure" x1="411" y1="92" x2="442" y2="92" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="math" x="416" y="82">b(r)</text>
+  <line class="guide" x1="442" y1="92" x2="442" y2="180"/>
+
+  <line class="measure" x1="362" y1="180" x2="362" y2="111" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="math" x="345" y="149">r</text>
+
+  <path class="measure" d="M 460 75 L 474 75 L 474 285 L 460 285"/>
+  <text class="math" x="480" y="174">A(q)</text>
+  <text class="small" x="480" y="191">contact area</text>
+
+  <line class="measure" x1="150" y1="40" x2="250" y2="40" marker-end="url(#arrow)"/>
+  <text x="153" y="29">motion</text>
+
+  <text x="185" y="175">rigid dome</text>
+  <text x="500" y="225">glove foam</text>
+  <text x="611" y="234">target foam</text>
+  <text x="680" y="318">fixed plate</text>
+  <text class="small" x="290" y="326">Dashed vertical: original foam face</text>
+  <text class="small" x="290" y="344">Dashed horizontal: impact axis</text>
+</svg>

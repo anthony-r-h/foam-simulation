@@ -1,0 +1,2 @@
+responsiveness,score_reference,sample_weight_target_g,sample_weight_tolerance_g,selection_reference,total_stacks,scored_stacks,unscored_stacks,bucket_width_g,selection_percentile,score_cutoff,selected_stacks,selected_percent_of_scored,include_cutoff_ties,component_boundary_ties
+poppy,within responsiveness style and weight bucket,2.5,0.05,within responsiveness style and sample weight range,18110,18110,0,0.5,90,5.0,1857,10.254003313086692,True,better adjoining quintile

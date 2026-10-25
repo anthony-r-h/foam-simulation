@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simulated boxing glove compression</title>
+  <style>:root {
+  color-scheme: dark;
+  scrollbar-gutter: stable;
+  --ink: #e7e9e8;
+  --muted: #b4bab8;
+  --paper: #303638;
+  --line: #4c5355;
+  --control-line: #636b6d;
+  --control: #343b3d;
+  --selected: #50595b;
+  --font: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 14px/1.6 var(--font); font-variant-numeric: tabular-nums; }
+h1, h2, h3, p, dl, figure { margin: 0; }
+h1 { font-size: 24px; font-weight: 400; line-height: 1.4; letter-spacing: -.5px; }
+h2, h3, strong { font-size: inherit; font-weight: 500; }
+button, input, select { font: inherit; color: inherit; }
+button, input, select { min-height: 40px; border: 1px solid var(--control-line); border-radius: 0; background: var(--control); }
+input, select { width: 100%; max-width: 100%; padding: 8px 12px; }
+select { text-overflow: ellipsis; }
+button { padding: 8px 20px; cursor: pointer; }
+button:hover { background: var(--selected); }
+button.active { background: var(--selected); color: #fff; border-color: var(--muted); }
+:where(button, input, select, summary):focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+.page { max-width: 1040px; margin: auto; padding: 48px 48px 64px; }
+.top { padding-bottom: 28px; }
+.subtitle { margin-top: 8px; color: var(--muted); }
+.panel { min-width: 0; padding: 24px 0 32px; border-top: 1px solid var(--line); }
+.panel > h2 { margin-bottom: 20px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 24px; margin-bottom: 20px; }
+.section-heading p { color: var(--muted); }
+.section-heading strong { color: var(--ink); }
+.error { margin-bottom: 24px; padding: 12px 16px; border: 1px solid var(--muted); }
+
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; color: var(--muted); }
+.field input, .field select { color: var(--ink); }
+.field-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 24px; }
+.field--short { flex-direction: row; align-items: center; gap: 12px; }
+.field--short select { width: auto; max-width: 240px; }
+.reference-scale { padding: 0 40px; }
+.reference-scale input { display: block; appearance: none; height: 40px; margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.reference-scale input::-webkit-slider-runnable-track { height: 2px; background: var(--control-line); }
+.reference-scale input::-moz-range-track { height: 2px; background: var(--control-line); }
+.reference-scale input::-webkit-slider-thumb { appearance: none; width: 20px; height: 24px; margin-top: -11px; border: 2px solid var(--ink); border-radius: 0; background: var(--ink); }
+.reference-scale input::-moz-range-thumb { width: 16px; height: 20px; border: 2px solid var(--ink); border-radius: 0; background: var(--ink); }
+.reference-points { position: relative; height: 32px; margin: 0 10px; }
+.reference-point { position: absolute; left: var(--position); transform: translateX(-50%); text-align: center; color: var(--muted); }
+.reference-point::before { content: ""; display: block; width: 1px; height: 6px; margin: 0 auto 4px; background: var(--control-line); }
+.reference-point--active { color: var(--ink); font-weight: 600; }
+.impact-description { position: relative; width: 80px; margin-top: 12px; left: calc(50px + (100% - 100px) * var(--impact-position)); transform: translateX(-50%); text-align: center; }
+
+.preset-row { display: flex; align-items: center; gap: 24px; margin-bottom: 12px; }
+.preset-row > span { color: var(--muted); }
+.button-group { display: flex; }
+.button-group button { min-width: 92px; }
+.button-group button + button { margin-left: -1px; }
+.layer { position: relative; padding: 16px 0 16px 28px; border-bottom: 1px solid var(--line); }
+.layer:last-child { border-bottom: 0; padding-bottom: 0; }
+.layer-title { display: flex; align-items: baseline; margin-bottom: 8px; }
+.layer-title strong { font-size: 16px; font-weight: 600; color: #fff; }
+.layer-title .swatch { position: absolute; top: 16px; bottom: 16px; left: 0; width: 10px; height: auto; }
+.layer:last-child .layer-title .swatch { bottom: 0; }
+.material-details { margin-top: 8px; }
+.material-details summary { width: fit-content; color: var(--muted); cursor: pointer; }
+.foam-data { display: grid; gap: 8px; margin-top: 12px; }
+.foam-data > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 8px; }
+.foam-data dt { color: var(--muted); }
+.foam-data dd { margin: 0; }
+.swatch { display: inline-block; width: 12px; height: 12px; flex: 0 0 12px; background: var(--c); }
+
+.empty-state { padding: 24px 0; color: var(--muted); }
+[aria-busy="true"] { opacity: .55; }
+.result-status { margin: 16px 0; color: var(--muted); }
+.result-status--error { color: var(--ink); }
+.result-list { display: grid; gap: 8px; }
+.result-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 8px 24px; }
+.result-row dt { color: var(--muted); }
+.result-row dd { margin: 0; text-align: right; }
+.result-row strong { font-weight: 400; }
+.result-row small { font-size: inherit; color: var(--muted); }
+
+/* Each shape and its callout share a row, so live labels stay attached at any size. */
+.foam-response { margin-top: 40px; }
+.foam-response-layer { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 28px; min-height: 150px; }
+.foam-shape { width: 100%; height: auto; display: block; overflow: visible; }
+.response-callout { position: relative; padding: 12px 0; }
+.response-callout::before { content: ""; position: absolute; left: -52px; top: 24px; width: 40px; height: 1px; background: var(--muted); }
+.response-callout::after { content: ""; position: absolute; left: -55px; top: 21px; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+.response-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; font-size: 16px; font-weight: 600; color: #fff; }
+.response-title span { font-size: 14px; font-weight: 400; color: var(--muted); }
+.response-values { margin: 8px 0 0; display: grid; gap: 4px; }
+.response-values > div { display: flex; gap: 8px; }
+.response-values dt { color: var(--muted); }
+.response-values dd { margin: 0; white-space: nowrap; }
+.sample-weight { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-top: 20px; }
+.sample-weight span { color: var(--muted); }
+.sample-weight strong { font-weight: 400; }
+
+.chartbox { margin-top: 24px; overflow-x: auto; }
+.chartbox svg { display: block; width: 100%; height: auto; min-width: 600px; }
+.chartbox text { fill: var(--muted); font: 14px var(--font); }
+.chart-axis { stroke: var(--control-line); stroke-width: 1; }
+.chart-line { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.chart-marker { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 6; }
+.chart-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; padding-top: 16px; }
+.legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.caption { color: var(--muted); }
+
+@media (max-width: 720px) {
+  .page { padding: 28px 24px 40px; }
+  .section-heading { flex-wrap: wrap; gap: 12px; }
+  .foam-response-layer { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 20px; }
+  .response-callout::before { left: -32px; width: 24px; }
+  .response-callout::after { left: -35px; }
+  .result-row { grid-template-columns: minmax(0, 1fr) minmax(0, .65fr); }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 24px 16px 32px; }
+  h1 { font-size: 22px; }
+  .field-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .preset-row { flex-wrap: wrap; gap: 12px; }
+  .reference-scale { padding: 0 32px; }
+  .reference-point { white-space: nowrap; }
+  .reference-point:nth-child(even) span { display: inline-block; margin-top: 24px; }
+  .reference-points { height: 56px; }
+  .impact-description { left: calc(42px + (100% - 84px) * var(--impact-position)); }
+  .foam-response-layer { grid-template-columns: minmax(0, 1fr); gap: 0; margin-bottom: 24px; }
+  .foam-shape { max-width: 320px; margin: 0 auto; }
+  .response-callout { margin-left: 20px; padding: 0 0 0 12px; border-left: 1px solid var(--muted); }
+  .response-callout::before, .response-callout::after { display: none; }
+  .field--short { width: 100%; }
+  .field--short select { flex: 1; max-width: none; min-width: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button { transition: background-color .15s, border-color .15s; }
+}
+[hidden] { display: none; }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="top">
+    <div>
+      <h1>Simulated boxing glove compression</h1>
+      <p class="subtitle">Explore materials, thickness, and impact response.</p>
+    </div>
+  </header>
+
+  <div id="error" class="error" role="alert" hidden></div>
+
+  <section id="impact-card" class="panel">
+    <h2>Impact</h2>
+    <div class="reference-scale">
+      <input id="impact-level" type="range" min="0" max="5" step="1" value="3" aria-label="Impact reference" aria-describedby="impact-description">
+      <div id="impact-points" class="reference-points" aria-hidden="true"></div>
+    </div>
+    <p id="impact-description" class="impact-description" aria-live="polite"><output id="impact-energy"></output> J</p>
+  </section>
+
+  <section id="layers-card" class="panel">
+    <div class="section-heading">
+      <h2>Layers</h2>
+      <p><strong><output id="total-thickness"></output> mm</strong> total</p>
+    </div>
+    <div class="preset-row">
+      <span id="presets-label">Presets</span>
+      <div id="preset-buttons" class="button-group" role="group" aria-labelledby="presets-label"></div>
+    </div>
+    <div id="layers"></div>
+  </section>
+
+  <section id="results-card" class="panel" aria-live="polite">
+    <div class="section-heading">
+      <h2>Results</h2>
+      <p>50 mm EVA75 target</p>
+    </div>
+    <div id="results"></div>
+  </section>
+
+  <section id="graphs-card" class="panel">
+    <div class="section-heading">
+      <h2>Impact graphs</h2>
+      <label class="field field--short">View
+        <select id="graph-view">
+          <option value="force">Force &amp; thickness</option>
+          <option value="work">Work &amp; speed</option>
+        </select>
+      </label>
+    </div>
+    <p id="graph-caption" class="caption"></p>
+    <div id="main-chart" class="chartbox" aria-describedby="graph-caption"></div>
+  </section>
+
+</main>
+<script id="foam-catalog" type="application/json">[{"id":"aortha-eva-a25","name":"Aortha EVA A25","family":"EVA","subtype":"closed_cell_EVA_PE","densityKgM3":140,"firmnessUnits":"kPa","firmness":[{"value":130,"compressionPercent":25}]},{"id":"aortha-eva-a35","name":"Aortha EVA A35","family":"EVA","subtype":"closed_cell_EVA","densityKgM3":200,"firmnessUnits":"kPa","firmness":[{"value":180,"compressionPercent":25}]},{"id":"aortha-eva-a50","name":"Aortha EVA A50","family":"EVA","subtype":"closed_cell_EVA_PE","densityKgM3":280,"firmnessUnits":"kPa","firmness":[{"value":350,"compressionPercent":25}]},{"id":"cutfoam-df-firm","name":"CutFoam DF-FIRM","family":"PU","subtype":"reticulated_polyether","densityKgM3":32,"firmnessUnits":"N","firmness":[{"value":270,"compressionPercent":40}]},{"id":"cutfoam-df-soft","name":"CutFoam DF-SOFT","family":"PU","subtype":"reticulated_polyether","densityKgM3":25,"firmnessUnits":"N","firmness":[{"value":160,"compressionPercent":40}]},{"id":"cutfoam-eva240","name":"CutFoam EVA240","family":"EVA","subtype":"chemically_crosslinked_closed_cell","densityKgM3":240,"firmnessUnits":"kPa","firmness":[{"value":330,"compressionPercent":25}]},{"id":"cutfoam-eva30","name":"CutFoam EVA30","family":"EVA","subtype":"chemically_crosslinked_closed_cell","densityKgM3":30.5,"firmnessUnits":"kPa","firmness":[{"value":32.5,"compressionPercent":25}]},{"id":"cutfoam-eva75","name":"CutFoam EVA75","family":"EVA","subtype":"chemically_crosslinked_closed_cell","densityKgM3":75,"firmnessUnits":"kPa","firmness":[{"value":55,"compressionPercent":25}]},{"id":"cutfoam-h35-200","name":"CutFoam H35-200","family":"PU","subtype":"conventional_open_cell","densityKgM3":35,"firmnessUnits":"N","firmness":[{"value":200,"compressionPercent":40}]},{"id":"cutfoam-h42-500","name":"CutFoam H42-500","family":"PU","subtype":"conventional_open_cell","densityKgM3":42,"firmnessUnits":"N","firmness":[{"value":500,"compressionPercent":40}]},{"id":"cutfoam-hr36-100","name":"CutFoam HR36-100","family":"PU","subtype":"high_resilience","densityKgM3":36,"firmnessUnits":"N","firmness":[{"value":100,"compressionPercent":40}]},{"id":"cutfoam-hr36-160","name":"CutFoam HR36-160","family":"PU","subtype":"high_resilience","densityKgM3":36,"firmnessUnits":"N","firmness":[{"value":160,"compressionPercent":40}]},{"id":"cutfoam-hr40-230","name":"CutFoam HR40-230","family":"PU","subtype":"high_resilience","densityKgM3":40,"firmnessUnits":"N","firmness":[{"value":230,"compressionPercent":40}]},{"id":"cutfoam-hr50-320","name":"CutFoam HR50-320","family":"PU","subtype":"high_resilience","densityKgM3":50,"firmnessUnits":"N","firmness":[{"value":320,"compressionPercent":40}]},{"id":"cutfoam-n23-130","name":"CutFoam N23-130","family":"PU","subtype":"conventional_open_cell","densityKgM3":23,"firmnessUnits":"N","firmness":[{"value":130,"compressionPercent":40}]},{"id":"cutfoam-n29-400","name":"CutFoam N29-400","family":"PU","subtype":"conventional_open_cell","densityKgM3":29,"firmnessUnits":"N","firmness":[{"value":400,"compressionPercent":40}]},{"id":"cutfoam-n30-130","name":"CutFoam N30-130","family":"PU","subtype":"conventional_open_cell","densityKgM3":30,"firmnessUnits":"N","firmness":[{"value":130,"compressionPercent":40}]},{"id":"cutfoam-n31-190","name":"CutFoam N31-190","family":"PU","subtype":"conventional_open_cell","densityKgM3":31,"firmnessUnits":"N","firmness":[{"value":190,"compressionPercent":40}]},{"id":"cutfoam-n31-320","name":"CutFoam N31-320","family":"PU","subtype":"conventional_open_cell","densityKgM3":31,"firmnessUnits":"N","firmness":[{"value":320,"compressionPercent":40}]},{"id":"cutfoam-ss15-60","name":"CutFoam SS15-60","family":"PU","subtype":"conventional_open_cell","densityKgM3":15,"firmnessUnits":"N","firmness":[{"value":60,"compressionPercent":40}]},{"id":"evazote-ev30","name":"Evazote EV30","family":"EVA","subtype":"closed-cell crosslinked ethylene vinyl acetate copolymer","densityKgM3":30,"firmnessUnits":"kPa","firmness":[{"value":39,"compressionPercent":25},{"value":100,"compressionPercent":50}]},{"id":"evazote-ev50","name":"Evazote EV50","family":"EVA","subtype":"closed-cell crosslinked ethylene vinyl acetate copolymer","densityKgM3":50,"firmnessUnits":"kPa","firmness":[{"value":50,"compressionPercent":25},{"value":116,"compressionPercent":50}]},{"id":"evazote-va35","name":"Evazote VA35","family":"EVA","subtype":"closed-cell crosslinked ethylene vinyl acetate copolymer","densityKgM3":35,"firmnessUnits":"kPa","firmness":[{"value":52,"compressionPercent":25},{"value":118,"compressionPercent":50}]},{"id":"foam-factory-charcoal-firm","name":"Foam Factory Charcoal Firm","family":"PU","subtype":"conventional_open_cell","densityKgM3":27.231388,"firmnessUnits":"lbf","firmness":[{"value":70,"compressionPercent":25}]},{"id":"foam-factory-charcoal-regular","name":"Foam Factory Charcoal Regular","family":"PU","subtype":"conventional_open_cell","densityKgM3":20.824002,"firmnessUnits":"lbf","firmness":[{"value":36,"compressionPercent":25}]},{"id":"foam-factory-dryfast","name":"Foam Factory Dryfast","family":"PU","subtype":"reticulated_open_cell","densityKgM3":28.833234,"firmnessUnits":"lbf","firmness":[{"value":60,"compressionPercent":25},{"value":105,"compressionPercent":60}]},{"id":"foam-factory-dunlop-latex-29-ild","name":"Foam Factory Dunlop latex 29 ILD","family":"Latex","subtype":"natural_dunlop","densityKgM3":73.684932,"firmnessUnits":"lbf","firmness":[{"value":29,"compressionPercent":25}]},{"id":"foam-factory-hd36-hq","name":"Foam Factory HD36-HQ","family":"PU","subtype":"conventional_open_cell","densityKgM3":44.851697,"firmnessUnits":"lbf","firmness":[{"value":35,"compressionPercent":25}]},{"id":"foam-factory-hd36-r","name":"Foam Factory HD36-R","family":"PU","subtype":"conventional_open_cell","densityKgM3":28.833234,"firmnessUnits":"lbf","firmness":[{"value":35,"compressionPercent":25}]},{"id":"foam-factory-lux-hq","name":"Foam Factory Lux-HQ","family":"PU","subtype":"conventional_open_cell","densityKgM3":44.851697,"firmnessUnits":"lbf","firmness":[{"value":50,"compressionPercent":25}]},{"id":"foam-factory-lux-r","name":"Foam Factory Lux-R","family":"PU","subtype":"conventional_open_cell","densityKgM3":28.833234,"firmnessUnits":"lbf","firmness":[{"value":50,"compressionPercent":25}]},{"id":"foam-factory-poly-foam","name":"Foam Factory Poly Foam","family":"PU","subtype":"conventional_open_cell","densityKgM3":24.027695,"firmnessUnits":"lbf","firmness":[{"value":36,"compressionPercent":25}]},{"id":"foam-factory-qualux-firm","name":"Foam Factory Qualux Firm","family":"PU","subtype":"high_resilience_open_cell","densityKgM3":49.657236,"firmnessUnits":"lbf","firmness":[{"value":65,"compressionPercent":25}]},{"id":"foam-factory-super-lux","name":"Foam Factory Super Lux","family":"PU","subtype":"conventional_open_cell","densityKgM3":28.833234,"firmnessUnits":"lbf","firmness":[{"value":100,"compressionPercent":25}]},{"id":"foam-factory-super-max","name":"Foam Factory Super Max","family":"PU","subtype":"conventional_open_cell","densityKgM3":44.851697,"firmnessUnits":"lbf","firmness":[{"value":70,"compressionPercent":25}]},{"id":"foam-factory-super-soft","name":"Foam Factory Super Soft","family":"PU","subtype":"conventional_open_cell","densityKgM3":19.222156,"firmnessUnits":"lbf","firmness":[{"value":12,"compressionPercent":25}]},{"id":"foamonline-blue-medium-firm","name":"FoamOnline Blue - Medium Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":30.43508,"firmnessUnits":"lbf","firmness":[{"value":33,"compressionPercent":25}]},{"id":"foamonline-charcoal-extra-firm","name":"FoamOnline Charcoal - Extra Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":85.9,"compressionPercent":25}]},{"id":"foamonline-charcoal-light-medium-firm","name":"FoamOnline Charcoal Light - Medium Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":19.622618,"firmnessUnits":"lbf","firmness":[{"value":36.9,"compressionPercent":25}]},{"id":"foamonline-conventional-extra-firm","name":"FoamOnline Conventional - Extra Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":24.027695,"firmnessUnits":"lbf","firmness":[{"value":55,"compressionPercent":25}]},{"id":"foamonline-conventional-firm","name":"FoamOnline Conventional - Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":24.027695,"firmnessUnits":"lbf","firmness":[{"value":44,"compressionPercent":25}]},{"id":"foamonline-conventional-medium-firm","name":"FoamOnline Conventional - Medium Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":24.027695,"firmnessUnits":"lbf","firmness":[{"value":33,"compressionPercent":25}]},{"id":"foamonline-conventional-medium-soft","name":"FoamOnline Conventional - Medium Soft","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":24.027695,"firmnessUnits":"lbf","firmness":[{"value":24,"compressionPercent":25}]},{"id":"foamonline-conventional-soft","name":"FoamOnline Conventional - Soft","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":24.027695,"firmnessUnits":"lbf","firmness":[{"value":15,"compressionPercent":25}]},{"id":"foamonline-dunlop-latex-medium-25-33-ild","name":"FoamOnline Dunlop Latex - Medium (25-33 ILD)","family":"Latex","subtype":"Dunlop latex rubber","densityKgM3":94.508934,"firmnessUnits":"lbf","firmness":[{"value":29,"compressionPercent":25}]},{"id":"foamonline-high-density-extra-firm","name":"FoamOnline High Density - Extra Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":55,"compressionPercent":25}]},{"id":"foamonline-high-density-firm","name":"FoamOnline High Density - Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":44,"compressionPercent":25}]},{"id":"foamonline-high-density-medium","name":"FoamOnline High Density - Medium","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":28,"compressionPercent":25}]},{"id":"foamonline-high-density-medium-firm","name":"FoamOnline High Density - Medium Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":36,"compressionPercent":25}]},{"id":"foamonline-high-density-medium-soft","name":"FoamOnline High Density - Medium Soft","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":24,"compressionPercent":25}]},{"id":"foamonline-high-density-soft","name":"FoamOnline High Density - Soft","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":18,"compressionPercent":25}]},{"id":"foamonline-high-density-super-firm","name":"FoamOnline High Density - Super Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":29.233696,"firmnessUnits":"lbf","firmness":[{"value":80,"compressionPercent":25}]},{"id":"foamonline-high-resilience-extra-firm","name":"FoamOnline High Resilience - Extra Firm","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":70,"compressionPercent":25}]},{"id":"foamonline-high-resilience-firm","name":"FoamOnline High Resilience - Firm","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":50,"compressionPercent":25}]},{"id":"foamonline-high-resilience-medium","name":"FoamOnline High Resilience - Medium","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":34,"compressionPercent":25}]},{"id":"foamonline-high-resilience-medium-firm","name":"FoamOnline High Resilience - Medium Firm","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":40,"compressionPercent":25}]},{"id":"foamonline-high-resilience-medium-soft","name":"FoamOnline High Resilience - Medium Soft","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":28,"compressionPercent":25}]},{"id":"foamonline-high-resilience-soft","name":"FoamOnline High Resilience - Soft","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":20,"compressionPercent":25}]},{"id":"foamonline-high-resilience-super-firm","name":"FoamOnline High Resilience - Super Firm","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":100,"compressionPercent":25}]},{"id":"foamonline-high-resilience-very-soft","name":"FoamOnline High Resilience - Very Soft","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":10,"compressionPercent":25}]},{"id":"foamonline-lux-firm","name":"FoamOnline Lux - Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":33.238312,"firmnessUnits":"lbf","firmness":[{"value":45,"compressionPercent":25}]},{"id":"foamonline-lux-medium","name":"FoamOnline Lux - Medium","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":33.238312,"firmnessUnits":"lbf","firmness":[{"value":28,"compressionPercent":25}]},{"id":"foamonline-lux-medium-firm","name":"FoamOnline Lux - Medium Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":33.238312,"firmnessUnits":"lbf","firmness":[{"value":35,"compressionPercent":25}]},{"id":"foamonline-polyurethane-extra-firm","name":"FoamOnline Polyurethane - Extra Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":19.622618,"firmnessUnits":"lbf","firmness":[{"value":50,"compressionPercent":25}]},{"id":"foamonline-polyurethane-medium-firm","name":"FoamOnline Polyurethane - Medium Firm","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":19.622618,"firmnessUnits":"lbf","firmness":[{"value":33,"compressionPercent":25}]},{"id":"foamonline-polyurethane-soft","name":"FoamOnline Polyurethane - Soft","family":"PU","subtype":"conventional flexible polyurethane","densityKgM3":19.622618,"firmnessUnits":"lbf","firmness":[{"value":18,"compressionPercent":25}]},{"id":"foamonline-qualux-extra-firm","name":"FoamOnline Qualux - Extra Firm","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":61,"compressionPercent":25}]},{"id":"foamonline-qualux-firm","name":"FoamOnline Qualux - Firm","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":51,"compressionPercent":25}]},{"id":"foamonline-qualux-medium","name":"FoamOnline Qualux - Medium","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":35,"compressionPercent":25}]},{"id":"foamonline-qualux-medium-firm","name":"FoamOnline Qualux - Medium Firm","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":44.050774,"firmnessUnits":"lbf","firmness":[{"value":41,"compressionPercent":25}]},{"id":"foamonline-soft-hr","name":"FoamOnline Soft HR","family":"PU","subtype":"high-resilience polyurethane","densityKgM3":40.046158,"firmnessUnits":"lbf","firmness":[{"value":10,"compressionPercent":25}]},{"id":"minicel-t200","name":"Minicel T200","family":"EVA","subtype":"chemically_crosslinked_closed_cell","densityKgM3":32.036927,"firmnessUnits":"kPa","firmness":[{"value":27.579029,"compressionPercent":25},{"value":75.84233,"compressionPercent":50}]},{"id":"minicel-t300","name":"Minicel T300","family":"EVA","subtype":"chemically_crosslinked_closed_cell","densityKgM3":48.05539,"firmnessUnits":"kPa","firmness":[{"value":41.368544,"compressionPercent":25},{"value":75.84233,"compressionPercent":50}]},{"id":"minicel-t380","name":"Minicel T380","family":"EVA","subtype":"chemically_crosslinked_closed_cell","densityKgM3":60.870161,"firmnessUnits":"kPa","firmness":[{"value":55.158058,"compressionPercent":25},{"value":89.631845,"compressionPercent":50}]},{"id":"minicel-t600","name":"Minicel T600","family":"EVA","subtype":"chemically_crosslinked_closed_cell","densityKgM3":96.11078,"firmnessUnits":"kPa","firmness":[{"value":110.316117,"compressionPercent":25},{"value":206.842719,"compressionPercent":50}]},{"id":"poron-4701-40-15250-04","name":"PORON 4701-40-15250-04","family":"PU","subtype":"microcellular_polyurethane","densityKgM3":240,"firmnessUnits":"kPa","firmness":[{"value":51.5,"compressionPercent":25}]}]</script>
+<script>/* Catalog-backed inputs for the Python simulation request. */
+'use strict';
+(() => {
+ const $=id=>document.getElementById(id);
+ const esc=value=>String(value??'').replace(/[&<>"']/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+ const catalog=JSON.parse($('foam-catalog').textContent);
+ const catalogById=new Map(catalog.map(foam=>[foam.id,foam]));
+ const materialGroups=['EVA','Latex','High-resilience PU','Other PU'];
+ const catalogByGroup=new Map(materialGroups.map(group=>[
+  group,
+  catalog.filter(foam=>materialGroup(foam)===group).sort((a,b)=>a.name.localeCompare(b.name))
+ ]));
+ const colors=['#d7c3a6','#a5c7da','#d6a5bb','#a4cdb9'];
+ const target=Object.freeze({foam_id:'cutfoam-eva75',thickness_mm:50});
+ const impactLevels=[
+  {label:'Light',energy:5},
+  {label:'Child',energy:20},
+  {label:'Developing',energy:45},
+  {label:'Adult',speed:7.7},
+  {label:'Boxer',energy:121},
+  {label:'Gorilla',energy:200}
+ ];
+ const presets=[
+  {id:'soft',label:'Soft',layers:[
+   ['foam-factory-dunlop-latex-29-ild',20],
+   ['foamonline-high-resilience-very-soft',20],
+   ['evazote-ev50',5],
+   ['foam-factory-super-soft',5]
+  ]},
+  {id:'medium',label:'Medium',layers:[
+   ['foam-factory-dunlop-latex-29-ild',20],
+   ['foamonline-high-resilience-medium-firm',20],
+   ['cutfoam-eva75',5],
+   ['foam-factory-super-soft',5]
+  ]},
+  {id:'hard',label:'Hard',layers:[
+   ['foam-factory-dunlop-latex-29-ild',20],
+   ['foamonline-high-resilience-extra-firm',20],
+   ['cutfoam-eva240',5],
+   ['foam-factory-super-soft',5]
+  ]}
+ ];
+ let activePreset='medium';
+ let layers=layersFromPreset(activePreset);
+ let result=null;
+ let calculation=0;
+
+ function layersFromPreset(presetId){
+  const preset=presets.find(item=>item.id===presetId);
+  if(!preset)throw Error(`Unknown preset: ${presetId}`);
+  return preset.layers.map(([foamId,thicknessMm],index)=>{
+   if(!catalogById.has(foamId))throw Error(`Unknown foam: ${foamId}`);
+   return {id:`layer-${index+1}`,foamId,thicknessMm,color:colors[index]};
+  });
+ }
+
+ function number(value,digits=1){
+  return Number(value).toLocaleString('en-CA',{maximumFractionDigits:digits});
+ }
+
+ function materialGroup(foam){
+  if(foam.family==='EVA')return 'EVA';
+  if(foam.family==='Latex')return 'Latex';
+  if(/high[_ -]?resilience/i.test(foam.subtype))return 'High-resilience PU';
+  return 'Other PU';
+ }
+
+ function materialType(foam){
+  const subtype=foam.subtype.toLowerCase();
+  if(foam.family==='EVA')return subtype.includes('eva_pe')?'Closed-cell EVA/PE':'Closed-cell EVA';
+  if(foam.family==='Latex')return 'Dunlop latex';
+  if(subtype.includes('high_resilience')||subtype.includes('high-resilience'))return 'High-resilience PU';
+  if(subtype.includes('reticulated'))return 'Reticulated PU';
+  if(subtype.includes('microcellular'))return 'Microcellular PU';
+  return 'Conventional PU';
+ }
+
+ function materialOptions(selectedId){
+  return materialGroups.map(group=>{
+   const entries=catalogByGroup.get(group);
+   return `<optgroup label="${esc(group)}">${entries.map(foam=>`<option value="${esc(foam.id)}" ${foam.id===selectedId?'selected':''}>${esc(foam.name)}</option>`).join('')}</optgroup>`;
+  }).join('');
+ }
+
+ function firmnessText(foam){
+  return foam.firmness.map(point=>`${number(point.value,2)} ${foam.firmnessUnits} at ${number(point.compressionPercent,1)}%`).join(', ');
+ }
+
+ function layerPosition(index){
+  return ['Outside','Main cushion','Support','Hand comfort'][index];
+ }
+
+ function message(text){
+  $('error').hidden=!text;
+  $('error').textContent=text||'';
+ }
+
+ function readImpact(){
+  const level=impactLevels[Number($('impact-level').value)];
+  // Retain the existing energy reference points and Adult's original inputs.
+  const mass=2.597;
+  const speed=level.speed??Math.sqrt(2*level.energy/mass);
+  return {mass,speed,energy:mass*speed*speed/2,label:level.label};
+ }
+
+ function renderImpact(){
+  const impact=readImpact();
+  $('impact-energy').textContent=number(impact.energy,1);
+  $('impact-description').style.setProperty('--impact-position',Number($('impact-level').value)/(impactLevels.length-1));
+  $('impact-level').setAttribute('aria-valuetext',impact.label);
+  $('impact-points').innerHTML=impactLevels.map((item,index)=>`<span class="reference-point ${item.label===impact.label?'reference-point--active':''}" style="--position:${index*100/(impactLevels.length-1)}%"><span>${esc(item.label)}</span></span>`).join('');
+ }
+
+ function renderLayers(){
+  const expanded=new Set([...$('layers').querySelectorAll('details[open]')].map(details=>details.closest('[data-layer]').dataset.layer));
+  $('preset-buttons').innerHTML=presets.map(preset=>`<button data-preset="${preset.id}" class="${preset.id===activePreset?'active':''}" aria-pressed="${preset.id===activePreset}">${preset.label}</button>`).join('');
+  $('total-thickness').textContent=number(layers.reduce((total,layer)=>total+layer.thicknessMm,0),0);
+  $('layers').innerHTML=layers.map((layer,index)=>{
+   const foam=catalogById.get(layer.foamId);
+   return `<article class="layer" data-layer="${esc(layer.id)}">
+    <div class="layer-title"><i class="swatch" style="--c:${layer.color}" aria-hidden="true"></i><strong>${esc(layerPosition(index))}</strong></div>
+    <div class="field-grid">
+     <label class="field">Material<select data-field="foamId">${materialOptions(layer.foamId)}</select></label>
+     <label class="field">Thickness (mm)<input data-field="thicknessMm" type="number" min="1" step="1" inputmode="numeric" value="${layer.thicknessMm}"></label>
+    </div>
+    <details class="material-details" ${expanded.has(layer.id)?'open':''}>
+    <summary>Material details</summary>
+    <dl class="foam-data">
+     <div><dt>Type</dt><dd>${esc(materialType(foam))}</dd></div>
+     <div><dt>Density</dt><dd>${number(foam.densityKgM3,1)} kg/m³</dd></div>
+     <div><dt>Firmness</dt><dd>${esc(firmnessText(foam))}</dd></div>
+    </dl>
+    </details>
+   </article>`;
+  }).join('');
+ }
+
+ function finite(value){
+  return value!==null&&value!==''&&Number.isFinite(Number(value));
+ }
+
+ function value(value,digits=1,suffix=''){
+  return finite(value)?`${number(Number(value),digits)}${suffix}`:'—';
+ }
+
+ function scaled(value,factor){
+  return finite(value)?Number(value)*factor:null;
+ }
+
+ function resultRow(label,main,detail=''){
+  return `<div class="result-row"><dt>${esc(label)}</dt><dd><strong>${esc(main)}</strong>${detail?` <small>(${esc(detail)})</small>`:''}</dd></div>`;
+ }
+
+ function foamShape(index,thicknessMm,color){
+  // Simple sample blocks until the external foam geometry is available.
+  const depth=Math.max(5,Math.min(24,thicknessMm));
+  return `<svg class="foam-shape" viewBox="0 0 440 190" aria-hidden="true" focusable="false">
+   <defs><linearGradient id="foam-surface-${index}" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="${color}"/><stop offset="1" stop-color="${color}" stop-opacity=".8"/></linearGradient></defs>
+   <path d="M55 80 L220 138 V${138+depth} L55 ${80+depth} Z" fill="${color}" fill-opacity=".7" stroke="${color}"/>
+   <path d="M220 138 L385 80 V${80+depth} L220 ${138+depth} Z" fill="${color}" fill-opacity=".5" stroke="${color}"/>
+   <path d="M55 80 L220 22 L385 80 L220 138 Z" fill="url(#foam-surface-${index})" stroke="${color}" stroke-width="1"/>
+  </svg>`;
+ }
+
+ function renderLayerResponse(components){
+  return `<figure class="foam-response" aria-label="Foam layers and impact response">${layers.map((layer,index)=>{
+   const component=components.find(item=>Number(item.layer)===index+1)||{};
+   return `<div class="foam-response-layer" data-response-layer="${index+1}">
+    ${foamShape(index,layer.thicknessMm,layer.color)}
+    <div class="response-callout">
+     <h3 class="response-title">${esc(layerPosition(index))}<span>${number(layer.thicknessMm,0)} mm</span></h3>
+     <dl class="response-values">
+      <div><dt>Compressed to</dt><dd>${value(component.remaining_mm,1,' mm')}</dd></div>
+      <div><dt>Compression work</dt><dd>${value(component.work_j,1,' J')}</dd></div>
+     </dl>
+    </div>
+   </div>`;
+  }).join('')}</figure>`;
+ }
+
+ function renderResults(){
+  if(!result){
+   $('results').innerHTML='<p class="empty-state">Results will appear after simulation.</p>';
+   return;
+  }
+  if(result.status==='error'){
+   $('results').innerHTML=`<p class="result-status result-status--error">${esc(result.message||result.reason||'The simulation could not be completed.')}</p>`;
+   return;
+  }
+  const metrics=result.metrics||{};
+  const earlyMs=finite(metrics.early_time_s)?number(metrics.early_time_s*1000,1):'10';
+  const earlyForce=finite(metrics.early_force_n)?metrics.early_force_n:metrics.force_at_early_time_n;
+  const loadingWindow=finite(metrics.loading_rate_window_s)?`${number(metrics.loading_rate_window_s*1000,1)} ms window`:'';
+  const thicknessDetail=[value(metrics.maximum_glove_compression_percent,1,'% compressed'),value(metrics.minimum_glove_thickness_mm,1,' mm remaining')].filter(item=>item!=='—').join(', ');
+  const summaryRows=[
+   resultRow('Peak force',value(scaled(metrics.peak_force_n,.001),2,' kN')),
+   resultRow('Force at 5 ms',value(scaled(metrics.force_at_5ms_n,.001),2,' kN')),
+   resultRow(`Force by ${earlyMs} ms`,value(scaled(earlyForce,.001),2,' kN'),value(metrics.early_force_percent_of_peak,1,'% of peak')),
+   resultRow('Time to peak',value(scaled(metrics.time_to_peak_s,1000),2,' ms')),
+   resultRow(`Energy remaining at ${earlyMs} ms`,value(metrics.kinetic_energy_at_early_time_j,1,' J'),value(metrics.kinetic_energy_at_early_time_percent,1,'%')),
+   resultRow('10–90% loading rate',value(scaled(metrics.loading_rate_10_90_n_s,1e-6),2,' kN/ms')),
+   resultRow('Peak loading rate',value(scaled(metrics.peak_loading_rate_n_s,1e-6),2,' kN/ms'),loadingWindow),
+   resultRow('Loading impulse',value(metrics.loading_impulse_n_s,2,' N s')),
+   resultRow('Maximum glove compression',value(metrics.maximum_glove_compression_mm,1,' mm'),thicknessDetail)
+  ].join('');
+  const components=Array.isArray(metrics.components)?metrics.components.filter(component=>component.role==='glove'):[];
+  $('results').innerHTML=`${result.status==='incomplete'?`<p class="result-status">${esc(result.reason||'Simulation range ended before peak force.')}</p>`:''}<dl class="result-list">${summaryRows}</dl>${renderLayerResponse(components)}<p class="sample-weight"><span>Total sample weight (30 × 30 mm)</span><strong>${value(metrics.foam_sample_weight_g,2,' g')}</strong></p>`;
+ }
+
+ function linePath(points,x,y){
+  return points.map((point,index)=>`${index?'L':'M'}${x(point.x).toFixed(2)},${y(point.y).toFixed(2)}`).join(' ');
+ }
+
+ function chartMarkup(series,rows,axes){
+  const width=940,height=390,pad={left:58,right:58,top:32,bottom:64};
+  const plotWidth=width-pad.left-pad.right,plotHeight=height-pad.top-pad.bottom;
+  const endTime=Math.max(...rows.map(row=>Number(row.time_s)||0),.001);
+  const leftMax=Math.max(...series.filter(item=>item.axis==='left').flatMap(item=>item.points.map(point=>point.y)),1);
+  const rightMax=Math.max(...series.filter(item=>item.axis==='right').flatMap(item=>item.points.map(point=>point.y)),1);
+  const x=value=>pad.left+(value/endTime)*plotWidth;
+  const yLeft=value=>pad.top+plotHeight-(value/leftMax)*plotHeight;
+  const yRight=value=>pad.top+plotHeight-(value/rightMax)*plotHeight;
+  const ticks=[0,.25,.5,.75,1];
+  const xLabels=ticks.map(tick=>`<text x="${x(endTime*tick)}" y="${height-36}" text-anchor="middle">${number(endTime*tick*1000,1)}</text>`).join('');
+  const yLabels=ticks.map(tick=>`<text x="${pad.left-9}" y="${yLeft(leftMax*tick)+4}" text-anchor="end">${number(leftMax*tick,1)}</text><text x="${width-pad.right+9}" y="${yRight(rightMax*tick)+4}">${number(rightMax*tick,1)}</text>`).join('');
+  const axisTitles=`<text class="chart-axis-title" x="${pad.left}" y="16">${esc(axes.left)}</text><text class="chart-axis-title" x="${width-pad.right}" y="16" text-anchor="end">${esc(axes.right)}</text><text class="chart-axis-title" x="${width/2}" y="${height-8}" text-anchor="middle">Time (ms)</text>`;
+  const paths=series.map(item=>`<path class="chart-line" stroke="${item.color}" d="${linePath(item.points,x,item.axis==='right'?yRight:yLeft)}"/>`).join('');
+  const early=Number(result?.metrics?.early_time_s)||.01;
+  const marker=early<=endTime?`<line class="chart-marker" x1="${x(early)}" y1="${pad.top}" x2="${x(early)}" y2="${pad.top+plotHeight}"/><text x="${x(early)+5}" y="${pad.top+13}">${number(early*1000,1)} ms</text>`:'';
+  const legend=series.map(item=>`<span class="legend-item"><i class="swatch" style="--c:${item.color}" aria-hidden="true"></i>${esc(item.label)}</span>`).join('');
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc($('graph-view').selectedOptions[0].textContent)} over impact time"><line class="chart-axis" x1="${pad.left}" y1="${pad.top+plotHeight}" x2="${width-pad.right}" y2="${pad.top+plotHeight}"/><line class="chart-axis" x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${pad.top+plotHeight}"/><line class="chart-axis" x1="${width-pad.right}" y1="${pad.top}" x2="${width-pad.right}" y2="${pad.top+plotHeight}"/>${axisTitles}${xLabels}${yLabels}${paths}${marker}</svg><div class="chart-legend">${legend}</div>`;
+ }
+
+ function renderGraph(){
+  const rows=Array.isArray(result?.trace)?result.trace.filter(row=>finite(row.time_s)):[];
+  if(rows.length<2){
+   $('main-chart').innerHTML='<p class="empty-state">The impact trace will appear here.</p>';
+   $('graph-caption').textContent='';
+   return;
+  }
+  let series;
+  let axes;
+  if($('graph-view').value==='work'){
+   axes={left:'Glove work (J)',right:'Speed (m/s)'};
+   series=[
+    {label:'Glove work',axis:'left',color:'#f3c75c',points:rows.map(row=>({x:Number(row.time_s),y:Number(row.glove_work_j)||0}))},
+    {label:'Speed',axis:'right',color:'#67d4e8',points:rows.map(row=>({x:Number(row.time_s),y:Number(row.speed_m_s)||0}))}
+   ];
+   $('graph-caption').textContent='Glove work and striking speed over impact time.';
+  }else{
+   axes={left:'Remaining thickness (%)',right:'Force (kN)'};
+   const totalThickness=layers.reduce((sum,layer)=>sum+layer.thicknessMm,0);
+   const layerSeries=layers.map((layer,index)=>({
+    label:layerPosition(index),axis:'left',color:layer.color,
+    points:rows.map(row=>({x:Number(row.time_s),y:100*row.layers.slice(0,index+1).reduce((sum,item)=>sum+(Number(item.remaining_mm)||0),0)/totalThickness}))
+   }));
+   series=[...layerSeries,{label:'Force',axis:'right',color:'#ff995c',points:rows.map(row=>({x:Number(row.time_s),y:(Number(row.force_n)||0)/1000}))}];
+   $('graph-caption').textContent='Layer curves show cumulative remaining thickness relative to the starting stack.';
+  }
+  $('main-chart').innerHTML=chartMarkup(series,rows,axes);
+ }
+
+ function commitResult(nextResult){
+  result=nextResult;
+  renderResults();
+  renderGraph();
+  $('results').removeAttribute('aria-busy');
+  $('main-chart').removeAttribute('aria-busy');
+ }
+
+ function renderPending(){
+  result=null;
+  $('results').setAttribute('aria-busy','true');
+  $('main-chart').setAttribute('aria-busy','true');
+  if(!$('results').hasChildNodes())$('results').innerHTML='<p class="empty-state">Calculating…</p>';
+  if(!$('main-chart').hasChildNodes())$('main-chart').innerHTML='<p class="empty-state">Building the impact trace…</p>';
+ }
+
+ async function runSimulation(){
+  const requestNumber=++calculation;
+  message('');
+  const request=getRequest();
+  renderPending();
+  try{
+   const response=await fetch('/api/simulate',{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify(request)
+   });
+   const payload=await response.json();
+   if(!response.ok)throw Error(payload.message||`Simulation failed (${response.status}).`);
+   if(requestNumber!==calculation)return;
+   commitResult(payload);
+  }catch(error){
+   if(requestNumber!==calculation)return;
+   commitResult({status:'error',message:error.message||'Simulation unavailable.'});
+  }
+ }
+
+ function getRequest(){
+  const impact=readImpact();
+  return {
+   mass_kg:impact.mass,
+   speed_m_s:impact.speed,
+   layers:layers.map((layer,index)=>({layer:index+1,foam_id:layer.foamId,thickness_mm:layer.thicknessMm})),
+   target:{...target}
+  };
+ }
+
+ function update(){
+  renderImpact();
+  renderLayers();
+  runSimulation();
+ }
+
+ $('impact-level').addEventListener('input',()=>{
+  renderImpact();
+  runSimulation();
+ });
+ $('preset-buttons').addEventListener('click',event=>{
+  const button=event.target.closest('[data-preset]');
+  if(!button)return;
+  activePreset=button.dataset.preset;
+  layers=layersFromPreset(activePreset);
+  update();
+ });
+ $('layers').addEventListener('change',event=>{
+  const card=event.target.closest('[data-layer]');
+  const field=event.target.dataset.field;
+  if(!card||!field)return;
+  const layer=layers.find(item=>item.id===card.dataset.layer);
+  if(field==='foamId')layer.foamId=event.target.value;
+  if(field==='thicknessMm'){
+   const thickness=Number(event.target.value);
+   if(!Number.isInteger(thickness)||thickness<=0){message('Use a positive whole number of millimetres.');renderLayers();return;}
+   layer.thicknessMm=thickness;
+  }
+  activePreset=null;
+  update();
+ });
+ $('graph-view').addEventListener('change',()=>{if(result)renderGraph();});
+
+ update();
+})();
+</script>
+</body>
+</html>

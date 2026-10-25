@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "validated_at": "2026-10-24T23:24:58.952864+00:00",
+  "output": "/Users/arh/Documents/foam-simulation/data/simulations_2026-10-24_5ms.csv",
+  "rows": 2206920,
+  "simulation_statuses": {
+    "complete": 2206920
+  },
+  "force_at_5ms_present": 2206920,
+  "force_at_5ms_missing": 0,
+  "short_loading_rows": 0,
+  "invalid_force_at_5ms": 0,
+  "rows_with_changed_existing_fields": 0,
+  "mismatch_examples": [],
+  "sha256": "60661db44fbed2e0b4523b19b9b27ee3d06053bb63e7221af8954ec03e18ee3f",
+  "checks": {
+    "expected_row_count": true,
+    "all_simulations_complete": true,
+    "existing_fields_unchanged": true,
+    "new_metric_valid": true,
+    "new_file_matches_checkpoint": true,
+    "previous_file_unchanged": true
+  },
+  "run_duration_seconds": 25777.499952
+}
