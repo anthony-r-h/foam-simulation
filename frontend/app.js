@@ -1,4 +1,4 @@
-/* Catalog-backed inputs for the Python simulation request. */
+/* Catalog-backed inputs for the browser simulation. */
 'use strict';
 (() => {
  const $=id=>document.getElementById(id);
@@ -282,13 +282,8 @@
   const request=getRequest();
   renderPending();
   try{
-   const response=await fetch('/api/simulate',{
-    method:'POST',
-    headers:{'content-type':'application/json'},
-    body:JSON.stringify(request)
-   });
-   const payload=await response.json();
-   if(!response.ok)throw Error(payload.message||`Simulation failed (${response.status}).`);
+   await new Promise(resolve=>setTimeout(resolve,0));
+   const payload=globalThis.FoamSimulation.simulateFrontend(request,catalog);
    if(requestNumber!==calculation)return;
    commitResult(payload);
   }catch(error){

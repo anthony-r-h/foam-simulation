@@ -19,20 +19,20 @@ Both commands regenerate the simulator HTML before running Vite. To rebuild only
 npm run build:foam
 ```
 
-Edit `frontend/app.js`, `style.css`, and `shell.html`, then rebuild and reload. The builder embeds the material catalog from `data/analytical-foams.csv`. Do not edit the generated HTML directly.
+Edit `frontend/app.js`, `style.css`, `shell.html`, and `javascript/simulation.js`, then rebuild and reload. The builder embeds the browser engine and material catalog from `data/analytical-foams.csv`. Do not edit the generated HTML directly.
 
-## Simulation endpoint
+## Frontend simulation
 
-The frontend posts to `/api/simulate`. The deployed Lovable site must provide or route that endpoint to the Python simulation service. Building the frontend does not deploy the engine.
+The deployed frontend runs a JavaScript port of the simulation directly in the browser. Its source and parity-test adapter are in `javascript/`; see [`javascript/README.md`](javascript/README.md). The Python engine remains authoritative for analysis.
 
-For local development, with the Python dependencies in `requirements.txt` available:
+For local frontend development:
 
 ```sh
 npm run build:foam
-python3 scripts/serve-foam.py
+npm run dev
 ```
 
-Open `http://localhost:8080/simulator.html`. This development bridge serves the generated frontend and simulation endpoint together. `FOAM_PORT` overrides its default port. Opening the HTML directly from disk does not provide the simulation endpoint.
+The normal Lovable/TanStack build embeds the JavaScript engine and foam catalog in `public/simulator.html`; no Python service is required by the site.
 
 ## Source and historical records
 

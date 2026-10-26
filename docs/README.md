@@ -1,4 +1,4 @@
-# Choosing and characterizing foam for a boxing glove
+# Simulating the impact response of layered boxing-glove padding
 
 ## 1. Why this project exists
 
@@ -1004,9 +1004,27 @@ Soft remained relatively softer at every matched thickness and energy but did no
 
 Soft fit the lower-energy condition when a gentle initial response mattered. Responsive was firmer and carried reserve that was not yet needed, with a small peak-force penalty at thicker configurations. Soft did not scale to high energy by proportional thickening because its compliant layers consumed too much travel. Responsive converted its firmer start into useful reserve and better high-energy protection.
 
-Recipe selection therefore needs a specified impact range, thickness limit, weight budget, and intended response. A subsequent selection should score performance across that operating range rather than optimize one impact and treat it as a universal ranking.
+Recipe selection therefore needs a specified impact range, thickness limit, weight budget, and intended response.
 
 The high-energy comparison depends on the assumed high-compression foam response. At 50 mm and 120 J, both cores exceeded their reference-fit range. Those curves need measurement before the modeled separation can be treated as a verified impact limit.
+
+## Conclusion
+
+The model turned scattered supplier values and published foam-family curves into a common basis for comparing complete stacks. It connected estimated material response to layer thickness, glove geometry, and punch conditions. This made it possible to consider early feel, peak force, and remaining compression travel separately instead of treating softness as one property.
+
+### Design implications
+
+The particular foam grade and its compression curve mattered more than the family name alone. Conventional PU was useful where a compliant early response was wanted, but long sections of it consumed travel before the hardest part of the impact. HR PU was the strongest all-around main cushion in this comparison. It built support earlier, retained more thickness, and generally reduced peak force without the weight of dense EVA. EVA worked best as a thin support layer. Increasing its firmness produced diminishing gains, while using dense EVA through the main cushion added weight without improving the best results. Latex also added weight and offered no clear advantage over the tested PU, HR, and EVA choices.
+
+Density, firmness, weight, and protection did not move together. A denser stack was not automatically firmer, and a heavier stack was not automatically more protective or more resistant to bottoming out. The useful balance sat between two failure modes. Too little resistance allowed the foam to use most of its travel early. Too much resistance made force build quickly and eventually increased peak force. Additional thickness helped when it added useful resistance, while simply adding more compliant foam did little once the stack was already operating near its compression limit.
+
+The two selected recipes put that tradeoff into practical terms. The soft recipe used thin compliant PU layers around a thick HR core. It gave a gentler initial response and suited the lower-energy conditions, but it had less reserve as impact energy increased. The responsive recipe used HR through most of the stack. It felt firmer earlier, retained more thickness, and performed better as the impacts became harder. These descriptions depend on the operating condition: neither architecture is permanently soft or responsive at every thickness and punch energy.
+
+Choose the architecture for the intended punch range, available thickness, weight budget, and desired feel. Family labels and a single firmness number are too crude to make that choice. The shape of the resistance curve and the amount of usable compression travel determine what each layer contributes.
+
+### What this exercise is
+
+At heart, this is a back-of-the-envelope engineering exercise with a much bigger envelope. It borrows from foam mechanics, impact biomechanics, and protective-equipment design because the comparison data do not exist in one usable form. It gives a person with a computer and an idea for a glove a reasoned starting point: a foam choice with the assumptions and tradeoffs attached, ready to change when a better option or better information appears.
 
 ## References and reading notes
 

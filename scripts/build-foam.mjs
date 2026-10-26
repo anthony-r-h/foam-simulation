@@ -2,10 +2,12 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const sourceDirectory = new URL("../frontend/", import.meta.url);
+const simulationSource = new URL("../javascript/simulation.js", import.meta.url);
 const catalogSource = new URL("../data/analytical-foams.csv", import.meta.url);
 const output = new URL("../public/simulator.html", import.meta.url);
 const fragments = [
   ["/*STYLE*/", "style.css"],
+  ["/*SIMULATION*/", simulationSource],
   ["/*APP*/", "app.js"],
 ];
 
@@ -63,6 +65,7 @@ function buildCatalog() {
     name: JSON.parse(row.materials)[0],
     family: row.family,
     subtype: row.subtype,
+    referenceCurve: row.reference_curve,
     densityKgM3: Number(row.density_kg_m3),
     firmnessUnits: row.firmness_units,
     firmness: [1, 2, 3].flatMap((point) => {
@@ -84,7 +87,10 @@ for (const [placeholder, filename] of fragments) {
   if (html.split(placeholder).length !== 2) {
     throw new Error(`Expected exactly one ${placeholder} placeholder in shell.html`);
   }
-  const source = readFileSync(new URL(filename, sourceDirectory), "utf8");
+  const source = readFileSync(
+    filename instanceof URL ? filename : new URL(filename, sourceDirectory),
+    "utf8",
+  );
   html = html.replace(placeholder, () => source);
 }
 
