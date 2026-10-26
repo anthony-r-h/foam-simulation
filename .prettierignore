@@ -9,11 +9,5 @@ routeTree.gen.ts
 frontend
 public/simulator.html
 .validation
+output/playwright
 output
-legacy
-/docs/MODEL.md
-/docs/OUTLINE.md
-.venv
-__pycache__
-# Generated figures are checked against scripts/generate-figures.mjs.
-/diagrams/*.svg
