@@ -6,8 +6,8 @@ pnpm-lock.yaml
 package-lock.json
 bun.lock
 routeTree.gen.ts
-foam-stack
-public/foam-stack
+frontend
+public/simulator.html
 .validation
 output/playwright
 output

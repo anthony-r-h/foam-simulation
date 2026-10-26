@@ -1,0 +1,73 @@
+layer,family,cohort,property,count,mean,sd,minimum,maximum
+Outer,All,all_scored,Density (kg/m3),34,31.452120647058823,13.262237541969714,19.222156,94.508934
+Outer,All,all_scored,Modeled impact pressure at 25% compression (kPa),34,30.789811537754858,35.237346713726744,7.184406097757472,163.86758163921652
+Outer,All,all_scored,Thickness (mm),34,10.882352941176471,3.5824886041591926,10.0,25.0
+Outer,All,selected,Density (kg/m3),4,39.4854265,6.238034108631581,33.238312,44.851697
+Outer,All,selected,Modeled impact pressure at 25% compression (kPa),4,27.546812273642615,3.1183265767329496,23.37567541333432,29.935025407322804
+Outer,All,selected,Thickness (mm),4,10.0,0.0,10.0,10.0
+Outer,PU,all_scored,Density (kg/m3),31,28.60521354838709,6.479207895832422,19.222156,44.851697
+Outer,PU,all_scored,Modeled impact pressure at 25% compression (kPa),31,21.492922565346053,8.926052778118944,7.184406097757472,37.401080661334916
+Outer,PU,all_scored,Thickness (mm),31,10.0,0.0,10.0,10.0
+Outer,PU,selected,Density (kg/m3),4,39.4854265,6.238034108631581,33.238312,44.851697
+Outer,PU,selected,Modeled impact pressure at 25% compression (kPa),4,27.546812273642615,3.1183265767329496,23.37567541333432,29.935025407322804
+Outer,PU,selected,Thickness (mm),4,10.0,0.0,10.0,10.0
+Outer,HR,all_scored,Density (kg/m3),2,44.050774,0.0,44.050774,44.050774
+Outer,HR,all_scored,Modeled impact pressure at 25% compression (kPa),2,163.86758163921652,0.0,163.86758163921652,163.86758163921652
+Outer,HR,all_scored,Thickness (mm),2,25.0,0.0,25.0,25.0
+Outer,HR,selected,Density (kg/m3),0,,,,
+Outer,HR,selected,Modeled impact pressure at 25% compression (kPa),0,,,,
+Outer,HR,selected,Thickness (mm),0,,,,
+Outer,Latex,all_scored,Density (kg/m3),1,94.508934,,94.508934,94.508934
+Outer,Latex,all_scored,Modeled impact pressure at 25% compression (kPa),1,52.83782947950466,,52.83782947950466,52.83782947950466
+Outer,Latex,all_scored,Thickness (mm),1,10.0,,10.0,10.0
+Outer,Latex,selected,Density (kg/m3),0,,,,
+Outer,Latex,selected,Modeled impact pressure at 25% compression (kPa),0,,,,
+Outer,Latex,selected,Thickness (mm),0,,,,
+Main cushion,All,all_scored,Density (kg/m3),34,45.87131670588235,7.391683296836494,44.050774,75.0
+Main cushion,All,all_scored,Modeled impact pressure at 25% compression (kPa),34,157.9890585102616,23.867707734602906,63.93268844698276,163.86758163921652
+Main cushion,All,all_scored,Thickness (mm),34,31.41176470588235,3.7019048909644994,16.0,34.0
+Main cushion,All,selected,Density (kg/m3),4,44.050774,0.0,44.050774,44.050774
+Main cushion,All,selected,Modeled impact pressure at 25% compression (kPa),4,163.86758163921652,0.0,163.86758163921652,163.86758163921652
+Main cushion,All,selected,Thickness (mm),4,33.75,0.5,33.0,34.0
+Main cushion,HR,all_scored,Density (kg/m3),32,44.050774,0.0,44.050774,44.050774
+Main cushion,HR,all_scored,Modeled impact pressure at 25% compression (kPa),32,163.86758163921652,0.0,163.86758163921652,163.86758163921652
+Main cushion,HR,all_scored,Thickness (mm),32,32.28125,1.084624953761705,30.0,34.0
+Main cushion,HR,selected,Density (kg/m3),4,44.050774,0.0,44.050774,44.050774
+Main cushion,HR,selected,Modeled impact pressure at 25% compression (kPa),4,163.86758163921652,0.0,163.86758163921652,163.86758163921652
+Main cushion,HR,selected,Thickness (mm),4,33.75,0.5,33.0,34.0
+Main cushion,EVA,all_scored,Density (kg/m3),2,75.0,0.0,75.0,75.0
+Main cushion,EVA,all_scored,Modeled impact pressure at 25% compression (kPa),2,63.93268844698276,0.0,63.93268844698276,63.93268844698276
+Main cushion,EVA,all_scored,Thickness (mm),2,17.5,2.1213203435596424,16.0,19.0
+Main cushion,EVA,selected,Density (kg/m3),0,,,,
+Main cushion,EVA,selected,Modeled impact pressure at 25% compression (kPa),0,,,,
+Main cushion,EVA,selected,Thickness (mm),0,,,,
+Support,All,all_scored,Density (kg/m3),34,224.47002767647058,57.37079963625469,60.870161,280.0
+Support,All,all_scored,Modeled impact pressure at 25% compression (kPa),34,303.2691239611131,112.92930597963758,63.93268844698276,406.8443810262539
+Support,All,all_scored,Thickness (mm),34,4.0,0.8528028654224418,3.0,5.0
+Support,All,selected,Density (kg/m3),4,250.0,38.297084310253524,200.0,280.0
+Support,All,selected,Modeled impact pressure at 25% compression (kPa),4,351.6297864584052,95.56086714802325,209.2342530992163,406.8443810262539
+Support,All,selected,Thickness (mm),4,3.25,0.5,3.0,4.0
+Support,EVA,all_scored,Density (kg/m3),34,224.47002767647058,57.37079963625469,60.870161,280.0
+Support,EVA,all_scored,Modeled impact pressure at 25% compression (kPa),34,303.2691239611131,112.92930597963758,63.93268844698276,406.8443810262539
+Support,EVA,all_scored,Thickness (mm),34,4.0,0.8528028654224418,3.0,5.0
+Support,EVA,selected,Density (kg/m3),4,250.0,38.297084310253524,200.0,280.0
+Support,EVA,selected,Modeled impact pressure at 25% compression (kPa),4,351.6297864584052,95.56086714802325,209.2342530992163,406.8443810262539
+Support,EVA,selected,Thickness (mm),4,3.25,0.5,3.0,4.0
+Comfort,All,all_scored,Density (kg/m3),34,30.906211529411763,12.57918088308584,19.222156,44.050774
+Comfort,All,all_scored,Modeled impact pressure at 25% compression (kPa),34,42.36058714333432,37.87105795882534,7.184406097757472,81.93379081960826
+Comfort,All,all_scored,Thickness (mm),34,3.7058823529411766,0.835914007637145,3.0,5.0
+Comfort,All,selected,Density (kg/m3),4,19.222156,0.0,19.222156,19.222156
+Comfort,All,selected,Modeled impact pressure at 25% compression (kPa),4,7.184406097757472,0.0,7.184406097757472,7.184406097757472
+Comfort,All,selected,Thickness (mm),4,3.0,0.0,3.0,3.0
+Comfort,PU,all_scored,Density (kg/m3),18,19.222156,0.0,19.222156,19.222156
+Comfort,PU,all_scored,Modeled impact pressure at 25% compression (kPa),18,7.184406097757472,0.0,7.184406097757472,7.184406097757472
+Comfort,PU,all_scored,Thickness (mm),18,3.2777777777777777,0.5745131499601416,3.0,5.0
+Comfort,PU,selected,Density (kg/m3),4,19.222156,0.0,19.222156,19.222156
+Comfort,PU,selected,Modeled impact pressure at 25% compression (kPa),4,7.184406097757472,0.0,7.184406097757472,7.184406097757472
+Comfort,PU,selected,Thickness (mm),4,3.0,0.0,3.0,3.0
+Comfort,HR,all_scored,Density (kg/m3),16,44.050774,0.0,44.050774,44.050774
+Comfort,HR,all_scored,Modeled impact pressure at 25% compression (kPa),16,81.93379081960826,0.0,81.93379081960826,81.93379081960826
+Comfort,HR,all_scored,Thickness (mm),16,4.1875,0.8341662504161466,3.0,5.0
+Comfort,HR,selected,Density (kg/m3),0,,,,
+Comfort,HR,selected,Modeled impact pressure at 25% compression (kPa),0,,,,
+Comfort,HR,selected,Thickness (mm),0,,,,

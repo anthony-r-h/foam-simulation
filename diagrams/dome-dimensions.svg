@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" role="img" aria-labelledby="title desc">
+  <title id="title">Dome curvature and maximum contact width</title>
+  <desc id="desc">Side view drawn to scale. The striker face follows a circle of radius 100 mm. Its face is 80 mm across, or 40 mm from the centreline to either edge. The tip meets flat foam first; contact spreads outward as the striker advances, up to the edge of the face. The circle centre is a geometric construction point.</desc>
+  <style>
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .line { fill: none; stroke: #e7e9e8; stroke-width: 1.5; }
+    .guide { fill: none; stroke: #b4bab8; stroke-width: 1; stroke-dasharray: 5 5; }
+    .body { fill: #4c5355; }
+    .dot { fill: #fbb61a; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#e7e9e8"/>
+    </marker>
+  </defs>
+  <rect class="background" width="760" height="380"/>
+  <path class="guide" d="M350,10 A300,300 0 0 1 350,370"/>
+  <path class="body" d="M310,70 H384.95454169735035 A300,300 0 0 1 384.95454169735035,310 H310 Z"/>
+  <path class="line" d="M310,70 H384.95454169735035 A300,300 0 0 1 384.95454169735035,310 H310"/>
+  <text x="235" y="40">Rigid dome</text>
+  <path class="line" d="M325,46 L340,70"/>
+  <circle class="dot" cx="110" cy="190" r="3"/>
+  <text x="110" y="218" text-anchor="middle">Circle centre</text>
+  <path class="line" d="M115,190 H405" marker-end="url(#arrow)"/>
+  <text x="250" y="176" text-anchor="middle">R = 100 mm</text>
+  <circle class="dot" cx="410" cy="190" r="4"/>
+  <path class="line" d="M418,190 H540"/>
+  <text x="552" y="195">First contact</text>
+  <path class="guide" d="M384.95454169735035,70 H500 M384.95454169735035,310 H500"/>
+  <path class="line" d="M480,70 V310" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="508" y="95">80 mm face width</text>
+  <text x="508" y="117">maximum contact diameter</text>
+  <path class="line" d="M450,190 V310" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <path class="line" d="M454,265 H500"/>
+  <text x="508" y="270">a = 40 mm</text>
+  <path class="line" d="M160,320 H275" marker-end="url(#arrow)"/>
+  <text x="218" y="345" text-anchor="middle">Motion</text>
+</svg>

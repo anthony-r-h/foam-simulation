@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simulated boxing glove compression</title>
+  <style>/*STYLE*/</style>
+</head>
+<body>
+<main class="page">
+  <header class="top">
+    <div>
+      <h1>Simulated boxing glove compression</h1>
+      <p class="subtitle">Explore materials, thickness, and impact response.</p>
+    </div>
+  </header>
+
+  <div id="error" class="error" role="alert" hidden></div>
+
+  <section id="impact-card" class="panel">
+    <h2>Impact</h2>
+    <div class="reference-scale">
+      <input id="impact-level" type="range" min="0" max="5" step="1" value="3" aria-label="Impact reference" aria-describedby="impact-description">
+      <div id="impact-points" class="reference-points" aria-hidden="true"></div>
+    </div>
+    <p id="impact-description" class="impact-description" aria-live="polite"><output id="impact-energy"></output> J</p>
+  </section>
+
+  <section id="layers-card" class="panel">
+    <div class="section-heading">
+      <h2>Layers</h2>
+      <p><strong><output id="total-thickness"></output> mm</strong> total</p>
+    </div>
+    <div class="preset-row">
+      <span id="presets-label">Presets</span>
+      <div id="preset-buttons" class="button-group" role="group" aria-labelledby="presets-label"></div>
+    </div>
+    <div id="layers"></div>
+  </section>
+
+  <section id="results-card" class="panel" aria-live="polite">
+    <div class="section-heading">
+      <h2>Results</h2>
+      <p>50 mm EVA75 target</p>
+    </div>
+    <div id="results"></div>
+  </section>
+
+  <section id="graphs-card" class="panel">
+    <div class="section-heading">
+      <h2>Impact graphs</h2>
+      <label class="field field--short">View
+        <select id="graph-view">
+          <option value="force">Force &amp; thickness</option>
+          <option value="work">Work &amp; speed</option>
+        </select>
+      </label>
+    </div>
+    <p id="graph-caption" class="caption"></p>
+    <div id="main-chart" class="chartbox" aria-describedby="graph-caption"></div>
+  </section>
+
+</main>
+<script id="foam-catalog" type="application/json">/*FOAM_CATALOG*/</script>
+<script>/*SIMULATION*/</script>
+<script>/*APP*/</script>
+</body>
+</html>

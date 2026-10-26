@@ -1,0 +1,30 @@
+layer,foam_id,foam,family,density_kg_m3,modeled_pressure_at_25_percent_kpa,all_scored_count,all_scored_share_percent,selected_count,selected_share_percent,selected_percent_of_grade,selected_mean_thickness_mm
+Outer,cutfoam-h35-200,CutFoam H35-200,PU,35.0,23.37567541333432,1,2.9411764705882355,1,25.0,100.0,10.0
+Outer,cutfoam-n23-130,CutFoam N23-130,PU,23.0,15.194189018667307,3,8.823529411764707,0,0.0,0.0,
+Outer,cutfoam-n30-130,CutFoam N30-130,PU,30.0,15.194189018667307,2,5.882352941176471,0,0.0,0.0,
+Outer,cutfoam-n31-320,CutFoam N31-320,PU,31.0,37.401080661334916,2,5.882352941176471,0,0.0,0.0,
+Outer,foam-factory-lux-hq,Foam Factory Lux-HQ,PU,44.851697,29.935025407322804,2,5.882352941176471,2,50.0,100.0,10.0
+Outer,foam-factory-lux-r,Foam Factory Lux-R,PU,28.833234,29.935025407322804,2,5.882352941176471,0,0.0,0.0,
+Outer,foam-factory-super-soft,Foam Factory Super Soft,PU,19.222156,7.184406097757472,1,2.9411764705882355,0,0.0,0.0,
+Outer,foamonline-dunlop-latex-medium-25-33-ild,FoamOnline Dunlop Latex - Medium (25-33 ILD),Latex,94.508934,52.83782947950466,1,2.9411764705882355,0,0.0,0.0,
+Outer,foamonline-high-density-extra-firm,FoamOnline High Density - Extra Firm,PU,29.233696,32.928527948055084,2,5.882352941176471,0,0.0,0.0,
+Outer,foamonline-high-density-firm,FoamOnline High Density - Firm,PU,29.233696,26.342822358444067,2,5.882352941176471,0,0.0,0.0,
+Outer,foamonline-high-density-medium,FoamOnline High Density - Medium,PU,29.233696,16.76361422810077,1,2.9411764705882355,0,0.0,0.0,
+Outer,foamonline-high-density-medium-soft,FoamOnline High Density - Medium Soft,PU,29.233696,14.368812195514945,2,5.882352941176471,0,0.0,0.0,
+Outer,foamonline-high-density-soft,FoamOnline High Density - Soft,PU,29.233696,10.776609146636206,2,5.882352941176471,0,0.0,0.0,
+Outer,foamonline-high-resilience-soft,FoamOnline High Resilience - Soft,HR,44.050774,163.86758163921652,2,5.882352941176471,0,0.0,0.0,
+Outer,foamonline-lux-firm,FoamOnline Lux - Firm,PU,33.238312,26.94152286659052,3,8.823529411764707,1,25.0,33.333333333333336,10.0
+Outer,foamonline-lux-medium,FoamOnline Lux - Medium,PU,33.238312,16.76361422810077,1,2.9411764705882355,0,0.0,0.0,
+Outer,foamonline-polyurethane-extra-firm,FoamOnline Polyurethane - Extra Firm,PU,19.622618,29.935025407322804,1,2.9411764705882355,0,0.0,0.0,
+Outer,foamonline-polyurethane-medium-firm,FoamOnline Polyurethane - Medium Firm,PU,19.622618,19.75711676883305,1,2.9411764705882355,0,0.0,0.0,
+Outer,foamonline-polyurethane-soft,FoamOnline Polyurethane - Soft,PU,19.622618,10.776609146636206,3,8.823529411764707,0,0.0,0.0,
+Main cushion,cutfoam-eva75,CutFoam EVA75,EVA,75.0,63.93268844698276,2,5.882352941176471,0,0.0,0.0,
+Main cushion,foamonline-high-resilience-soft,FoamOnline High Resilience - Soft,HR,44.050774,163.86758163921652,32,94.11764705882354,4,100.0,12.5,33.75
+Support,aortha-eva-a35,Aortha EVA A35,EVA,200.0,209.2342530992163,12,35.294117647058826,1,25.0,8.333333333333334,4.0
+Support,aortha-eva-a50,Aortha EVA A50,EVA,280.0,406.8443810262539,11,32.35294117647059,2,50.0,18.181818181818183,3.0
+Support,cutfoam-eva240,CutFoam EVA240,EVA,240.0,383.5961306818966,8,23.529411764705884,1,25.0,12.5,3.0
+Support,cutfoam-eva75,CutFoam EVA75,EVA,75.0,63.93268844698276,1,2.9411764705882355,0,0.0,0.0,
+Support,minicel-t380,Minicel T380,EVA,60.870161,64.11641704462919,1,2.9411764705882355,0,0.0,0.0,
+Support,minicel-t600,Minicel T600,EVA,96.11078,128.23283525167088,1,2.9411764705882355,0,0.0,0.0,
+Comfort,foam-factory-super-soft,Foam Factory Super Soft,PU,19.222156,7.184406097757472,18,52.94117647058823,4,100.0,22.22222222222222,3.0
+Comfort,foamonline-high-resilience-very-soft,FoamOnline High Resilience - Very Soft,HR,44.050774,81.93379081960826,16,47.05882352941177,0,0.0,0.0,

@@ -1,4 +1,0 @@
-preset,outer_material,outer_mm,main_material,main_mm,backing_material,backing_mm,comfort_material,comfort_mm,total_mm,slow_10mm_force_N,10J_peak_N
-Soft,latex,12,soft,21,ev50,4,soft,3,40,5.225563664789428,925.0363268194463
-Medium,soft,6,ev50,26,ev50,4,soft,4,40,15.650495356573424,1032.659403426487
-Firm,latex,6,ev50,27,ev50,4,soft,3,40,38.13836881980738,1066.8862122785645

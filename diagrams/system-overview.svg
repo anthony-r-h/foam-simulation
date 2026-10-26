@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 260" role="img" aria-labelledby="title desc">
+  <title id="title">Impact model components</title>
+  <desc id="desc">A left-to-right diagram of the modeled impact path: moving mass, hand spring, rigid dome, glove foam, target foam, and fixed plate.</desc>
+  <style>
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .connector { fill: none; stroke: #b4bab8; stroke-width: 2; }
+    .icon { fill: none; stroke: #e7e9e8; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .mass { fill: #4c5355; stroke: #e7e9e8; stroke-width: 2; }
+    .dome { fill: #4c5355; stroke: #e7e9e8; stroke-width: 2; }
+    .layer { stroke-width: 2; }
+    .outer { fill: #3b0f70; stroke: #3b0f70; }
+    .main { fill: #7c1d6f; stroke: #7c1d6f; }
+    .support { fill: #bc3754; stroke: #bc3754; }
+    .comfort { fill: #ed6925; stroke: #ed6925; }
+    .target { fill: #fbb61a; stroke: #fbb61a; stroke-width: 2; }
+    .plate { fill: #4c5355; stroke: #b4bab8; stroke-width: 2; }
+    .accent { fill: none; stroke: #fbb61a; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .spring { fill: none; stroke: #ed6925; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .label { font-size: 17px; text-anchor: middle; }
+    .detail { fill: #b4bab8; font-size: 13px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#b4bab8"/>
+    </marker>
+    <pattern id="plate-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b4bab8" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect class="background" width="1060" height="260"/>
+
+  <path class="connector" d="M149,104 H214 M318,104 H383 M487,104 H552 M656,104 H721 M825,104 H890" marker-end="url(#flow-arrow)"/>
+
+  <g transform="translate(55 62)">
+    <rect class="mass" x="22" y="12" width="54" height="60" rx="5"/>
+    <path class="accent" d="M0,42 H17 M5,31 L17,42 5,53"/>
+    <text class="label" x="49" y="116">Moving mass</text>
+    <text class="detail" x="49" y="139">mass and speed</text>
+  </g>
+
+  <g transform="translate(222 62)">
+    <path class="spring" d="M0,42 H13 L25,22 43,62 61,22 79,62 91,42 H104"/>
+    <text class="label" x="52" y="116">Hand spring</text>
+    <text class="detail" x="52" y="139">hand and wrist give</text>
+  </g>
+
+  <g transform="translate(391 62)">
+    <path class="dome" d="M10,12 H50 Q100,42 50,72 H10 Z"/>
+    <path class="accent" d="M104,42 H78 M92,31 L78,42 92,53"/>
+    <text class="label" x="52" y="116">Rigid dome</text>
+    <text class="detail" x="52" y="139">contact shape</text>
+  </g>
+
+  <g transform="translate(560 62)">
+    <rect class="layer outer" x="3" y="8" width="19" height="68" rx="3"/>
+    <rect class="layer main" x="29" y="8" width="19" height="68" rx="3"/>
+    <rect class="layer support" x="55" y="8" width="19" height="68" rx="3"/>
+    <rect class="layer comfort" x="81" y="8" width="19" height="68" rx="3"/>
+    <text class="label" x="52" y="116">Glove foam</text>
+    <text class="detail" x="52" y="139">one or more layers</text>
+  </g>
+
+  <g transform="translate(729 62)">
+    <rect class="target" x="37" y="8" width="30" height="68" rx="4"/>
+    <path class="icon" d="M17,17 C30,23 30,31 17,37 C30,43 30,51 17,57 M87,17 C74,23 74,31 87,37 C74,43 74,51 87,57"/>
+    <text class="label" x="52" y="116">Target foam</text>
+  </g>
+
+  <g transform="translate(898 62)">
+    <rect class="plate" x="38" y="8" width="28" height="68"/>
+    <rect x="66" y="8" width="24" height="68" fill="url(#plate-hatch)"/>
+    <text class="label" x="52" y="116">Fixed plate</text>
+  </g>
+</svg>
