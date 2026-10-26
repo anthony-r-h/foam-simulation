@@ -61,7 +61,7 @@
 - Follow one loading phase, from first contact to maximum compression.
 - Compare mechanical response, not injury or subjective feel.
 
-## 2. How the parts behave
+## 2. Component behavior
 
 > **Section question:** What role does each part play during the impact?
 
@@ -91,7 +91,7 @@
 - Its foam cover compresses in series with the glove layers and contributes to
   the force response.
 
-## 3. How the foam curves are built
+## 3. Construction of foam response curves
 
 > **Section question:** How do sparse supplier values become complete curves the
 > model can use?
@@ -113,7 +113,7 @@
 - One chosen loading curve represents the brief impact. The curve does not
   change with compression rate during the calculation.
 
-## 4. Calculation in plain English
+## 4. Calculation sequence
 
 > **Section question:** How does the model turn the inputs into a force history?
 
@@ -347,7 +347,7 @@ $$
   maximum compression and peak force remain unresolved. Section 7 distinguishes
   this numerical boundary from the assumed foam compression limit.
 
-## 6. Building and anchoring the foam curves
+## 6. Foam-curve construction and anchoring
 
 > **Section question:** How do published curve shapes and supplier values become
 > the pressure-versus-strain curves used above?
@@ -694,7 +694,7 @@ $$
 - Section 7 defines how the curves continue at high compression and explains
   the assumptions needed there.
 
-## 7. How we handle the high-compression tail
+## 7. High-compression extrapolation
 
 > **Section question:** How do we continue the curve beyond the measured range,
 > and where does the calculation stop?
@@ -925,7 +925,7 @@ $$
 - The worked example defines its own impact conditions using inputs from
   several sources.
 
-## 9. What the model reports
+## 9. Reported outputs and comparison metrics
 
 > **Section question:** What does each measure tell us, and how is it defined?
 
@@ -1134,7 +1134,7 @@ $$
   found that changing target padding thickness changed peak forces and
   glove comparisons. That motivates separating glove and target work here.
 
-## 10. What the model can and cannot tell us
+## 10. Model scope and limitations
 
 > **Section question:** What comparisons does this model support, and where do
 > its assumptions limit the answer?
@@ -1166,7 +1166,7 @@ $$
   retail foams or complete gloves. This remains a theoretical comparison under
   the stated assumptions.
 
-## 11. Assumptions that could change a stack comparison
+## 11. Assumptions affecting stack comparisons
 
 > **Section question:** Which uncertain choices could change our conclusion?
 
@@ -1184,7 +1184,7 @@ $$
   remains unresolved. Agreement would show stability only across the choices
   considered; it would not establish accuracy for real gloves.
 
-## 12. Adapting the model to published test setups
+## 12. Adaptation to published test configurations
 
 > **Section question:** What can each test tell us, and what changes in the
 > punch and target are needed to model it?

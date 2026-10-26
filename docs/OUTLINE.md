@@ -1,4 +1,4 @@
-# Choosing and characterizing foam for a boxing glove
+# Simulating the impact response of layered boxing-glove padding
 
 ## Working status
 
@@ -13,7 +13,7 @@
 - Treat `MODEL.md` and `ANALYSIS.md` as complete top-level sections. Preserve their internal heading hierarchy when combining the documents.
 - Mark uncertain claims and missing evidence instead of smoothing over them.
 
-## 1. Why this project exists
+## 1. Introduction
 
 > **Section intent:** Start with the design gap: boxing gloves do not have a shared set of padding specifications in the way that laptops have specifications for their major components. A multilayer stack lets us shape how the glove compresses, but there is no published recipe to follow. The language used to describe glove feel is vivid but hard to design from. This section should turn "good foam" into a broader set of goals without pretending that one number can settle the choice.
 
@@ -44,8 +44,15 @@
   - fit within the glove's limits on thickness, weight, shape, and construction;
   - feel predictable enough that the boxer still gets clear feedback from a punch.
 - Those goals may pull against each other. The job of the model and the physical tests is to make those tradeoffs visible.
+- End with a high-level map of the document:
+  - define the mechanical role of padding;
+  - identify the candidate foam families and available material data;
+  - review the evidence and establish the remaining design gap;
+  - construct the mathematical model and estimated foam-response curves;
+  - compare foam families and stack architectures in the simulation;
+  - draw practical conclusions for material and stack selection.
 
-## 2. What foam is doing inside a glove
+## 2. Mechanical role of glove padding
 
 > **Section intent:** Give the reader only the physical picture needed for the design problem. Foam provides stopping travel, and its resistance changes as it is compressed.
 
@@ -64,7 +71,7 @@
   - impact tests for the complete glove;
   - realistic impact conditions for the boxer, hand, and target.
 
-## 3. Foams under consideration
+## 3. Candidate foam materials and data
 
 > **Section intent:** Explain the foam families under consideration, why the response of each grade matters, and what must be measured before selecting materials.
 
@@ -73,7 +80,7 @@
 - Their use in commercial boxing gloves has not been established.
 - Density and firmness are different properties.
 
-### What the family names mean
+### Foam families and material grades
 
 - Flexible polyurethane, or PU, covers a wide range of densities and firmness levels.
   - High-resilience, or HR, is a type of flexible PU associated with stronger recovery and support.
@@ -84,18 +91,18 @@
   - A commercial grade name does not define how every EVA foam behaves.
 - The grade and its measured response matter more than the family name.
 
-### What is still missing
+### Available data and limitations
 
 - Full loading and unloading curves for the purchased foams.
 - Tests at glove-layer thicknesses and punch-like loading rates.
 - Recovery and change after repeated impacts.
 - Variation between samples and batches.
 
-## 4. Why existing tests do not answer the design question
+## 4. Evidence base and design gap
 
 > **Section intent:** Rules, standards, and research answer different questions: may the glove be used, does it pass a protection test, and how does it respond during impact? Together they still do not connect measured foam curves to the response of a finished glove.
 
-### What standards and rules cover
+### Standards and competition rules
 
 - Competition rules mostly answer: **may this glove be used?**
   - They specify weight, padding allowance, materials, dimensions, thumb attachment, closure, condition, and approval. ([World Boxing rules](https://worldboxing.org/wp-content/uploads/2024/11/World-Boxing-Competition-Rules-Nov-2024-Approved.pdf))
@@ -106,7 +113,7 @@
   - The standard concerns protection of the wearer's hand. It expressly excludes performance for the opponent. ([EN 13277-7:2009 preview](https://cdn.standards.iteh.ai/samples/26354/0e49f762fd014431939bb6888166baf2/SIST-EN-13277-7-2009.pdf))
 - This is useful as a repeatable pass/fail screen. It does not describe the full force-time or compression response, so two passing gloves may still feel and behave very differently.
 
-### What the research literature adds
+### Relevant impact and material research
 
 - Research measures parts of the response that rules leave out. No one test answers the whole design question.
 
@@ -148,7 +155,7 @@
 
 - Together, these studies show that glove response can be measured and foam curves can be modeled. They do not connect a disclosed foam stack to its complete impact response or perceived feel.
 
-### How far this evidence answers our questions
+### Implications for the present study
 
 - The research gives us useful test methods and starting shapes for foam curves. It does not give us measured curves for the exact foams we may buy.
 - The model can compare stack changes under the same assumptions. It does not establish the performance or feel of a real glove.
@@ -160,15 +167,33 @@
 
 > **Section intent:** Use `MODEL.md` as the source for this section. It defines the mechanical setup, foam-curve construction, calculation, equations, worked example, reported measures, assumptions, limits, and adaptations to published tests.
 
-# Analysis
+# Simulation analysis
 
 > **Section intent:** Use `ANALYSIS.md` as the authored source for this section. It states the simulation question and conditions, compares foam families and response types, develops soft and responsive recipes, and tests how the findings change with sample weight, thickness, and punch energy. Render its table directives before combining the documents.
 
-# References and reading notes
+# Conclusion
+
+> **Section intent:** Summarize what the model contributed, the main material and stack-design implications, and the practical purpose of the exercise. Keep this as authored prose in the combined document.
+
+## Design implications
+
+- Explain why the foam grade and its full compression curve matter more than the family name alone.
+- Summarize the useful roles and limits of conventional PU, HR PU, EVA, and latex.
+- State the tradeoffs between density, firmness, weight, early response, peak force, and compression reserve.
+- Compare the soft and responsive architectures across their useful impact ranges.
+- Connect stack selection to punch range, thickness, weight, and desired feel.
+
+## Practical interpretation
+
+- Present the analysis as a structured basis for choosing materials when comparable foam data are limited.
+- Connect the available data to explicit tradeoffs in response, force control, compression reserve, thickness, and weight.
+- State its practical purpose: make the reasons for each material choice visible.
+
+# References and source notes
 
 > **Section intent:** Keep the overall citation list. For each source, record the key finding and why it is useful or relevant to this project.
 
-## Standards, rules, and approval references
+## Standards and competition rules
 
 - [SATRA, PPE for use in martial arts](https://www.satra.com/spotlight/article.php?id=423)
   - This summary of EN 13277 includes controlled impacts and transmitted-force limits for some martial-arts hand protectors.
@@ -183,7 +208,7 @@
   - Describes laboratory testing, field verification, approval, and periodic control at a high level.
   - It helps separate the equipment-approval process from the material data needed to model a foam stack.
 
-## Foam measurements and datasheets
+## Test methods and supplier data
 
 - [ISO 2439:2008, indentation hardness of flexible cellular materials](https://www.iso.org/standard/42717.html)
   - Defines several indentation-hardness methods, including measurements at 25%, 40%, and 65% indentation, plus hysteresis-related information.
@@ -204,7 +229,7 @@
   - Explains IFD and CFD procedures, the nominal 50 in² indentation area, and the effect of specimen thickness.
   - It supports the model's conversion of ILD/IFD force into an average-pressure anchor.
 
-## Foam compression research
+## Foam compression studies
 
 - [Alzoubi, Al-Hallaj, and Abu-Ayyad (2014), modeling compression curves of flexible polyurethane foam](https://pure.psu.edu/en/publications/modeling-of-compression-curves-of-flexible-polyurethane-foam-with/)
   - Reports compression tests and fitted curves for several PU foams and a latex foam at specified density, temperature, strain rate, and compression range.
@@ -216,7 +241,7 @@
   - Compares EVA foams across densities and compression rates, including energy-absorption and densification behavior.
   - It shows why density and loading rate matter. Its samples will not exactly match every EVA we consider.
 
-## Punch and glove-impact research
+## Punch and glove-impact studies
 
 - [Walilko, Viano, and Bir (2005), biomechanics of Olympic boxer punches](https://pubmed.ncbi.nlm.nih.gov/16183766/)
   - Reports hand speed, effective punch mass, force, energy transfer, and head responses for straight punches delivered to a Hybrid III dummy.
