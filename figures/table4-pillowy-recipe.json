@@ -47,7 +47,7 @@
   },
   "sources": {
     "catalog": {
-      "path": "/Users/arh/Documents/foam-simulation/data/analytical-foams2.csv",
+      "path": "/Users/arh/Documents/foam-simulation/data/analytical-foams.csv",
       "sha256": "a04a17142c428b5afc4ac700f53dce5687b220c294b4648cd332bf4ca062cd3a"
     },
     "assumptions": {
@@ -59,17 +59,17 @@
       "sha256": "80ad5b8287eef73340b33f0ffa6f6f8cae09dd6d9f8d6195c0927a14b416a181"
     },
     "analysis": {
-      "path": "/Users/arh/Documents/foam-simulation/table4.py",
-      "sha256": "0df0071f76baebc9c63bd5ee647c6f0e5beff9abf3f111f87e60b507fc5ce3a1"
+      "path": "/Users/arh/Documents/foam-simulation/analysis/analysis4.py",
+      "sha256": "5a235fafac6295da7be602e6469cbc17adf24af5eba1cc1ca572ebcae8f9eec4"
     },
     "score_definitions": {
-      "path": "/Users/arh/Documents/foam-simulation/table3.py",
-      "sha256": "91f8dc1ffd606984e84c1514cf248eafd7971a3a8cf73308d13b9cff83799a75"
+      "path": "/Users/arh/Documents/foam-simulation/analysis/analysis3.py",
+      "sha256": "43a3613cfbe96ce462b5799f923b13dbe6d1c5a94d8c115687433d4024bde24f"
     }
   },
   "scoring": {
     "results": {
-      "path": "/Users/arh/Documents/foam-simulation/data/simulations_2026-10-24_5ms.csv",
+      "path": "/Users/arh/Documents/foam-simulation/data/simulations.csv",
       "sha256": "60661db44fbed2e0b4523b19b9b27ee3d06053bb63e7221af8954ec03e18ee3f"
     },
     "conditions": {
@@ -96,7 +96,7 @@
       "maximum_glove_compression_percent": "lower",
       "force_at_5ms_n": {
         "pillowy": "lower",
-        "poppy": "higher"
+        "poppy": "lower"
       }
     },
     "peak_force_limit_n": 3026.1109631921804,
@@ -133,7 +133,7 @@
   "score_components": {
     "protection": 96.30827400903021,
     "reserve": 55.1889144345032,
-    "response": 68.23287443561121
+    "response": 31.76712556438879
   },
   "simulation": {
     "status": "complete",

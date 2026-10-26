@@ -92,6 +92,85 @@ function checkCurve() {
   }
 }
 
+function systemOverviewSvg() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 260" role="img" aria-labelledby="title desc">
+  <title id="title">Impact model components</title>
+  <desc id="desc">A left-to-right diagram of the modeled impact path: moving mass, hand spring, rigid dome, glove foam, target foam, and fixed plate.</desc>
+  <style>
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .connector { fill: none; stroke: #b4bab8; stroke-width: 2; }
+    .icon { fill: none; stroke: #e7e9e8; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .mass { fill: #4c5355; stroke: #e7e9e8; stroke-width: 2; }
+    .dome { fill: #4c5355; stroke: #e7e9e8; stroke-width: 2; }
+    .layer { stroke-width: 2; }
+    .outer { fill: #3b0f70; stroke: #3b0f70; }
+    .main { fill: #7c1d6f; stroke: #7c1d6f; }
+    .support { fill: #bc3754; stroke: #bc3754; }
+    .comfort { fill: #ed6925; stroke: #ed6925; }
+    .target { fill: #fbb61a; stroke: #fbb61a; stroke-width: 2; }
+    .plate { fill: #4c5355; stroke: #b4bab8; stroke-width: 2; }
+    .accent { fill: none; stroke: #fbb61a; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .spring { fill: none; stroke: #ed6925; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .label { font-size: 17px; text-anchor: middle; }
+    .detail { fill: #b4bab8; font-size: 13px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#b4bab8"/>
+    </marker>
+    <pattern id="plate-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#b4bab8" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect class="background" width="1060" height="260"/>
+
+  <path class="connector" d="M149,104 H214 M318,104 H383 M487,104 H552 M656,104 H721 M825,104 H890" marker-end="url(#flow-arrow)"/>
+
+  <g transform="translate(55 62)">
+    <rect class="mass" x="22" y="12" width="54" height="60" rx="5"/>
+    <path class="accent" d="M0,42 H17 M5,31 L17,42 5,53"/>
+    <text class="label" x="49" y="116">Moving mass</text>
+    <text class="detail" x="49" y="139">mass and speed</text>
+  </g>
+
+  <g transform="translate(222 62)">
+    <path class="spring" d="M0,42 H13 L25,22 43,62 61,22 79,62 91,42 H104"/>
+    <text class="label" x="52" y="116">Hand spring</text>
+    <text class="detail" x="52" y="139">hand and wrist give</text>
+  </g>
+
+  <g transform="translate(391 62)">
+    <path class="dome" d="M10,12 H50 Q100,42 50,72 H10 Z"/>
+    <path class="accent" d="M104,42 H78 M92,31 L78,42 92,53"/>
+    <text class="label" x="52" y="116">Rigid dome</text>
+    <text class="detail" x="52" y="139">contact shape</text>
+  </g>
+
+  <g transform="translate(560 62)">
+    <rect class="layer outer" x="3" y="8" width="19" height="68" rx="3"/>
+    <rect class="layer main" x="29" y="8" width="19" height="68" rx="3"/>
+    <rect class="layer support" x="55" y="8" width="19" height="68" rx="3"/>
+    <rect class="layer comfort" x="81" y="8" width="19" height="68" rx="3"/>
+    <text class="label" x="52" y="116">Glove foam</text>
+    <text class="detail" x="52" y="139">one or more layers</text>
+  </g>
+
+  <g transform="translate(729 62)">
+    <rect class="target" x="37" y="8" width="30" height="68" rx="4"/>
+    <path class="icon" d="M17,17 C30,23 30,31 17,37 C30,43 30,51 17,57 M87,17 C74,23 74,31 87,37 C74,43 74,51 87,57"/>
+    <text class="label" x="52" y="116">Target foam</text>
+  </g>
+
+  <g transform="translate(898 62)">
+    <rect class="plate" x="38" y="8" width="28" height="68"/>
+    <rect x="66" y="8" width="24" height="68" fill="url(#plate-hatch)"/>
+    <text class="label" x="52" y="116">Fixed plate</text>
+  </g>
+</svg>
+`;
+}
+
 function domeContactSvg() {
   // Editable drawing source. This is a schematic, not a plot of model geometry.
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 360" role="img" aria-labelledby="title desc">
@@ -100,23 +179,23 @@ function domeContactSvg() {
   <defs>
     <style>
       :root {
-        --background: #ffffff;
-        --foreground: #171717;
-        --muted: #666666;
-        --structure: #8a8a8a;
-        --dome: #e5e7eb;
-        --glove: #dbeafe;
-        --target: #f3f4f6;
-        --plate: #b8bec7;
-        --accent: #2563a6;
+        --background: #303638;
+        --foreground: #e7e9e8;
+        --muted: #b4bab8;
+        --structure: #4c5355;
+        --dome: #4c5355;
+        --glove: #7c1d6f;
+        --target: #ed6925;
+        --plate: #4c5355;
+        --accent: #fbb61a;
       }
       .bg { fill: var(--background); }
       .line { fill: none; stroke: var(--foreground); stroke-width: 2; }
       .guide { fill: none; stroke: var(--structure); stroke-width: 1.5; stroke-dasharray: 6 5; }
       .measure { fill: none; stroke: var(--accent); stroke-width: 1.8; }
       .dome { fill: var(--dome); stroke: var(--foreground); stroke-width: 2; }
-      .glove { fill: var(--glove); stroke: var(--foreground); stroke-width: 1.5; }
-      .target { fill: var(--target); stroke: var(--foreground); stroke-width: 1.5; }
+      .glove { fill: var(--glove); fill-opacity: 0.65; stroke: var(--glove); stroke-width: 1.5; }
+      .target { fill: var(--target); fill-opacity: 0.65; stroke: var(--target); stroke-width: 1.5; }
       .plate { fill: var(--plate); stroke: var(--foreground); stroke-width: 1.5; }
       text { fill: var(--foreground); font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; font-size: 14px; }
       .small { fill: var(--muted); font-size: 12px; }
@@ -188,16 +267,16 @@ function domeDimensionsSvg() {
   <title id="title">Dome curvature and maximum contact width</title>
   <desc id="desc">Side view drawn to scale. The striker face follows a circle of radius 100 mm. Its face is 80 mm across, or 40 mm from the centreline to either edge. The tip meets flat foam first; contact spreads outward as the striker advances, up to the edge of the face. The circle centre is a geometric construction point.</desc>
   <style>
-    text { fill: #171717; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
-    .background { fill: #ffffff; }
-    .line { fill: none; stroke: #171717; stroke-width: 1.5; }
-    .guide { fill: none; stroke: #8a8a8a; stroke-width: 1; stroke-dasharray: 5 5; }
-    .body { fill: #e5e7eb; }
-    .dot { fill: #171717; }
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .line { fill: none; stroke: #e7e9e8; stroke-width: 1.5; }
+    .guide { fill: none; stroke: #b4bab8; stroke-width: 1; stroke-dasharray: 5 5; }
+    .body { fill: #4c5355; }
+    .dot { fill: #fbb61a; }
   </style>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#171717"/>
+      <path d="M0,0 L10,5 L0,10 Z" fill="#e7e9e8"/>
     </marker>
   </defs>
   <rect class="background" width="760" height="380"/>
@@ -250,16 +329,16 @@ function foamCurveSvg() {
        Estimated pressure = ${fitAnchor.pressure} * s(e) / s(${fitAnchor.strain}).
        Paths sampled every 0.001 strain, ending at the display ceiling. -->
   <style>
-    text { fill: #171717; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
-    .background { fill: #ffffff; }
-    .grid { stroke: #d7d7d7; stroke-width: 1; }
-    .axis { stroke: #171717; stroke-width: 1; fill: none; }
-    .reference { fill: none; stroke: #666666; stroke-width: 2; stroke-dasharray: 7 5; }
-    .estimate { fill: none; stroke: #2563a6; stroke-width: 2.5; }
-    .supplier { fill: #2563a6; }
-    .check-point { fill: #ffffff; stroke: #171717; stroke-width: 2; }
-    .extrapolation { fill: #f3f4f6; }
-    .boundary { stroke: #8a8a8a; stroke-width: 1; fill: none; }
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .grid { stroke: #4c5355; stroke-width: 1; }
+    .axis { stroke: #b4bab8; stroke-width: 1; fill: none; }
+    .reference { fill: none; stroke: #bc3754; stroke-width: 2; stroke-dasharray: 7 5; }
+    .estimate { fill: none; stroke: #fbb61a; stroke-width: 2.5; }
+    .supplier { fill: #fbb61a; }
+    .check-point { fill: #303638; stroke: #e7e9e8; stroke-width: 2; }
+    .extrapolation { fill: #4c5355; }
+    .boundary { stroke: #b4bab8; stroke-width: 1; fill: none; }
   </style>
   <rect class="background" width="760" height="460"/>
   <path class="reference" d="M64,24 H96"/>
@@ -311,15 +390,15 @@ function twoAnchorSvg() {
        Continue the equation beyond the reference range for inspection only.
        No impact adjustment or density-based tail. Display clipping leaves pressures unchanged. -->
   <style>
-    text { fill: #171717; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
-    .background { fill: #ffffff; }
-    .grid { stroke: #d7d7d7; stroke-width: 1; }
-    .axis { stroke: #171717; stroke-width: 1; fill: none; }
-    .one-anchor { fill: none; stroke: #2563a6; stroke-width: 2.5; stroke-dasharray: 7 5; }
-    .two-anchor { fill: none; stroke: #171717; stroke-width: 2; }
-    .anchor { fill: #171717; }
-    .extrapolation { fill: #f3f4f6; }
-    .boundary { stroke: #8a8a8a; stroke-width: 1; fill: none; }
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .grid { stroke: #4c5355; stroke-width: 1; }
+    .axis { stroke: #b4bab8; stroke-width: 1; fill: none; }
+    .one-anchor { fill: none; stroke: #bc3754; stroke-width: 2.5; stroke-dasharray: 7 5; }
+    .two-anchor { fill: none; stroke: #fbb61a; stroke-width: 2; }
+    .anchor { fill: #fbb61a; }
+    .extrapolation { fill: #4c5355; }
+    .boundary { stroke: #b4bab8; stroke-width: 1; fill: none; }
   </style>
   <rect class="background" width="760" height="460"/>
   <path class="one-anchor" d="M64,24 H96"/>
@@ -348,6 +427,7 @@ if (args.length > 1 || (args.length === 1 && args[0] !== '--check')) {
 }
 checkCurve();
 const figures = [
+  ['system-overview.svg', systemOverviewSvg()],
   ['dome-contact.svg', domeContactSvg()],
   ['dome-dimensions.svg', domeDimensionsSvg()],
   ['foam-curve-anchors.svg', foamCurveSvg()],

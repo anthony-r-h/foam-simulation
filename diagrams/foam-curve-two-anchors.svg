@@ -7,15 +7,15 @@
        Continue the equation beyond the reference range for inspection only.
        No impact adjustment or density-based tail. Display clipping leaves pressures unchanged. -->
   <style>
-    text { fill: #171717; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
-    .background { fill: #ffffff; }
-    .grid { stroke: #d7d7d7; stroke-width: 1; }
-    .axis { stroke: #171717; stroke-width: 1; fill: none; }
-    .one-anchor { fill: none; stroke: #2563a6; stroke-width: 2.5; stroke-dasharray: 7 5; }
-    .two-anchor { fill: none; stroke: #171717; stroke-width: 2; }
-    .anchor { fill: #171717; }
-    .extrapolation { fill: #f3f4f6; }
-    .boundary { stroke: #8a8a8a; stroke-width: 1; fill: none; }
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .grid { stroke: #4c5355; stroke-width: 1; }
+    .axis { stroke: #b4bab8; stroke-width: 1; fill: none; }
+    .one-anchor { fill: none; stroke: #bc3754; stroke-width: 2.5; stroke-dasharray: 7 5; }
+    .two-anchor { fill: none; stroke: #fbb61a; stroke-width: 2; }
+    .anchor { fill: #fbb61a; }
+    .extrapolation { fill: #4c5355; }
+    .boundary { stroke: #b4bab8; stroke-width: 1; fill: none; }
   </style>
   <rect class="background" width="760" height="460"/>
   <path class="one-anchor" d="M64,24 H96"/>

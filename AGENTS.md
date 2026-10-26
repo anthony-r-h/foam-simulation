@@ -9,6 +9,11 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
+## Communication
+
+- Never say "you're right" in response to a correction. Address the correction
+  directly.
+
 ## Frontend copy
 
 - Keep visible UI copy short, direct, and natural.
@@ -32,19 +37,43 @@
 
 ## Analysis work
 
-- These rules apply to `docs/ANALYSIS.md`, `table1.py`, and work on simulation
+- These rules apply to `docs/ANALYSIS.md`, scripts in `analysis/`, and work on simulation
   results. The user directs the analysis one step at a time.
 - Do only the specific task requested. A general intention to analyze the data
   does not authorize exploratory analysis or an end-to-end workflow.
-- Edit only the requested section or code. Permission to edit `table1.py`
+- Edit only the requested section or code. Permission to edit `analysis/analysis1.py`
   does not authorize running it or updating `docs/ANALYSIS.md`, and vice versa.
 - Run analysis code or process the results CSV only when requested. Limit
   execution to the requested question and outputs.
 - Do not independently add metrics, filters, rankings, scoring systems, plots,
   statistical tests, reports, or conclusions. Leave analytical choices to the
   user unless they explicitly delegate them.
+- `docs/ANALYSIS.md` is an author-facing explanation of the analytical question,
+  comparison choices, findings, and limits. It is not an agent log, procedure
+  diary, file inventory, or provenance record.
+- Include setup detail when it explains the comparison or affects its
+  interpretation. Leave out bookkeeping that has no bearing on the analytical
+  question.
 - Keep writing short, direct, and in the existing format. Do not expand notes
   into finished prose, fill empty sections, or append unsolicited explanations.
+- Use short bullets with one main idea each. Prefer simple language over academic
+  phrasing. State points directly and avoid contrastive setups, generic LLM
+  phrasing, filler, canned transitions, and inflated language.
+- Write completed simulations and analysis in the past tense. Vary sentence
+  structure instead of turning a section into repeated "we" statements.
+- Do not use em dashes or curly quotation marks and apostrophes.
+- Keep uncertainties, disagreements, and missing evidence visible. Do not make
+  a section sound settled merely for completeness.
+- Keep generated table values out of `docs/ANALYSIS.md`. Analysis scripts write
+  display-ready CSV files and the authored document references them with a
+  permanent directive: `{% table "../figures/file.csv" %}`.
+- Use `python3 -m scripts.render_analysis` to expand table directives into
+  `docs/ANALYSIS_rendered.md`. Never overwrite the authored source with rendered output,
+  and never hand-copy calculated CSV or JSON values into a Markdown table.
+- Treat `docs/ANALYSIS.md`, the analysis code, and the referenced CSV files as
+  the sources. Treat `docs/ANALYSIS_rendered.md` as disposable generated output.
+- Marker-delimited generated tables are legacy. Convert them only when the user
+  requests that analysis, and do not introduce new generated table blocks.
 - If a missing choice prevents the requested work, ask a focused question.
   Do not silently choose an analytical direction or broaden the task.
 - Validate only what is needed for the requested change. Report the result
@@ -171,3 +200,14 @@ For each requested change:
 Finished prose will be created only after the author explicitly declares the
 outline sufficiently settled. Until then, concision and editability take
 priority over polish.
+
+## Full-document drafting
+
+- Use `$draft-full-document` only when the user explicitly requests a full prose
+  draft.
+- Invoking `$draft-full-document` with a statement that the outline is settled
+  satisfies the later-phase drafting gate.
+- The skill may read `docs/OUTLINE.md`, `docs/MODEL.md`, and
+  `docs/ANALYSIS_rendered.md`.
+- It must not modify those source documents. Write the combined draft to
+  `docs/FULL_DOCUMENT.md`.

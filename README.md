@@ -19,7 +19,7 @@ Both commands regenerate the simulator HTML before running Vite. To rebuild only
 npm run build:foam
 ```
 
-Edit `frontend/app.js`, `style.css`, and `shell.html`, then rebuild and reload. The builder embeds the material catalog from `data/analytical-foams2.csv`. Do not edit the generated HTML directly.
+Edit `frontend/app.js`, `style.css`, and `shell.html`, then rebuild and reload. The builder embeds the material catalog from `data/analytical-foams.csv`. Do not edit the generated HTML directly.
 
 ## Simulation endpoint
 
@@ -38,14 +38,14 @@ Open `http://localhost:8080/simulator.html`. This development bridge serves the 
 
 The current [model](docs/MODEL.md), [working outline](docs/OUTLINE.md), and [decisions](docs/DECISIONS.md) live in `docs/`. The Python engine is `simulation.py` at the repository root. Follow [AGENTS.md](AGENTS.md) for the authoring workflow. The [former methodology](legacy/METHODOLOGY.md) is retained as historical source material.
 
-`data/commercial-foams2.csv` holds supplier data; `scripts/build_analytical_foams.py` generates `data/analytical-foams2.csv` for the engine and frontend. `assumptions.yaml` holds model settings. See [FIGURES.md](docs/FIGURES.md) for figure generation and [the frontend README](frontend/README.md) for the interface source.
+`data/commercial-foams.csv` holds supplier data; `scripts/build_analytical_foams.py` generates `data/analytical-foams.csv` for the engine and frontend. `assumptions.yaml` holds model settings. See [FIGURES.md](docs/FIGURES.md) for figure generation and [the frontend README](frontend/README.md) for the interface source.
 
 ## Checks and sweeps
 
 With the Python dependencies in `requirements.txt` available:
 
 ```sh
-python3 -m unittest discover -s . -p 'test_*.py'
+python3 -m unittest discover -s tests -p 'test_*.py'
 python3 -m unittest discover -s scripts -p 'test_*.py'
 node scripts/generate-figures.mjs --check
 ```
@@ -53,11 +53,11 @@ node scripts/generate-figures.mjs --check
 Run the role-based sweep from the repository root:
 
 ```sh
-python3 run_tests.py --workers 8 --output data/results_new-run.csv
-python3 run_tests.py --workers 8 --output data/results_new-run.csv --resume
+python3 -m scripts.run_simulations --workers 8 --output data/results_new-run.csv
+python3 -m scripts.run_simulations --workers 8 --output data/results_new-run.csv --resume
 ```
 
-The default output is `data/results_roles.csv`. New runs refuse to overwrite existing results. During a run, keep its checkpoint and lock file for recovery; resume requires unchanged model code and inputs. After a run finishes and no runner is using it, those recovery files can be removed.
+The default output is `data/simulations.csv`. New runs refuse to overwrite existing results. During a run, keep its checkpoint and lock file for recovery; resume requires unchanged model code and inputs. After a run finishes and no runner is using it, those recovery files can be removed.
 
 The completed October 23 results are in `data/results_full_2026-10-23.csv`. Earlier result files, logs, checkpoints, and the source snapshot have been removed. Generated `data/results*.csv` files remain local and ignored by Git.
 

@@ -3,12 +3,12 @@
 
 Run: python3 scripts/build_analytical_foams.py [--input SOURCE] [--output DEST]
 
-The default source is data/commercial-foams2.csv, which already contains one row per
+The default source is data/commercial-foams.csv, which already contains one row per
 commercial profile. Preserve its IDs and material names without merging profiles.
 Map source curve families to the simulation references and normalize the numeric,
 sorted thickness lists. Preserve the source measurement fields and leave missing
 measurements blank. Source links are omitted from the computation catalog.
-The default destination, data/analytical-foams2.csv, is regenerated entirely from the source.
+The default destination, data/analytical-foams.csv, is regenerated entirely from the source.
 """
 
 import argparse
@@ -105,8 +105,8 @@ def consolidate(rows):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", type=Path, default=DATA_DIR / "commercial-foams2.csv")
-    parser.add_argument("--output", type=Path, default=DATA_DIR / "analytical-foams2.csv")
+    parser.add_argument("--input", type=Path, default=DATA_DIR / "commercial-foams.csv")
+    parser.add_argument("--output", type=Path, default=DATA_DIR / "analytical-foams.csv")
     args = parser.parse_args()
     if args.input.resolve() == args.output.resolve():
         parser.error("input and output must be different files")

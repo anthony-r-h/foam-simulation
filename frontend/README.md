@@ -7,7 +7,7 @@ The TanStack homepage embeds the generated [simulator HTML](../public/simulator.
 - `shell.html`: page structure and controls.
 - `style.css`: layout, typography, layer colors, and responsive styling.
 - `app.js`: presets, catalog-backed inputs, API requests, result rendering, sample blocks, and SVG graphs.
-- `../scripts/build-foam.mjs`: embeds these fragments and the catalog from `../data/analytical-foams2.csv` into the generated HTML.
+- `../scripts/build-foam.mjs`: embeds these fragments and the catalog from `../data/analytical-foams.csv` into the generated HTML.
 
 The frontend has no browser library dependencies. Simulation requests go to `/api/simulate`; the Python engine is `../simulation.py`.
 

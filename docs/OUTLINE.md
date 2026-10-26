@@ -9,7 +9,8 @@
 - Treat existing gloves, product descriptions, and standards as clues, not as the subject of the project.
 - Keep claims about protection narrow. Comparing foam does not tell us everything about injury or glove safety.
 - This is not a boxing glove audit.
-- Leave numerical simulation methods, parameter sweeps, rankings, and results out of this draft.
+- Keep detailed model development in `MODEL.md` and completed simulation analysis in `ANALYSIS.md`.
+- Treat `MODEL.md` and `ANALYSIS.md` as complete top-level sections. Preserve their internal heading hierarchy when combining the documents.
 - Mark uncertain claims and missing evidence instead of smoothing over them.
 
 ## 1. Why this project exists
@@ -63,12 +64,13 @@
   - impact tests for the complete glove;
   - realistic impact conditions for the boxer, hand, and target.
 
-## 3. Candidate foam grades
+## 3. Foams under consideration
 
-> **Section intent:** Identify the purchasable foams in the first comparison and the limits of their supplier data.
+> **Section intent:** Explain the foam families under consideration, why the response of each grade matters, and what must be measured before selecting materials.
 
-- The candidates cover flexible PU, including HR grades, latex, and EVA.
-- They are reference materials for this project. Their use in commercial boxing gloves has not been established.
+- The working set covers flexible PU, including HR grades, latex, and EVA.
+- The working set can change as grades are added or removed. It is not a fixed shortlist.
+- Their use in commercial boxing gloves has not been established.
 - Density and firmness are different properties.
 
 ### What the family names mean
@@ -79,28 +81,8 @@
 - Latex foam is known for a springy response and strong recovery.
   - Dunlop describes how the foam is made. It does not specify its firmness or curve.
 - EVA is a closed-cell foam available across a wide range of densities and firmness levels.
-  - EV30 and EV50 are specific commercial grades. They do not represent every EVA foam.
+  - A commercial grade name does not define how every EVA foam behaves.
 - The grade and its measured response matter more than the family name.
-
-### Candidate grades
-
-| Family | Grade | Density | Published compression data |
-| --- | --- | ---: | --- |
-| Flexible PU, HR | [Soft HR](https://foamonline.com/soft-foam/) | 2.50 lb/ft³ | 10 lbf at 25% ILD; minimum support factor 2.7 |
-| Flexible PU | [HD36-HQ](https://canada.foambymail.com/hd36-hq-foam-sheet.html) | 2.80 lb/ft³ | 35 lbf at 25% ILD; minimum support factor 1.9 |
-| Flexible PU | [Lux-HQ](https://canada.foambymail.com/lux-hq-foam-sheet.html) | 2.80 lb/ft³ | 50 lbf at 25% ILD; minimum support factor 1.9 |
-| Flexible PU, HR | [Qualux Firm](https://canada.foambymail.com/qualux-firm-foam-sheet.html) | 3.10 lb/ft³ | 65 lbf at 25% ILD; minimum support factor 2.1 |
-| Latex | [Dunlop latex](https://canada.foambymail.com/latex-foam-dunlop-sheet.html) | 4.60 lb/ft³ | 29 lbf at 25% ILD; no deeper point |
-| EVA | [Evazote EV30](https://www.zotefoams.com/wp-content/uploads/2025/03/PIS-A034-Evazote-EV30.pdf) | 30 kg/m³ | 39 kPa at 25%; 100 kPa at 50% |
-| EVA | [Evazote EV50](https://www.zotefoams.com/wp-content/uploads/2025/03/PIS-A037-Evazote-EV50.pdf) | 50 kg/m³ | 50 kPa at 25%; 116 kPa at 50% |
-
-### Making the values comparable
-
-- PU and latex use indentation force. Support factor is the 65% value divided by the 25% value.
-- EVA uses stress from compression between plates. The two test methods are not directly comparable.
-- The model divides ILD/IFD force by the 50 in² indenter area and treats it as average pressure.
-
-> We convert the available supplier data to a common pressure-versus-strain scale, then use published family curves to estimate the missing response. This lets the model compare foam grades consistently, although the resulting curves remain estimates until the materials are tested under the same conditions.
 
 ### What is still missing
 
@@ -108,7 +90,6 @@
 - Tests at glove-layer thicknesses and punch-like loading rates.
 - Recovery and change after repeated impacts.
 - Variation between samples and batches.
-- Section 6 explains how provisional curves are built until these measurements exist.
 
 ## 4. Why existing tests do not answer the design question
 
@@ -154,8 +135,8 @@
   - This gives us the idea of a material **profile**: the curve used to describe one foam grade.
 - EVA can be described in a similar way.
   - [Wu et al. (2023)](https://doi.org/10.3390/polym15234514) fitted a rate-dependent curve to one 35 kg/m³ closed-cell EVA foam.
-  - We use that curve shape with supplier test points to estimate profiles for EV30, EV50, and the EVA75 target.
-  - EV30 and EV50 have two supplier compression points. EVA75 has only one nominal point, so its estimated profile is less constrained.
+  - Its curve shape provides a starting point for estimating profiles for the EVA grades under consideration.
+  - Those estimates remain limited by the number and quality of supplier compression points for each grade.
 - These are starting shapes, not measurements of our retail foams.
   - The published specimens were different products, and their test rates were below boxing-impact rates.
   - [Chen et al. (2024)](https://doi.org/10.3390/polym16010034) supports the broader finding that EVA density and loading rate matter, but its fitted curves are not used for our grades.
@@ -170,130 +151,24 @@
 ### How far this evidence answers our questions
 
 - The research gives us useful test methods and starting shapes for foam curves. It does not give us measured curves for the exact foams we may buy.
-- If we combine those curves with the stack, striker, hand, and target models, we can estimate:
-  - peak force;
-  - maximum compression;
-  - loading work;
-  - impulse;
-  - time to peak and loading rate.
-- These results follow from the model's inputs. That does not mean they are accurate measurements of a real glove.
-- The model can help us compare stack changes under the same assumptions.
-- It cannot yet support claims about real-world protection, impact feel, or which glove is better because:
-  - the retail foam curves are estimated from limited supplier data;
-  - boxing-rate behavior is extrapolated;
-  - the hand, target, and contact are simplified;
-  - unloading, rebound, recovery, and wear are not modeled.
-- “Poppy,” “pillowy,” and “responsive” may relate to the measured response, but we have not tested that link.
+- The model can compare stack changes under the same assumptions. It does not establish the performance or feel of a real glove.
 - The main check is a physical test of a known stack at several impact energies.
   - Compare the measured and predicted force-time and compression histories without first tuning the model to match them.
   - Until that works, treat this as a screening model that produces testable predictions, not as a virtual glove test.
 
-## 5. A punch in simple mechanical terms
+# Mathematical model
 
-> **Section intent:** Explain the two inputs that define the incoming strike and why impact force is an outcome, not an input.
+> **Section intent:** Use `MODEL.md` as the source for this section. It defines the mechanical setup, foam-curve construction, calculation, equations, worked example, reported measures, assumptions, limits, and adaptations to published tests.
 
-- The model starts with hand speed and striking mass at first contact.
-- Striking mass, often called effective mass in research, is the part of the hand, arm, and body that contributes to the impact.
-  - It is not the literal weight of the fist or the boxer's full body mass.
-- Together, mass and speed set the incoming kinetic energy:
+# Analysis
 
-$$
-E=\frac{1}{2}mv^2
-$$
+> **Section intent:** Use `ANALYSIS.md` as the authored source for this section. It states the simulation question and conditions, compares foam families and response types, develops soft and responsive recipes, and tests how the findings change with sample weight, thickness, and punch energy. Render its table directives before combining the documents.
 
-- Force develops after contact as the glove and target deform and slow the strike.
-- The foam stack changes the distance and time over which that slowing happens.
-- The same incoming strike can therefore produce different force histories with different gloves or targets.
-- A rigid plate, padded plate, heavy bag, and human body are different targets and will give different results.
-
-## 6. The physical model
-
-> **Section intent:** Show how the model turns a strike and a foam stack into force over time.
-
-### Model inputs
-
-- A rigid striker represents the incoming punch. It has the striking mass and speed from Section 5.
-- Each foam layer has a thickness and a compression curve.
-- The striker shape determines how much foam is in contact as it presses inward.
-- For a human punch, a simple spring represents movement of the hand and wrist.
-- The target can be a rigid support, a fixed padded plate, or a moving bag.
-- A padded target also compresses. A moving bag compresses and moves away.
-- The basic chain is: striker -> hand and wrist spring -> layered foam -> target.
-
-### Foam profiles
-
-- Supplier data give only a few points. The model needs a complete compression curve for each foam.
-- One or two supplier values anchor each foam's curve.
-- A published curve from the same broad foam family fills the gaps between those points.
-- Beyond the published range, we provisionally use foam density to estimate where resistance rises sharply.
-- Published rate data provide a provisional estimate of how faster compression changes the curve.
-- Both the high-compression extension and the rate adjustment need testing on the chosen foams.
-
-### Calculating the impact
-
-- The striker presses the layered pad into the target.
-- The model divides the contact surface into small areas.
-- At each small patch of contact, the layers carry the same pressure but compress by different amounts according to their curves.
-- In this model, the layers act in series, so changing their order does not change the result.
-- The model multiplies the pressure in each small area by its area, then adds those forces.
-- The model uses that force to calculate how the striker slows as the foam compresses.
-- The result is force and compression over time through the modeled compression phase.
-
-> **Possible extension:** Allow neighboring contact areas to affect each other.
->
-> - This could represent sideways bulging and load spreading.
-> - It could also make the response depend on layer order.
-> - It requires evidence about sideways and shear stiffness, bonding or sliding between layers, cover tension, and changes in contact area.
-
-## 7. What we compare
-
-> **Section intent:** Compare how force builds and how each stack uses its available compression.
-
-### Read the complete response
-
-- Force over time shows how quickly force builds and where it peaks.
-- Force against compression shows how the stack uses its available travel.
-- Two stacks can reach a similar peak through very different buildup and compression paths.
-
-### Core comparison measures
-
-- Peak force $F_{\max}$, in N, is the highest force reached during compression under the chosen strike and target.
-- The 10%-to-90% loading rate describes how quickly force rises through the main part of the impact.
-- $t_{10}$ and $t_{90}$, in seconds, are the first times force reaches 10% and 90% of peak.
-- Loading rate, in N/s, is:
-
-$$
-\text{loading rate}_{10-90}=\frac{0.8F_{\max}}{t_{90}-t_{10}}
-$$
-
-- At the same peak force, a higher loading rate means a faster buildup.
-- Maximum stack compression is the greatest amount the foam stack shortens at the centre, beneath the striker tip.
-- Reporting it in millimetres and as a percentage of starting thickness allows stacks of different thicknesses to be compared.
-- Compression and remaining thickness for each layer are also measured at the centre. They show which layers compressed most and which entered the steep part of their curves.
-- Loading work is the energy transferred into a component as it compresses.
-- Work shares show how much energy goes into compressing each foam layer, the hand and wrist spring, and the target.
-- Loading work includes energy that could return during rebound. It does not measure permanent energy absorption.
-
-## 8. Results and discussion plan
-
-> **Section intent:** Keep this as an empty scaffold until the experimental question and validation plan are settled. When results exist, organize the discussion around what was learned, what changed our expectations, and which conclusions survive uncertainty. Do not fill this section with current simulation rankings.
-
-- State the final research question and comparison conditions before showing outcomes.
-- Describe the tested materials and missing data.
-- Show measured compression curves before modeled glove results.
-- Compare material families without implying that one family is always better.
-- Separate effects of thickness, density, curve shape, and loading rate.
-- Report complete force-time and force-displacement behavior, not only one score.
-- Discuss target dependence.
-- Show repeatability and uncertainty.
-- Identify where the simple model agrees with physical tests and where it fails.
-- End with conclusions that are limited to the tested materials, glove geometry, impacts, and targets.
-
-## 9. References and reading notes
+# References and reading notes
 
 > **Section intent:** Keep the overall citation list. For each source, record the key finding and why it is useful or relevant to this project.
 
-### Standards, rules, and approval references
+## Standards, rules, and approval references
 
 - [SATRA, PPE for use in martial arts](https://www.satra.com/spotlight/article.php?id=423)
   - This summary of EN 13277 includes controlled impacts and transmitted-force limits for some martial-arts hand protectors.
@@ -308,7 +183,7 @@ $$
   - Describes laboratory testing, field verification, approval, and periodic control at a high level.
   - It helps separate the equipment-approval process from the material data needed to model a foam stack.
 
-### Foam measurements and datasheets
+## Foam measurements and datasheets
 
 - [ISO 2439:2008, indentation hardness of flexible cellular materials](https://www.iso.org/standard/42717.html)
   - Defines several indentation-hardness methods, including measurements at 25%, 40%, and 65% indentation, plus hysteresis-related information.
@@ -329,34 +204,7 @@ $$
   - Explains IFD and CFD procedures, the nominal 50 in² indentation area, and the effect of specimen thickness.
   - It supports the model's conversion of ILD/IFD force into an average-pressure anchor.
 
-### Commercial foam and target data
-
-- [FoamOnline, Soft HR foam](https://foamonline.com/soft-foam/)
-  - Lists density of 2.50 lb/ft³, 10 lbf ILD with a stated tolerance, and a minimum support factor of 2.7.
-  - These values anchor the Soft HR commercial foam profile.
-- [Foam Factory, HD36-HQ foam](https://canada.foambymail.com/hd36-hq-foam-sheet.html)
-  - Lists density of 2.80 lb/ft³, 35 lbf ILD, and a minimum support factor of 1.9.
-  - These values anchor the HD36-HQ commercial foam profile.
-- [Foam Factory, Lux-HQ foam](https://canada.foambymail.com/lux-hq-foam-sheet.html)
-  - Lists density of 2.80 lb/ft³, 50 lbf ILD, and a minimum support factor of 1.9.
-  - These values anchor the Lux-HQ commercial foam profile.
-- [Foam Factory, Qualux Firm foam](https://canada.foambymail.com/qualux-firm-foam-sheet.html)
-  - Lists density of 3.10 lb/ft³, 65 lbf ILD, and a minimum support factor of 2.1.
-  - These values anchor the Qualux Firm commercial foam profile.
-- [Foam Factory, Dunlop latex foam](https://canada.foambymail.com/latex-foam-dunlop-sheet.html)
-  - Lists density of 4.60 lb/ft³ and 29 lbf ILD, with no deeper compression point.
-  - These values provide the single anchor for the Dunlop latex profile.
-- [Zotefoams, Evazote EV30 product information](https://www.zotefoams.com/wp-content/uploads/2025/03/PIS-A034-Evazote-EV30.pdf)
-  - Lists nominal density of 30 kg/m³ and compression stresses of 39 kPa at 25% and 100 kPa at 50%.
-  - These values provide two anchors for the EV30 profile.
-- [Zotefoams, Evazote EV50 product information](https://www.zotefoams.com/wp-content/uploads/2025/03/PIS-A037-Evazote-EV50.pdf)
-  - Lists nominal density of 50 kg/m³ and compression stresses of 50 kPa at 25% and 116 kPa at 50%.
-  - These values provide two anchors for the EV50 profile.
-- [Ultralon Foam Group (2022), properties of low-density PE/EVA foams](https://www.ubuild.co.nz/wp-content/uploads/2022/10/properties-of-low-density-pe-eva-foams-feb-2022.pdf)
-  - Lists EVA75 density of 68–82 kg/m³ and compression pressure of 42–68 kPa at 25%.
-  - The model uses the midpoint values to anchor the fixed padded target.
-
-### Foam compression research
+## Foam compression research
 
 - [Alzoubi, Al-Hallaj, and Abu-Ayyad (2014), modeling compression curves of flexible polyurethane foam](https://pure.psu.edu/en/publications/modeling-of-compression-curves-of-flexible-polyurethane-foam-with/)
   - Reports compression tests and fitted curves for several PU foams and a latex foam at specified density, temperature, strain rate, and compression range.
@@ -368,7 +216,7 @@ $$
   - Compares EVA foams across densities and compression rates, including energy-absorption and densification behavior.
   - It shows why density and loading rate matter. Its samples will not exactly match every EVA we consider.
 
-### Punch and glove-impact research
+## Punch and glove-impact research
 
 - [Walilko, Viano, and Bir (2005), biomechanics of Olympic boxer punches](https://pubmed.ncbi.nlm.nih.gov/16183766/)
   - Reports hand speed, effective punch mass, force, energy transfer, and head responses for straight punches delivered to a Hybrid III dummy.

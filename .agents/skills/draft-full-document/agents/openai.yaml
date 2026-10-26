@@ -1,0 +1,7 @@
+interface:
+  display_name: "Draft Full Document"
+  short_description: "Expand project sources into a prose draft"
+  default_prompt: "Use $draft-full-document. The outline is sufficiently settled for this draft. Create docs/FULL_DOCUMENT.md without modifying the source documents."
+
+policy:
+  allow_implicit_invocation: false

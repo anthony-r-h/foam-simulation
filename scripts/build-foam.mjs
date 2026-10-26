@@ -2,7 +2,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const sourceDirectory = new URL("../frontend/", import.meta.url);
-const catalogSource = new URL("../data/analytical-foams2.csv", import.meta.url);
+const catalogSource = new URL("../data/analytical-foams.csv", import.meta.url);
 const output = new URL("../public/simulator.html", import.meta.url);
 const fragments = [
   ["/*STYLE*/", "style.css"],

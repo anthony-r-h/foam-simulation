@@ -4,23 +4,23 @@
   <defs>
     <style>
       :root {
-        --background: #ffffff;
-        --foreground: #171717;
-        --muted: #666666;
-        --structure: #8a8a8a;
-        --dome: #e5e7eb;
-        --glove: #dbeafe;
-        --target: #f3f4f6;
-        --plate: #b8bec7;
-        --accent: #2563a6;
+        --background: #303638;
+        --foreground: #e7e9e8;
+        --muted: #b4bab8;
+        --structure: #4c5355;
+        --dome: #4c5355;
+        --glove: #7c1d6f;
+        --target: #ed6925;
+        --plate: #4c5355;
+        --accent: #fbb61a;
       }
       .bg { fill: var(--background); }
       .line { fill: none; stroke: var(--foreground); stroke-width: 2; }
       .guide { fill: none; stroke: var(--structure); stroke-width: 1.5; stroke-dasharray: 6 5; }
       .measure { fill: none; stroke: var(--accent); stroke-width: 1.8; }
       .dome { fill: var(--dome); stroke: var(--foreground); stroke-width: 2; }
-      .glove { fill: var(--glove); stroke: var(--foreground); stroke-width: 1.5; }
-      .target { fill: var(--target); stroke: var(--foreground); stroke-width: 1.5; }
+      .glove { fill: var(--glove); fill-opacity: 0.65; stroke: var(--glove); stroke-width: 1.5; }
+      .target { fill: var(--target); fill-opacity: 0.65; stroke: var(--target); stroke-width: 1.5; }
       .plate { fill: var(--plate); stroke: var(--foreground); stroke-width: 1.5; }
       text { fill: var(--foreground); font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; font-size: 14px; }
       .small { fill: var(--muted); font-size: 12px; }

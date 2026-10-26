@@ -1,2 +1,0 @@
-total_stacks,scored_stacks,unscored_stacks,bucket_width_g,selection_percentile,score_cutoff,selected_stacks,selected_percent_of_scored,include_cutoff_ties,component_boundary_ties
-1544844,1544844,0,0.5,90,4.8,244866,15.850532480949532,True,better adjoining quintile

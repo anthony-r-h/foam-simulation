@@ -4,11 +4,11 @@ Call simulate(mass_kg, speed_m_s, layers, target). Each glove layer supplies
 layer, foam_id, thickness_mm; target supplies foam_id, thickness_mm.
 Inputs are controlled: positive mass/speed, numbered layers and integer mm.
 All mechanics use SI units; result keys state their units explicitly.
-Foam IDs and properties come from data/analytical-foams2.csv.
+Foam IDs and properties come from data/analytical-foams.csv.
 
 From the repository root, install the YAML reader and run the checks:
     python3 -m pip install -r requirements.txt
-    python3 -m unittest discover -s . -p 'test_*.py'
+    python3 -m unittest discover -s tests -p 'test_*.py'
 
 Example (the EV50 target is a chosen catalog foam, not the EVA75 worked example):
     from simulation import simulate
@@ -419,7 +419,7 @@ def summarize(rows, foams, curves, assumptions, energy, complete):
 
 
 def simulate(mass_kg, speed_m_s, layers, target, *, assumptions=None,
-             catalog_path=DIRECTORY / "data" / "analytical-foams2.csv"):
+             catalog_path=DIRECTORY / "data" / "analytical-foams.csv"):
     """Return status, metrics, trace, curves and the inputs/assumptions used.
 
     Incomplete selected catalog data returns status='error' with its reason.

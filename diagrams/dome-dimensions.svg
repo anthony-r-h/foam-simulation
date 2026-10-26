@@ -2,16 +2,16 @@
   <title id="title">Dome curvature and maximum contact width</title>
   <desc id="desc">Side view drawn to scale. The striker face follows a circle of radius 100 mm. Its face is 80 mm across, or 40 mm from the centreline to either edge. The tip meets flat foam first; contact spreads outward as the striker advances, up to the edge of the face. The circle centre is a geometric construction point.</desc>
   <style>
-    text { fill: #171717; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
-    .background { fill: #ffffff; }
-    .line { fill: none; stroke: #171717; stroke-width: 1.5; }
-    .guide { fill: none; stroke: #8a8a8a; stroke-width: 1; stroke-dasharray: 5 5; }
-    .body { fill: #e5e7eb; }
-    .dot { fill: #171717; }
+    text { fill: #e7e9e8; font-family: "Latin Modern Roman", "LM Roman 10", "Computer Modern", serif; }
+    .background { fill: #303638; }
+    .line { fill: none; stroke: #e7e9e8; stroke-width: 1.5; }
+    .guide { fill: none; stroke: #b4bab8; stroke-width: 1; stroke-dasharray: 5 5; }
+    .body { fill: #4c5355; }
+    .dot { fill: #fbb61a; }
   </style>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#171717"/>
+      <path d="M0,0 L10,5 L0,10 Z" fill="#e7e9e8"/>
     </marker>
   </defs>
   <rect class="background" width="760" height="380"/>

@@ -23,12 +23,13 @@ dist-ssr
 # Local simulator validation artifacts
 .validation/
 output/*
+/docs/ANALYSIS_rendered.md
+/tests/*
 
 # Local simulation results and recovery files
 /data/results*.csv
 /data/simulations.csv
 /data/simulations.csv.tmp
-/data/simulations_2026-10-24_5ms.csv
 /data/table6-sensitivity/
 /data/backups/
 /data/*.csv.checkpoint.json

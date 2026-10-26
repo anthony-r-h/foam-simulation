@@ -91,7 +91,7 @@ class ConsolidationTests(unittest.TestCase):
             self.assertEqual(output.read_bytes(), first)
             with output.open(newline="") as stream:
                 actual = list(csv.DictReader(stream))
-        with (DATA_DIR / "commercial-foams2.csv").open(newline="") as stream:
+        with (DATA_DIR / "commercial-foams.csv").open(newline="") as stream:
             source = list(csv.DictReader(stream))
         self.assertEqual(actual, consolidate(source))
         self.assertEqual(list(actual[0]), list(OUTPUT_COLUMNS))

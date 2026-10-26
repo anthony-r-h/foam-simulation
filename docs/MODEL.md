@@ -16,14 +16,7 @@
   research literature calls this striking mass the effective mass.
 - The punch receives no extra push after first contact.
 
-```mermaid
-flowchart LR
-    M["Moving mass<br/>striking mass and speed"] --> S["Hand spring<br/>hand and wrist give"]
-    S --> D(["Rigid dome<br/>contact shape"])
-    D --> G["Glove foam<br/>one or more layers"]
-    G --> T["Target foam"]
-    T --> P["Fixed plate"]
-```
+![The modeled impact path from the moving mass through the hand spring, rigid dome, glove foam, and target foam to the fixed plate.](../diagrams/system-overview.svg)
 
 ### Why use a rigid dome
 

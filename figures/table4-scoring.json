@@ -1,6 +1,6 @@
 {
   "results": {
-    "path": "/Users/arh/Documents/foam-simulation/data/simulations_2026-10-24_5ms.csv",
+    "path": "/Users/arh/Documents/foam-simulation/data/simulations.csv",
     "sha256": "60661db44fbed2e0b4523b19b9b27ee3d06053bb63e7221af8954ec03e18ee3f"
   },
   "conditions": {
@@ -27,7 +27,7 @@
     "maximum_glove_compression_percent": "lower",
     "force_at_5ms_n": {
       "pillowy": "lower",
-      "poppy": "higher"
+      "poppy": "lower"
     }
   },
   "peak_force_limit_n": 3026.1109631921804,
@@ -68,10 +68,10 @@
       "recipe": "foam-factory-lux-hq@10mm|foamonline-high-resilience-soft@34mm|cutfoam-eva240@3mm|foam-factory-super-soft@3mm"
     },
     "poppy": {
-      "cutoff": 94.0289188665134,
+      "cutoff": 76.85321736239993,
       "top_scoring_stacks": 68,
       "eligible_stacks": 678,
-      "recipe": "cutfoam-hr40-230@5mm|cutfoam-hr36-160@38mm|aortha-eva-a50@4mm|foamonline-high-resilience-very-soft@3mm"
+      "recipe": "foamonline-high-resilience-medium-soft@25mm|cutfoam-hr36-160@19mm|aortha-eva-a50@3mm|foamonline-high-resilience-very-soft@3mm"
     }
   },
   "top_scoring_overlap": 0
