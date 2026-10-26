@@ -1,3 +1,6 @@
+# Dependencies
+node_modules
+
 # Logs
 logs
 *.log
@@ -7,20 +10,24 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# Build output and framework caches
 dist
 dist-ssr
 .output
 .vinxi
 .tanstack/**
 .nitro
-*.local
 
-# Wrangler / Cloudflare
+# Local environment and platform files
+*.local
 .wrangler/
 .dev.vars
 
-# Local simulator validation artifacts
+# Python environment and caches
+__pycache__/
+.venv/
+
+# Local simulator artifacts
 .validation/
 output/*
 /docs/ANALYSIS_rendered.md
@@ -34,10 +41,8 @@ output/*
 /data/backups/
 /data/*.csv.checkpoint.json
 /data/*.csv.lock
-__pycache__/
-.venv/
 
-# Editor directories and files
+# Editors and operating systems
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -47,3 +52,7 @@ __pycache__/
 *.njsproj
 *.sln
 *.sw?
+
+# Local agent configuration
+AGENTS.md
+.agents/*

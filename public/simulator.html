@@ -14,6 +14,8 @@
   --control-line: #636b6d;
   --control: #343b3d;
   --selected: #50595b;
+  --accent: #f8d84e;
+  --accent-hover: #ffe875;
   --font: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
@@ -34,8 +36,11 @@ input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
 .page { max-width: 1040px; margin: auto; padding: 48px 48px 64px; }
-.top { padding-bottom: 28px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 28px; }
 .subtitle { margin-top: 8px; color: var(--muted); }
+.documentation-button { flex: 0 0 auto; border-color: var(--accent); background: var(--accent); color: #242829; font-weight: 700; box-shadow: 4px 4px 0 #151819; }
+.documentation-button:hover { border-color: var(--accent-hover); background: var(--accent-hover); }
+.documentation-button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #151819; }
 .panel { min-width: 0; padding: 24px 0 32px; border-top: 1px solid var(--line); }
 .panel > h2 { margin-bottom: 20px; }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 24px; margin-bottom: 20px; }
@@ -129,6 +134,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-app
 @media (max-width: 480px) {
   .page { padding: 24px 16px 32px; }
   h1 { font-size: 22px; }
+  .top { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .documentation-button { width: 100%; }
   .field-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .preset-row { flex-wrap: wrap; gap: 12px; }
   .reference-scale { padding: 0 32px; }
@@ -157,6 +164,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-app
       <h1>Simulated boxing glove compression</h1>
       <p class="subtitle">Explore materials, thickness, and impact response.</p>
     </div>
+    <button class="documentation-button" type="button">Documentation</button>
   </header>
 
   <div id="error" class="error" role="alert" hidden></div>

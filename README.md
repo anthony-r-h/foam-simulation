@@ -1,66 +1,131 @@
-# Glove Foam Mechanics
+# Boxing glove foam simulation
 
-A foam stack simulator hosted in the existing [Lovable project](https://lovable.dev/projects/3d6d452d-5a37-4acb-8599-f166ccaf07bb). The TanStack Start homepage embeds `/simulator.html` in a same-origin iframe.
+This project compares the modeled impact response of layered boxing-glove padding. It combines commercial foam data, published compression-response models, glove geometry, and punch conditions to examine how material choice and layer thickness affect force, compression, timing, and weight.
 
-The frontend selects an impact reference with a discrete slider and configures four foam layers. Soft, Medium, and Hard presets populate the layers. Results include impact metrics, colored sample blocks with layer response, summed 30 × 30 mm sample weight, and impact graphs.
+The repository contains two implementations of the same loading model:
 
-## Development and builds
+- `simulation.py` is the authoritative Python engine used for analysis.
+- `javascript/simulation.js` is the browser port used by the interactive simulator.
 
-With the project's dependencies available:
+The complete model, analysis, and design conclusions are in [Simulating the impact response of layered boxing-glove padding](docs/README.md).
+
+## Run the browser simulator
+
+With the JavaScript dependencies available, start the TanStack development server:
 
 ```sh
 npm run dev
+```
+
+The command rebuilds `public/simulator.html` before starting Vite. For a production build:
+
+```sh
 npm run build
 ```
 
-Both commands regenerate the simulator HTML before running Vite. To rebuild only the simulator, using Node.js without installed npm dependencies:
+The deployed simulator runs entirely in the browser. It does not require the Python engine or a local filesystem.
+
+Edit the source files in `frontend/` and `javascript/simulation.js`. Do not edit `public/simulator.html` directly; regenerate it with:
 
 ```sh
 npm run build:foam
 ```
 
-Edit `frontend/app.js`, `style.css`, `shell.html`, and `javascript/simulation.js`, then rebuild and reload. The builder embeds the browser engine and material catalog from `data/analytical-foams.csv`. Do not edit the generated HTML directly.
+See [frontend/README.md](frontend/README.md) for the interface structure and [javascript/README.md](javascript/README.md) for the browser engine.
 
-## Frontend simulation
+## Run the Python model
 
-The deployed frontend runs a JavaScript port of the simulation directly in the browser. Its source and parity-test adapter are in `javascript/`; see [`javascript/README.md`](javascript/README.md). The Python engine remains authoritative for analysis.
-
-For local frontend development:
+Install the pinned Python dependencies:
 
 ```sh
-npm run build:foam
-npm run dev
+python3 -m pip install -r requirements.txt
 ```
 
-The normal Lovable/TanStack build embeds the JavaScript engine and foam catalog in `public/simulator.html`; no Python service is required by the site.
+The main API is `simulate(mass_kg, speed_m_s, layers, target)`:
 
-## Source and historical records
+```python
+from simulation import simulate
 
-The current [model](docs/MODEL.md), [working outline](docs/OUTLINE.md), and [decisions](docs/DECISIONS.md) live in `docs/`. The Python engine is `simulation.py` at the repository root. Follow [AGENTS.md](AGENTS.md) for the authoring workflow. The [former methodology](legacy/METHODOLOGY.md) is retained as historical source material.
+result = simulate(
+    mass_kg=2.597,
+    speed_m_s=7.7,
+    layers=[
+        {"layer": 1, "foam_id": "foam-factory-hd36-hq", "thickness_mm": 20},
+        {"layer": 2, "foam_id": "evazote-ev50", "thickness_mm": 20},
+    ],
+    target={"foam_id": "cutfoam-eva75", "thickness_mm": 50},
+)
 
-`data/commercial-foams.csv` holds supplier data; `scripts/build_analytical_foams.py` generates `data/analytical-foams.csv` for the engine and frontend. `assumptions.yaml` holds model settings. See [FIGURES.md](docs/FIGURES.md) for figure generation and [the frontend README](frontend/README.md) for the interface source.
+print(result["metrics"])
+```
 
-## Checks and sweeps
+Model defaults are defined in `assumptions.yaml`. Foam identifiers and computation-ready properties come from `data/analytical-foams.csv`.
 
-With the Python dependencies in `requirements.txt` available:
+## Repository guide
+
+| Path | Purpose |
+| --- | --- |
+| `docs/README.md` | Combined model, analysis, and conclusions |
+| `docs/OUTLINE.md` | Working structure for the document |
+| `docs/MODEL.md` | Mechanical model, equations, assumptions, and outputs |
+| `docs/ANALYSIS.md` | Authored simulation analysis |
+| `docs/DECISIONS.md` | Settled choices and consequential open questions |
+| `simulation.py` | Authoritative Python simulation engine |
+| `javascript/` | Browser engine and parity-test adapter |
+| `frontend/` | Editable simulator interface |
+| `src/` | TanStack application shell |
+| `data/commercial-foams.csv` | Supplier-facing foam data |
+| `data/analytical-foams.csv` | Normalized catalog used by both engines |
+| `analysis/` | Analysis scripts for the completed simulation results |
+| `scripts/` | Catalog, build, rendering, figure, test, and sweep utilities |
+| `figures/` and `diagrams/` | Generated analysis figures and model diagrams |
+
+## Data and document workflows
+
+Rebuild the analytical foam catalog from the commercial source data:
 
 ```sh
-python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/build_analytical_foams.py
+```
+
+Render the analysis tables without modifying the authored source:
+
+```sh
+python3 -m scripts.render_analysis
+```
+
+Regenerate the model diagrams:
+
+```sh
+node scripts/generate-figures.mjs
+```
+
+Run a new role-based simulation sweep:
+
+```sh
+python3 -m scripts.run_simulations --workers 8 --output data/results.csv
+```
+
+The sweep refuses to overwrite an existing result file. Add `--resume` to continue a compatible interrupted run.
+
+## Validation
+
+Run the focused Python checks and frontend parity test:
+
+```sh
 python3 -m unittest discover -s scripts -p 'test_*.py'
-node scripts/generate-figures.mjs --check
 ```
 
-Run the role-based sweep from the repository root:
+Check the browser source, generated figures, application lint, and production build:
 
 ```sh
-python3 -m scripts.run_simulations --workers 8 --output data/results_new-run.csv
-python3 -m scripts.run_simulations --workers 8 --output data/results_new-run.csv --resume
+node --check frontend/app.js
+node --check javascript/simulation.js
+node scripts/generate-figures.mjs --check
+npm run lint
+npm run build
 ```
 
-The default output is `data/simulations.csv`. New runs refuse to overwrite existing results. During a run, keep its checkpoint and lock file for recovery; resume requires unchanged model code and inputs. After a run finishes and no runner is using it, those recovery files can be removed.
+## Lovable hosting
 
-The completed October 23 results are in `data/results_full_2026-10-23.csv`. Earlier result files, logs, checkpoints, and the source snapshot have been removed. Generated `data/results*.csv` files remain local and ignored by Git.
-
-## Lovable sync
-
-Changes pushed to the connected `main` branch sync into the [Lovable editor](https://lovable.dev/projects/3d6d452d-5a37-4acb-8599-f166ccaf07bb). Publish from Lovable when ready. Preserve published git history; do not force-push or rewrite existing commits.
+The production frontend is built and hosted by Lovable. Changes pushed to the connected branch sync back to the Lovable project, so published Git history must not be rewritten.

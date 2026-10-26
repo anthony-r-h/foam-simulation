@@ -1,6 +1,6 @@
 # Simulating the impact response of layered boxing-glove padding
 
-## 1. Introduction
+## 1. Why this project exists
 
 Most boxing gloves are sold by weight, closure type, colour, and price. These attributes help someone choose a product, but they do not describe how the padding compresses, builds resistance, recovers, or changes with repeated use. Two gloves with the same weight and similar construction can therefore behave very differently on the hand and during impact.
 
@@ -10,9 +10,7 @@ Market descriptions such as "pillowy" and "poppy" do not close this gap. "Pillow
 
 The design task is to build a complete foam solution for a boxing glove. A useful stack should use enough travel to soften initial loading without feeling vague, build resistance progressively, avoid bottoming out during harder impacts, spread load over the knuckles, and control how force develops at the target. It should behave well across a useful range of punches, recover through repeated use, fit the glove's limits on thickness, weight, shape, and construction, and give the boxer predictable feedback. These goals can conflict. The model and physical tests are intended to make those tradeoffs visible.
 
-The document first defines the mechanical role of padding and identifies the foam families and material data available for comparison. It then reviews relevant standards and impact research to establish the remaining design gap. A mathematical model converts the available foam data into estimated compression-response curves and uses them to simulate layered padding under impact. The analysis compares foam families and stack architectures across early response, peak force, compression, weight, thickness, and punch energy before drawing practical conclusions for material and stack selection.
-
-## 2. Mechanical role of glove padding
+## 2. What foam is doing inside a glove
 
 Foam gives the fist distance over which to slow when the glove meets the target. As the foam compresses, it pushes back. A useful layer compresses easily enough at first and then builds support. Foam that is too soft or too thin can exhaust its useful travel and become suddenly hard to compress; foam that is too firm can make force rise too quickly from first contact.
 
@@ -20,23 +18,23 @@ Combining layers lets the designer shape the response through the impact. A sing
 
 A compression curve describes one foam under a defined test, not a complete glove. Connecting each layer's curve and thickness to the assembled stack requires three kinds of evidence: compression tests of the materials, impact tests of the complete glove, and realistic impact conditions for the boxer, hand, and target.
 
-## 3. Candidate foam materials and data
+## 3. Foams under consideration
 
 The working set includes flexible polyurethane foam, including high-resilience grades, latex, and ethylene-vinyl acetate. It can change as grades are added or removed, and the use of these particular grades in commercial boxing gloves has not been established. Density and firmness are separate properties.
 
-### Foam families and material grades
+### What the family names mean
 
 Flexible polyurethane, or PU, spans a wide range of densities and firmness levels. High-resilience PU, or HR, is associated with stronger recovery and support, but neither label defines a compression curve. Latex foam is known for springy response and strong recovery. "Dunlop" describes its manufacturing process rather than its firmness or curve. EVA is a closed-cell foam available across a wide range of densities and firmness levels. A commercial grade name does not define the behavior of every EVA foam. In every family, the particular grade and its measured response matter more than the family name.
 
-### Available data and limitations
+### What is still missing
 
 Material selection still requires full loading and unloading curves for the purchased foams, tests at glove-layer thicknesses and punch-like loading rates, measurements of recovery and change after repeated impacts, and estimates of variation between samples and batches.
 
-## 4. Evidence base and design gap
+## 4. Why existing tests do not answer the design question
 
 Rules, standards, and research address different questions: whether a glove may be used, whether a protector passes a prescribed test, and how a glove or foam responds during impact. Together they still do not connect measured curves for a disclosed foam stack to the response of a finished glove.
 
-### Standards and competition rules
+### What standards and rules cover
 
 Competition rules primarily determine whether a glove may be used. They specify matters such as weight, padding allowance, materials, dimensions, thumb attachment, closure, condition, and approval, but they do not describe the padding's compression curve, recovery, or impact feel. ([World Boxing rules](https://worldboxing.org/wp-content/uploads/2024/11/World-Boxing-Competition-Rules-Nov-2024-Approved.pdf))
 
@@ -44,7 +42,7 @@ EN 13277-7 asks whether a hand protector keeps transmitted peak force below a li
 
 This test provides a repeatable pass-or-fail screen. It does not describe the complete force-time or compression response, so two passing gloves may still feel and behave differently.
 
-### Relevant impact and material research
+### What the research literature adds
 
 Research measures parts of the response that rules leave out, although no one test answers the whole design question.
 
@@ -70,7 +68,7 @@ Human studies provide plausible impact masses and speeds. ([Walilko et al. (2005
 
 Together, these studies show that glove response can be measured and foam curves can be modeled. They do not connect a disclosed foam stack to its complete impact response or perceived feel.
 
-### Implications for the present study
+### How far this evidence answers our questions
 
 The literature supplies useful test methods and starting shapes for foam curves, but not measured curves for the exact foams under consideration. The model can compare changes in a stack under common assumptions; it cannot establish the performance or feel of a real glove.
 
@@ -108,7 +106,7 @@ The calculation produces force through the loading phase, movement and work in t
 
 Its current scope is to compare stacks under the same punch, geometry, and target through one loading phase, from first contact to maximum compression. It compares mechanical response rather than injury or subjective feel.
 
-### 2. Component behavior
+### 2. How the parts behave
 
 #### Striker
 
@@ -126,13 +124,13 @@ Each foam layer has a starting thickness and a pressure-versus-compression curve
 
 The fixed plate does not move. Its foam cover compresses in series with the glove and contributes to the force response.
 
-### 3. Construction of foam response curves
+### 3. How the foam curves are built
 
 Supplier data usually provide only one or two compression values, while the model needs pressure at every compression level reached during impact. The available supplier data are first converted to a common pressure-versus-strain scale. Published family curves then estimate the missing response. This supports consistent comparison between grades, although the resulting curves remain estimates until the materials are tested under common conditions.
 
 The family shapes come from [Alzoubi et al.](https://oiccpress.com/jsm/article/download/12454/14012/38722) for PU and latex and [Wu et al.](https://doi.org/10.3390/polym15234514) for EVA. PU and latex indentation loads are converted to average pressure. EVA data already report compression pressure, so the source tests remain different. One chosen loading curve represents the brief impact and does not change with compression rate during the calculation.
 
-### 4. Calculation sequence
+### 4. Calculation in plain English
 
 The calculation begins by setting the punch, dome, foam, target, and hand-spring inputs. The dome then moves a small distance toward the plate. Its shape determines which locations are in contact and how far the foam must shorten at each location. The compression curves give local pressure, and local pressure is integrated over the contact area to obtain total force. Total force determines hand-spring compression and total striker movement. From these values, the model calculates compression work, remaining speed, and elapsed time. The process continues until the striker reaches zero speed.
 
@@ -253,7 +251,7 @@ The calculation starts at first contact with $t=0$, incoming speed $v_0$, uncomp
 
 If the numerical material range ends while the striker is moving, the result is incomplete. The model reports the force, speed, and time reached, while maximum compression and peak force remain unresolved. Section 7 distinguishes this numerical boundary from the assumed physical compression limit.
 
-### 6. Foam-curve construction and anchoring
+### 6. Building and anchoring the foam curves
 
 #### Slow tests and fast impacts
 
@@ -285,8 +283,7 @@ $$
 s(\varepsilon)
 &=\eta\dot{\varepsilon}
   \left[1-\exp\left(-\frac{k^{\mathrm{RELAX}}\varepsilon}
-  {\eta\dot{\varepsilon}}\right)\right]\\
-&\quad+k^{\mathrm{BASE}}\varepsilon
+  {\eta\dot{\varepsilon}}\right)\right] \quad+k^{\mathrm{BASE}}\varepsilon
   +k^{\mathrm{RISE}}\varepsilon\left(e^\varepsilon-1\right)^n
 \end{aligned}
 $$
@@ -434,7 +431,7 @@ Using the same adjustment preserves the study's fast-to-slow pressure ratio at e
 
 The method produces complete loading curves from sparse measurements. The VA35 check supports the curve only between its two measured points. Rapid-loading resistance can alter which stack performs better and still needs direct measurement.
 
-### 7. High-compression extrapolation
+### 7. How we handle the high-compression tail
 
 Foam becomes harder to compress as its internal spaces close, a steep rise known as densification. Because a punch can exceed the measured range, the model must specify how each curve continues.
 
@@ -560,7 +557,7 @@ Dome curvature radius $R$ sets how rounded the face is, and footprint radius $a$
 
 The tip touches first and contact spreads to the face edge as the dome advances. With the proposed dimensions, $b(a)\approx8.35\,\mathrm{mm}$, so the full face is in contact after 8.35 mm of central advance. The footprint then remains fixed. The worked example combines inputs from several sources rather than reproducing one published apparatus.
 
-### 9. Reported outputs and comparison metrics
+### 9. What the model reports
 
 Stacks are compared under the same punch, dome, target, and hand spring. Because fast-loading curves, high-compression tails, and hand stiffness can affect both values and rankings, the full force-time and force-versus-glove-compression curves remain alongside summary metrics. All measures cover loading from first contact to stopping time $t^{\mathrm{END}}$, in s, when the striking mass first reaches zero speed.
 
@@ -679,7 +676,7 @@ $$
 
 Because the target is fixed, no extra push follows contact, and all initial kinetic energy becomes compression work at stopping, the shares sum to 100%. A larger glove share means that more work went into glove compression and less into the target and hand spring. The split depends on target and hand stiffness as well as the glove. Loading work includes energy that could return during rebound and therefore does not measure permanent energy absorption. [Perkins et al.](https://www.scirp.org/pdf/wjet_2018072715333666.pdf) found that target thickness changed peak force and glove comparisons, motivating separate component work here.
 
-### 10. Model scope and limitations
+### 10. What the model can and cannot tell us
 
 #### What it can compare
 
@@ -693,13 +690,13 @@ Several simplifications bound that use. Reversing layer order has no effect. Eac
 
 Predictions remain theoretical comparisons under the stated assumptions because they have not been checked against impact measurements of the selected retail foams or complete gloves.
 
-### 11. Assumptions affecting stack comparisons
+### 11. Assumptions that could change a stack comparison
 
 Three uncertain choices can alter rankings. First, the borrowed fast curves determine how much firmer a foam becomes under rapid loading; changing that increase can change which stack produces lower force. Second, curves that match the same supplier points can rise differently beyond those points, so the assumed tail can determine peak force and remaining thickness when a layer reaches high compression. Third, hand and target compliance determine how much stopping movement and work the glove must accept.
 
 Holding these choices fixed makes comparisons internally consistent. If plausible alternatives reverse a preference, that preference remains unresolved. Agreement across tested alternatives would show stability only within that set, not accuracy for real gloves.
 
-### 12. Adaptation to published test configurations
+### 12. Adapting the model to published test setups
 
 Published apparatus conditions can be applied to a chosen stack, although unknown foam properties prevent direct reproduction of published-glove results. Setup-specific quantities use descriptive superscripts, such as $m^{\mathrm{SATRA}}$.
 
@@ -781,9 +778,9 @@ The study used a 3.046 kg mechanical fist and a 0.278 kg glove, for total moving
 
 The target is the fixed EVA75-covered plate with $h^{\mathrm{PERKINS,TARGET}}=25$ or $50\,\mathrm{mm}$. Only target thickness changes between conditions; the baseline layer-sharing and force equations remain. The estimated EVA75 curve has not been validated against the study mat. Modeling full contact duration and rebound would require unloading behavior, while reproducing pneumatic gloves would also require air or bladder mechanics.
 
-## Simulation analysis
+## Analysis
 
-### 1. Simulation design
+### 1. Simulation run
 
 The simulation asked whether the same glove thickness and foam-weight budget could provide similar peak-force protection with either a soft or responsive force curve. A 50 mm stack served as a plausible reference depth for a well-padded training glove; published and commercial examples placed strike-area depths between about 35 and 50 mm. Fixing thickness held available compression travel constant in the first comparison.
 
@@ -800,7 +797,7 @@ Layer order did not affect the model. The labels below describe the tested const
 | Support | EVA | 3, 4, or 5 mm |
 | Comfort | PU or HR | 3, 4, or 5 mm |
 
-### 2. Effects of foam family by layer
+### 2. Family characteristics
 
 For each layer, the analysis fixed the material family and averaged results across compatible choices in the other three layers. This showed how each family tended to behave in that role across the design space.
 
@@ -842,7 +839,7 @@ Values below are mean (SD).
 | PU | 1,102,620 | 4.67 (1.04) | 85.2 (11.9) | 0.37 (0.15) | 2.23 (1.26) |
 | HR | 1,104,300 | 4.50 (0.99) | 84.5 (12.3) | 0.40 (0.16) | 2.30 (1.27) |
 
-### 3. Early impact response
+### 3. Responsiveness
 
 Force 5 milliseconds after first contact described how quickly each stack developed resistance. A lower force meant a gentler start, and a higher force meant a firmer early response. The bands were:
 
@@ -876,7 +873,7 @@ Weight did not determine response. Around 2.5 g, early force ranged from soft th
 
 ![Early response by sample weight](../figures/figure3-force_at_5ms_n.png)
 
-### 5. Relationship between peak force and early response
+### 5. Protection and early response
 
 Peak force was compared with force at 5 ms across all 2,206,920 stacks before recipe selection. This showed how much initial response could change while peak-force protection stayed near its best value.
 
@@ -888,7 +885,7 @@ Very soft stacks gave up too much early resistance. Below 0.2 kN at 5 ms, even t
 
 Near the 2.5 g target, stacks below the 3.026 kN protection limit covered both profiles used for selection. Soft candidates clustered near the upper edge of their band at 0.475-0.500 kN, while responsive candidates covered 0.700-0.783 kN.
 
-### 6. Selected soft and responsive stack architectures
+### 6. Soft and responsive recipes
 
 Two recipes combined high modeled protection with different responses while sharing the same 50 mm thickness and foam-weight budget. A standardized sample weight near 2.50 g represented one hypothetical glove-weight class. This point lay near the middle of the 1.5-3 g range with the strongest peak-force results and contained stacks from soft through responsive.
 
@@ -976,7 +973,7 @@ Architecture created the separation. The soft family placed 13 mm of compliant P
 
 Changing score weights altered some grades and thicknesses but retained the same two architectures: compliant PU around an HR core for soft response, and predominantly HR cushioning for responsive behavior.
 
-### 7. Sensitivity to thickness and punch energy
+### 7. Recipe sensitivity to thickness and punch energy
 
 The two recipes were then tested beyond the 50 mm, 77 J selection condition. Every layer was scaled proportionally from 25 to 60 mm, and punch energy ranged from 60 to 120 J. This tested whether each construction retained its protection and response away from the original operating point.
 
@@ -1024,13 +1021,13 @@ The two selected recipes put that tradeoff into practical terms. The soft recipe
 
 Choose the architecture for the intended punch range, available thickness, weight budget, and desired feel. Family labels and a single firmness number are too crude to make that choice. The shape of the resistance curve and the amount of usable compression travel determine what each layer contributes.
 
-### Practical interpretation
+### What this exercise is
 
-This analysis provides a structured basis for choosing materials when comparable foam data are limited. It turns the available supplier data and published response curves into explicit tradeoffs between early response, force control, compression reserve, thickness, and weight. The resulting recipes provide a starting point for glove design and make the reasons for each material choice visible.
+At heart, this is a back-of-the-envelope engineering exercise with a much bigger envelope. It borrows from foam mechanics, impact biomechanics, and protective-equipment design because the comparison data do not exist in one usable form. It gives a person with a computer and an idea for a glove a reasoned starting point: a foam choice with the assumptions and tradeoffs attached, ready to change when a better option or better information appears.
 
-## References and source notes
+## References and reading notes
 
-### Standards and competition rules
+### Standards, rules, and approval references
 
 [SATRA, PPE for use in martial arts](https://www.satra.com/spotlight/article.php?id=423) summarizes EN 13277 controlled impacts and transmitted-force limits for some martial-arts hand protectors. It supplies the 3 J and 10 J pass-or-fail context used here. The standard concerns protection of the wearer's hand rather than the opponent, and its limit is not adopted as the glove design target.
 
@@ -1040,7 +1037,7 @@ This analysis provides a structured basis for choosing materials when comparable
 
 [IBA, Guidelines for the Approval of Boxing Equipment](https://www.iba.sport/wp-content/uploads/2025/09/IBA_Equipment_Guidelines_FV.pdf) describes laboratory testing, field verification, approval, and periodic control at a high level. It helps separate equipment approval from the material data needed to model a foam stack.
 
-### Test methods and supplier data
+### Foam measurements and datasheets
 
 [ISO 2439:2008, indentation hardness of flexible cellular materials](https://www.iso.org/standard/42717.html) defines several indentation-hardness methods, including measurements at 25%, 40%, and 65% indentation and hysteresis-related information. It helps interpret IFD, ILD, and support factor without treating one value as a complete design answer.
 
@@ -1054,7 +1051,7 @@ This analysis provides a structured basis for choosing materials when comparable
 
 [Polyurethane Foam Association, laboratory testing of flexible polyurethane foam](https://pfa.org/wp-content/uploads/2022/05/InTouchv4.2new.pdf) explains IFD and CFD procedures, the nominal 50 in² indentation area, and the effect of specimen thickness. It supports conversion of IFD or ILD force into an average-pressure anchor.
 
-### Foam compression studies
+### Foam compression research
 
 [Alzoubi, Al-Hallaj, and Abu-Ayyad (2014), modeling compression curves of flexible polyurethane foam](https://pure.psu.edu/en/publications/modeling-of-compression-curves-of-flexible-polyurethane-foam-with/) reports tests and fitted curves for several PU foams and one latex foam at stated densities, temperatures, strain rates, and compression ranges. The shapes seed the PU and latex profiles but do not measure the foams considered for purchase.
 
@@ -1062,7 +1059,7 @@ This analysis provides a structured basis for choosing materials when comparable
 
 [Chen et al. (2024), mechanical behavior of closed-cell EVA foam under compression](https://www.mdpi.com/2073-4360/16/1/34) compares EVA foams across densities and compression rates, including energy absorption and densification. It supports the relevance of density and rate, although its samples do not exactly match the grades considered here.
 
-### Punch and glove-impact studies
+### Punch and glove-impact research
 
 [Walilko, Viano, and Bir (2005), biomechanics of Olympic boxer punches](https://pubmed.ncbi.nlm.nih.gov/16183766/) reports hand speed, effective punch mass, force, energy transfer, and head response for straight punches delivered to a Hybrid III dummy. It supplies context for effective mass and controlled-impact inputs, with a small sample that cannot define every punch.
 

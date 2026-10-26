@@ -34,7 +34,7 @@ WEIGHT_BAND_LABELS = (
 )
 
 
-def plot_relationship(values, path, recipes):
+def plot_relationship(values, path, recipes, *, figsize=(12, 7.5), legend_columns=6):
     peak_force = values["peak_force_n"] / 1000
     early_force = values["force_at_5ms_n"] / 1000
     sample_weight = values["foam_sample_weight_g"]
@@ -59,7 +59,7 @@ def plot_relationship(values, path, recipes):
         "xtick.color": MUTED,
         "ytick.color": MUTED,
     }):
-        fig, ax = plt.subplots(figsize=(12, 7.5), facecolor=PAPER)
+        fig, ax = plt.subplots(figsize=figsize, facecolor=PAPER)
         add_figure_heading(
             fig,
             "Protection and early response",
@@ -117,7 +117,7 @@ def plot_relationship(values, path, recipes):
             handles=handles,
             loc="lower center",
             bbox_to_anchor=(0.53, 0.025),
-            ncol=6,
+            ncol=legend_columns,
             frameon=False,
             labelcolor=INK,
             fontsize=10,
@@ -140,6 +140,13 @@ def main():
         values,
         args.output_dir / "figure5-peak-force-vs-force-at-5ms.png",
         recipes,
+    )
+    plot_relationship(
+        values,
+        args.output_dir / "figure5-peak-force-vs-force-at-5ms_sq.png",
+        recipes,
+        figsize=(7.5, 7.5),
+        legend_columns=3,
     )
 
 
