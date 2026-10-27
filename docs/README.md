@@ -10,6 +10,14 @@ The design question is how simulation can help compare foam stacks and guide box
 
 The sections that follow define the mechanical role of padding, identify candidate foam families and the available material data, review the evidence and remaining design gap, construct the mathematical model and estimated foam-response curves, compare stack architectures in simulation, and draw practical conclusions for material and stack selection.
 
+## Interactive simulator
+
+The [interactive simulator](https://foam.believe.cv/) provides a visual interface for the browser implementation. It can be used to vary the impact condition, foam material, and thickness of each glove layer, and to inspect the resulting force, compression, timing, and weight alongside the full impact traces.
+
+![Impact and layer controls in the interactive simulator](../figures/app-simulator-overview.png)
+
+![Simulation results, layer compression, and force trace](../figures/app-simulator-results.png)
+
 # Mechanical role of glove padding
 
 Foam increases the distance and time over which the fist decelerates after contact. As it compresses, it pushes back. A useful layer gives enough at first to avoid an abrupt initial load, then develops support as compression increases. Foam that is too soft or too thin can exhaust its useful travel and become suddenly hard to compress, while foam that is too firm can build force too quickly from the start.
