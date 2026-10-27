@@ -600,7 +600,7 @@ The layer labels identify the role assigned during enumeration, so a winning out
 
 ## Effects of foam family by layer
 
-For each layer, the material family was fixed and results were averaged across compatible choices in the other three layers. The averages describe tendencies across the design space rather than isolated recipes.
+To understand what each layer contributed, we grouped stacks by the material family used in that layer. Each result averages over every valid combination of the other three layers, so it shows a broad design tendency rather than the performance of a specific recipe.
 
 HR in the outer layer reduced mean peak force and compression while producing a firmer early response than PU. PU suited a softer start. Latex modestly improved cushioning relative to PU but added weight and remained behind HR. In the main cushion, HR produced the lowest mean peak force and compression while developing resistance earlier than conventional PU. EVA fell between HR and PU on those outcomes but had the greatest mean weight, and latex offered no clear advantage over HR or EVA.
 
