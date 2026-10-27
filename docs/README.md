@@ -6,7 +6,7 @@ Boxing-glove padding is often a stack of different foams. Layering shapes the co
 
 Market terms such as "pillowy" and "poppy" do not resolve the gap. "Pillowy" suggests initial softness without saying how the glove behaves deeper into compression. "Poppy" may refer to crisp feedback, rebound, or the sound of a punch on the bag. Neither term has a shared test method or numerical scale.
 
-The design question is how simulation can help compare foam stacks and guide boxing-glove padding design. A useful stack should use its available compression travel, build resistance progressively, spread load across the knuckle padding, and control how force develops across a useful range of punches. It must also fit the glove's thickness and weight limits while giving the boxer clear, predictable feedback. These goals can conflict, so the model and physical tests must make the tradeoffs visible.
+The design question is how simulation can help compare foam stacks and guide boxing-glove padding design. A useful stack should use its available compression travel, build resistance progressively, spread load across the knuckle padding, and control how force develops across a useful range of punches. It must also fit the glove's thickness and weight limits while giving the boxer clear, predictable feedback. These goals can conflict. We developed the model to connect foam compression data, stack construction, glove geometry, and impact conditions so that candidate designs can be compared before physical prototypes are built and tested.
 
 The sections that follow define the mechanical role of padding, identify candidate foam families and the available material data, review the evidence and remaining design gap, construct the mathematical model and estimated foam-response curves, compare stack architectures in simulation, and draw practical conclusions for material and stack selection.
 
@@ -68,7 +68,7 @@ Compression and wear add further distinctions. [Chadli et al. (2018)](https://do
 
 Human studies provide plausible ranges for effective punch mass and hand speed. [Walilko et al. (2005)](https://pubmed.ncbi.nlm.nih.gov/16183766/) and [Adamec et al. (2021)](https://pubmed.ncbi.nlm.nih.gov/33057792/) report these quantities under controlled conditions, although each measurement combines the boxer, hand and wrist, glove, target, and sensors.
 
-The literature provides methods for measuring glove response and describing foam compression, but it does not connect a disclosed foam stack to its complete impact response and perceived feel. The model below addresses the mechanical part of that gap.
+Existing studies provide methods for measuring glove response and describing foam compression, but they do not predict how a disclosed set of foam materials and thicknesses will behave together during impact. We developed this model to connect material compression data, stack construction, impact conditions, and glove geometry. It allows candidate stacks to be compared mechanically before physical prototypes are built.
 
 # Mathematical model
 
@@ -610,35 +610,35 @@ Values are mean (SD).
 
 ### Outer
 
-| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| PU | 1,403,480 | 4.90<br>(1.01) | 88.0<br>(10.3) | 0.34<br>(0.13) | 2.18<br>(1.26) |
-| HR | 706,140 | 3.94<br>(0.69) | 78.5<br>(13.3) | 0.47<br>(0.18) | 2.35<br>(1.25) |
-| Latex | 97,300 | 4.67<br>(0.93) | 85.6<br>(10.4) | 0.39<br>(0.13) | 2.88<br>(1.28) |
+| Material | Peak force (kN) | Compr. (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: |
+| PU | 4.90<br>(1.01) | 88.0<br>(10.3) | 0.34<br>(0.13) | 2.18<br>(1.26) |
+| HR | 3.94<br>(0.69) | 78.5<br>(13.3) | 0.47<br>(0.18) | 2.35<br>(1.25) |
+| Latex | 4.67<br>(0.93) | 85.6<br>(10.4) | 0.39<br>(0.13) | 2.88<br>(1.28) |
 
 ### Main cushion
 
-| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| PU | 1,085,440 | 5.27<br>(0.85) | 91.8<br>(5.7) | 0.28<br>(0.08) | 1.77<br>(0.42) |
-| HR | 558,480 | 3.64<br>(0.51) | 72.8<br>(12.9) | 0.54<br>(0.15) | 2.09<br>(0.39) |
-| EVA | 485,640 | 4.10<br>(0.63) | 82.6<br>(10.9) | 0.44<br>(0.14) | 3.47<br>(2.12) |
-| Latex | 77,360 | 4.77<br>(0.66) | 87.6<br>(5.9) | 0.38<br>(0.07) | 3.08<br>(0.54) |
+| Material | Peak force (kN) | Compr. (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: |
+| PU | 5.27<br>(0.85) | 91.8<br>(5.7) | 0.28<br>(0.08) | 1.77<br>(0.42) |
+| HR | 3.64<br>(0.51) | 72.8<br>(12.9) | 0.54<br>(0.15) | 2.09<br>(0.39) |
+| EVA | 4.10<br>(0.63) | 82.6<br>(10.9) | 0.44<br>(0.14) | 3.47<br>(2.12) |
+| Latex | 4.77<br>(0.66) | 87.6<br>(5.9) | 0.38<br>(0.07) | 3.08<br>(0.54) |
 
 ### Support
 
-| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Soft EVA | 1,103,460 | 4.66<br>(1.06) | 85.6<br>(12.0) | 0.38<br>(0.15) | 2.05<br>(1.29) |
-| Medium EVA | 662,076 | 4.53<br>(0.99) | 84.6<br>(12.2) | 0.39<br>(0.16) | 2.35<br>(1.25) |
-| Firm EVA | 441,384 | 4.50<br>(0.92) | 83.3<br>(12.2) | 0.39<br>(0.17) | 2.70<br>(1.08) |
+| Material | Peak force (kN) | Compr. (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: |
+| Soft EVA | 4.66<br>(1.06) | 85.6<br>(12.0) | 0.38<br>(0.15) | 2.05<br>(1.29) |
+| Medium EVA | 4.53<br>(0.99) | 84.6<br>(12.2) | 0.39<br>(0.16) | 2.35<br>(1.25) |
+| Firm EVA | 4.50<br>(0.92) | 83.3<br>(12.2) | 0.39<br>(0.17) | 2.70<br>(1.08) |
 
 ### Comfort
 
-| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| PU | 1,102,620 | 4.67<br>(1.04) | 85.2<br>(11.9) | 0.37<br>(0.15) | 2.23<br>(1.26) |
-| HR | 1,104,300 | 4.50<br>(0.99) | 84.5<br>(12.3) | 0.40<br>(0.16) | 2.30<br>(1.27) |
+| Material | Peak force (kN) | Compr. (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: |
+| PU | 4.67<br>(1.04) | 85.2<br>(11.9) | 0.37<br>(0.15) | 2.23<br>(1.26) |
+| HR | 4.50<br>(0.99) | 84.5<br>(12.3) | 0.40<br>(0.16) | 2.30<br>(1.27) |
 
 ## Early impact response
 
@@ -810,7 +810,7 @@ Foam-family labels and isolated firmness values did not predict stack performanc
 
 The soft and responsive families exposed the main design tradeoff. A small amount of compliant PU around a thick soft-HR core produced a gentler start near the 77 J selection condition, but it used most of its available travel. Extending HR through most of the stack developed force earlier, reduced peak force, and retained substantially more thickness. At lower energy the soft architecture could match or slightly improve peak-force protection; as energy rose, its limited reserve caused peak force to climb rapidly and the responsive architecture became stronger.
 
-Stack selection must therefore be tied to the intended punch range, available thickness, weight budget, and desired early response. A recipe described as soft or responsive at one condition may move into another response band when energy or thickness changes. The simulation exposes these choices when comparable foam data are scarce, but the fast-loading curves and high-compression tails remain estimates. Physical testing of the selected grades and complete stacks is needed to determine whether the modeled force histories, compression reserve, and perceived feel carry into real gloves.
+Stack selection must therefore be tied to the intended punch range, available thickness, weight budget, and desired early response. A recipe described as soft or responsive at one condition may move into another response band when energy or thickness changes. Our model made these comparisons possible despite incomplete commercial foam data by connecting estimated material curves with stack construction, glove geometry, and impact conditions. Its purpose is to identify promising architectures and the conditions under which they work, so physical prototyping can focus on the strongest candidates. Testing the selected grades and complete stacks is still needed to verify the modeled force histories, compression reserve, and perceived feel in real gloves. The simulation exposes these choices when comparable foam data are scarce, but the fast-loading curves and high-compression tails remain estimates. 
 
 # References and source notes
 
