@@ -267,7 +267,7 @@ def simulate_recipe(style, values, codes, thicknesses, foam_ids, overall, eligib
         actual = metrics[key]
         if actual is None or not math.isclose(actual, value, rel_tol=1e-8, abs_tol=1e-9):
             raise ValueError(f"{style} recipe {key} changed: CSV={value}, simulation={actual}")
-    sources = {name: {"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    sources = {name: {"path": source_path(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
                for name, path in (("catalog", catalog_path), ("assumptions", assumptions_path),
                                   ("engine", ROOT / "simulation.py"), ("analysis", Path(__file__)),
                                   ("score_definitions", ROOT / "analysis/analysis3.py")) }
@@ -460,12 +460,20 @@ def write_tables(output_dir, values, codes, thicknesses, foam_ids, catalog,
     return rows
 
 
+def source_path(path):
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(ROOT))
+    except ValueError:
+        return resolved.name
+
+
 def file_source(path):
     digest = hashlib.sha256()
     with path.open("rb") as source:
         for chunk in iter(lambda: source.read(1024 * 1024), b""):
             digest.update(chunk)
-    return {"path": str(path.resolve()), "sha256": digest.hexdigest()}
+    return {"path": source_path(path), "sha256": digest.hexdigest()}
 
 
 def main():

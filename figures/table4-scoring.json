@@ -1,6 +1,6 @@
 {
   "results": {
-    "path": "/Users/arh/Documents/foam-simulation/data/simulations.csv",
+    "path": "data/simulations.csv",
     "sha256": "60661db44fbed2e0b4523b19b9b27ee3d06053bb63e7221af8954ec03e18ee3f"
   },
   "conditions": {

@@ -1,6 +1,6 @@
 # Simulation analysis
 
-## 1. Simulation design
+## Simulation design
 
 - The design question was whether the same glove thickness and foam-weight budget
   could provide similar peak-force protection with either a soft or responsive
@@ -35,7 +35,7 @@ HR means high-resilience polyurethane foam; PU below means conventional polyuret
 | Support | EVA | 3, 4, or 5 mm |
 | Comfort | PU or HR | 3, 4, or 5 mm |
 
-## 2. Effects of foam family by layer
+## Effects of foam family by layer
 
 For each layer, the material family was fixed and the results were averaged
 across compatible choices in the other three layers. This showed how each
@@ -77,7 +77,7 @@ Values are mean (SD).
 
 {% table "../figures/analysis1-comfort.csv" %}
 
-## 3. Early impact response
+## Early impact response
 
 - Force 5 milliseconds after first contact described how quickly each stack
   developed resistance. A lower force meant a gentler start; a higher force
@@ -114,7 +114,7 @@ Values are mean (SD).
   soft gloves, but its mean peak force remained high and its mean sample weight
   exceeded both HR and PU.
 
-## 4. Performance by sample weight
+## Performance by sample weight
 
 - Each 0.5 g band compared stacks of similar weight. The colored regions show
   the five outcome quintiles. The blue line marks the lowest peak force or
@@ -147,7 +147,7 @@ Values are mean (SD).
 
 ![Early response by sample weight](../figures/figure3-force_at_5ms_n.png)
 
-## 5. Relationship between peak force and early response
+## Relationship between peak force and early response
 
 Before selecting recipes, peak force was compared with force at 5 ms across
 all 2,206,920 stacks. This established how far initial feel could change while
@@ -172,7 +172,7 @@ peak-force protection remained near its best result.
   while responsive candidates covered 0.700-0.783 kN. The next section selected
   one high-performing family from each region.
 
-## 6. Selected soft and responsive stack architectures
+## Selected soft and responsive stack architectures
 
 This section proposed two foam recipes that offered a high degree of protection
 with different response profiles: one soft and one responsive. Both used the
@@ -330,7 +330,7 @@ was 2.482 g.
   preserving the same two architectures: compliant PU around an HR core for
   soft response, and predominantly HR cushioning for responsive behavior.
 
-## 7. Sensitivity to thickness and punch energy
+## Sensitivity to thickness and punch energy
 
 The two recipes were tested beyond the 50 mm, 77 J condition used for
 selection. Every layer was scaled proportionally from 25 to 60 mm, and punch
