@@ -8,8 +8,6 @@ The [interactive simulator](https://foam.believe.cv/) provides a visual interfac
 
 ![Impact and layer controls in the interactive simulator](figures/app-simulator-overview.png)
 
-![Simulation results, layer compression, and force trace](figures/app-simulator-results.png)
-
 The repository contains two implementations of the same loading model:
 
 - `simulation.py` is the authoritative Python engine used for analysis.
