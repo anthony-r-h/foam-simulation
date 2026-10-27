@@ -231,22 +231,21 @@ A published family curve supplies the response between the few points reported b
 
 The PU and latex equation combines a contribution that can relax during slow compression, a linear contribution, and a steep rise at large strain. The coefficients follow [Alzoubi et al., equation 23 and table 3](https://pure.psu.edu/en/publications/modeling-of-compression-curves-of-flexible-polyurethane-foam-with/). PU55, HR40, and Latex85 identify specimens with densities of $55~\mathrm{kg/m^3}$, $40~\mathrm{kg/m^3}$, and $85~\mathrm{kg/m^3}$.
 
-| Parameter or variable | Meaning and units                                       | PU55   | HR40      | Latex85 |
-| --------------------- | ------------------------------------------------------- | ------ | --------- | ------- |
-| $\eta$                | Resistance to relaxation, $\mathrm{Pa}\times\mathrm{s}$ | 48,000 | 130,000   | 9,000   |
-| $k^{\mathrm{RELAX}}$  | Stiffness of the relaxing contribution, Pa              | 33,000 | 1,200,000 | 100,000 |
-| $k^{\mathrm{BASE}}$   | Linear stiffness, Pa                                    | 1,600  | 1,800     | 6,800   |
-| $k^{\mathrm{RISE}}$   | Scale of the steep rise, Pa                             | 2,450  | 14,000    | 14,000  |
-| $n$                   | Shape of the steep rise, dimensionless                  | 4      | 2         | 4       |
-| $\dot{\varepsilon}$   | Compression strain per second, $\mathrm{s}^{-1}$        | 0.0333 | 0.0333    | 0.0333  |
+| Parameter | PU55 | HR40 | Latex85 |
+| --- | ---: | ---: | ---: |
+| $\eta$: relaxation resistance ($\mathrm{Pa}\times\mathrm{s}$) | 48,000 | 130,000 | 9,000 |
+| $k^{\mathrm{RELAX}}$: relaxing stiffness ($\mathrm{Pa}$) | 33,000 | 1,200,000 | 100,000 |
+| $k^{\mathrm{BASE}}$: linear stiffness ($\mathrm{Pa}$) | 1,600 | 1,800 | 6,800 |
+| $k^{\mathrm{RISE}}$: steep-rise scale ($\mathrm{Pa}$) | 2,450 | 14,000 | 14,000 |
+| $n$: steep-rise exponent (dimensionless) | 4 | 2 | 4 |
 
 $$
 \begin{aligned}
 s(\varepsilon)
 &=\eta\dot{\varepsilon}
   \left[1-\exp\left(-\frac{k^{\mathrm{RELAX}}\varepsilon}
-  {\eta\dot{\varepsilon}}\right)\right] +k^{\mathrm{BASE}}\varepsilon
-  +k^{\mathrm{RISE}}\varepsilon\left(e^\varepsilon-1\right)^n
+  {\eta\dot{\varepsilon}}\right)\right] +k^{\mathrm{BASE}}\varepsilon \\
+  &\quad+k^{\mathrm{RISE}}\varepsilon\left(e^\varepsilon-1\right)^n
 \end{aligned}
 $$
 
@@ -256,12 +255,12 @@ Faster compression leaves less time for the first contribution to relax, while t
 
 The EVA equation combines a response that levels off with growing resistance from air compressed inside the foam. The reference values follow [Wu et al., equation 16 and table 1](https://pmc.ncbi.nlm.nih.gov/articles/PMC10707728/) for their slowest test of a $35~\mathrm{kg/m^3}$ specimen.
 
-| Parameter or variable  | Meaning and units                                           | EVA35 reference value |
-| ---------------------- | ----------------------------------------------------------- | --------------------- |
-| $p^{\mathrm{PLATEAU}}$ | Pressure scale of the flatter region, Pa                    | 12,900                |
-| $\alpha$               | Shape of the initial rise, dimensionless                    | 20                    |
-| $p^{\mathrm{AIR}}$     | Initial air pressure, Pa                                    | 101,325               |
-| $\lambda$              | Air-leakage rate divided by compression rate, dimensionless | 0.19308               |
+| Parameter | EVA35 |
+| --- | ---: |
+| $p^{\mathrm{PLATEAU}}$: plateau pressure scale ($\mathrm{Pa}$) | 12,900 |
+| $\alpha$: initial-rise shape (dimensionless) | 20 |
+| $p^{\mathrm{AIR}}$: initial air pressure ($\mathrm{Pa}$) | 101,325 |
+| $\lambda$: air-leakage/compression-rate ratio (dimensionless) | 0.19308 |
 
 $$
 s(\varepsilon)=p^{\mathrm{PLATEAU}}\tanh(\alpha\varepsilon)
@@ -300,7 +299,7 @@ The anchors adjust pressure scale but cannot separately identify stiffness, rela
 PU and latex firmness is often reported as IFD or ILD, the force required to indent a sample by a stated percentage. For example, [HD36-HQ](https://canada.foambymail.com/hd36-hq-foam-sheet.html) lists 35 lbf at 25% compression, or about 155.7 N. Dividing by the $50~\mathrm{in}^{2}$, or $0.032258~\mathrm{m}^{2}$, tool described in the [PFA guide](https://pfa.org/wp-content/uploads/2022/05/InTouchv4.2new.pdf) gives
 
 $$
-\text{Average pressure}
+\text{Avg. pressure}
 =\frac{155.7~\mathrm{N}}{0.032258~\mathrm{m}^{2}}
 \approx4.83~\mathrm{kPa}
 $$
@@ -383,7 +382,7 @@ $$
 =1-\frac{\rho^{\mathrm{FOAM}}}{\rho^{\mathrm{SOLID}}}
 $$
 
-| Family | Solid-material density used | Basis                                                          |
+| Family | Material density      | Basis                                                          |
 | ------ | --------------------------- | -------------------------------------------------------------- |
 | PU     | $1{,}200~\mathrm{kg/m^3}$   | Value used by Alzoubi et al., Section 5.3                      |
 | Latex  | $920~\mathrm{kg/m^3}$       | Assumed value                                                  |
@@ -444,17 +443,17 @@ The target follows [Perkins et al.](https://www.scirp.org/pdf/wjet_2018072715333
 
 ### Parameter values
 
-| Parameter                          | Parameter or variable                   | Proposed value       | Basis                                                                                             |
-| ---------------------------------- | --------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------- |
-| Striking mass                      | $m$                                     | 2.597 kg             | Dominant-fist mean in [Adamec et al., table 2](https://epub.ub.uni-muenchen.de/76042/1/76042.pdf) |
-| Incoming speed                     | $v_0$                                   | 7.7 m/s              | Separate mean from the same study                                                                 |
-| Dome curvature radius              | $R$                                     | 100 mm               | [SATRA](https://www.satra.com/spotlight/article.php?id=423) geometry                              |
-| Maximum footprint radius           | $a$                                     | 40 mm                | Half the 80 mm face diameter                                                                      |
-| Hand-spring stiffness              | $k_h$                                   | 1 kN/mm              | Assumed stiffness                                                                                 |
-| Target foam                        | $\sigma^{\mathrm{TARGET}}(\varepsilon)$ | EVA75 profile        | One-anchor EVA-family curve                                                                       |
-| Target thickness                   | $h^{\mathrm{TARGET}}$                   | 50 mm                | One condition in [Perkins et al.](https://www.scirp.org/pdf/wjet_2018072715333666.pdf)            |
-| Target density                     | $\rho^{\mathrm{TARGET}}$                | $75~\mathrm{kg/m^3}$ | Midpoint of the Ultralon range                                                                    |
-| Target pressure at 25% compression | $p_{25}^{\mathrm{TARGET}}$              | 55 kPa               | Midpoint of the Ultralon range                                                                    |
+| Parameter | Value | Basis |
+| --- | ---: | --- |
+| $m$: striking mass | $2.597~\mathrm{kg}$ | Dominant-fist mean in [Adamec et al., table 2](https://epub.ub.uni-muenchen.de/76042/1/76042.pdf) |
+| $v_0$: incoming speed | $7.7~\mathrm{m/s}$ | Separate mean from [Adamec et al.](https://epub.ub.uni-muenchen.de/76042/1/76042.pdf) |
+| $R$: dome curvature radius | $100~\mathrm{mm}$ | [SATRA striker geometry](https://www.satra.com/spotlight/article.php?id=423) |
+| $a$: maximum footprint radius | $40~\mathrm{mm}$ | Half the $80~\mathrm{mm}$ face diameter |
+| $k_h$: hand-spring stiffness | $1~\mathrm{kN/mm}$ | Assumed |
+| $\sigma^{\mathrm{TARGET}}(\varepsilon)$: target-foam pressure curve | EVA75 profile | EVA-family curve fitted to one pressure value |
+| $h^{\mathrm{TARGET}}$: target thickness | $50~\mathrm{mm}$ | Condition in [Perkins et al.](https://www.scirp.org/pdf/wjet_2018072715333666.pdf) |
+| $\rho^{\mathrm{TARGET}}$: target density | $75~\mathrm{kg/m^3}$ | Midpoint of the Ultralon range |
+| $p_{25}^{\mathrm{TARGET}}$: target pressure at 25% compression | $55~\mathrm{kPa}$ | Midpoint of the Ultralon range |
 
 Glove and target foams use the same compression equations. Glove grades and layer thicknesses vary, while the reference family, fast-loading assumptions, and tail rule stay fixed.
 
@@ -512,7 +511,7 @@ At the same peak force, a higher value means faster buildup. Peak force and load
 For $\Delta t=0.0005~\mathrm{s}$, the largest force increase over any complete window is
 
 $$
-\text{peak loading rate}_{0.5~\mathrm{ms}}
+\text{loading rate}_{0.5~\mathrm{ms}}
 =\max_{0\leq t\leq t^{\mathrm{END}}-\Delta t}
 \left[\frac{F(t+\Delta t)-F(t)}{\Delta t}\right]
 $$
@@ -543,7 +542,7 @@ The result is reported in mm and as a percentage of starting thickness. A higher
 Layer shortening and remaining thickness identify which layers enter the steep region of their curves. Minimum central thickness is
 
 $$
-\text{minimum central thickness of layer }i
+\text{min central thickness}_i
 =h_i-q_i\left(t^{\mathrm{END}}\right)
 $$
 
@@ -611,35 +610,35 @@ Values are mean (SD).
 
 ### Outer
 
-| Material |    Stacks | Peak force (kN) | Compression (%) | Force at 5 ms (kN) | Sample weight (g) |
-| -------- | --------: | --------------: | --------------: | -----------------: | ----------------: |
-| PU       | 1,403,480 |     4.90 (1.01) |     88.0 (10.3) |        0.34 (0.13) |       2.18 (1.26) |
-| HR       |   706,140 |     3.94 (0.69) |     78.5 (13.3) |        0.47 (0.18) |       2.35 (1.25) |
-| Latex    |    97,300 |     4.67 (0.93) |     85.6 (10.4) |        0.39 (0.13) |       2.88 (1.28) |
+| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| PU | 1,403,480 | 4.90<br>(1.01) | 88.0<br>(10.3) | 0.34<br>(0.13) | 2.18<br>(1.26) |
+| HR | 706,140 | 3.94<br>(0.69) | 78.5<br>(13.3) | 0.47<br>(0.18) | 2.35<br>(1.25) |
+| Latex | 97,300 | 4.67<br>(0.93) | 85.6<br>(10.4) | 0.39<br>(0.13) | 2.88<br>(1.28) |
 
 ### Main cushion
 
-| Material |    Stacks | Peak force (kN) | Compression (%) | Force at 5 ms (kN) | Sample weight (g) |
-| -------- | --------: | --------------: | --------------: | -----------------: | ----------------: |
-| PU       | 1,085,440 |     5.27 (0.85) |      91.8 (5.7) |        0.28 (0.08) |       1.77 (0.42) |
-| HR       |   558,480 |     3.64 (0.51) |     72.8 (12.9) |        0.54 (0.15) |       2.09 (0.39) |
-| EVA      |   485,640 |     4.10 (0.63) |     82.6 (10.9) |        0.44 (0.14) |       3.47 (2.12) |
-| Latex    |    77,360 |     4.77 (0.66) |      87.6 (5.9) |        0.38 (0.07) |       3.08 (0.54) |
+| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| PU | 1,085,440 | 5.27<br>(0.85) | 91.8<br>(5.7) | 0.28<br>(0.08) | 1.77<br>(0.42) |
+| HR | 558,480 | 3.64<br>(0.51) | 72.8<br>(12.9) | 0.54<br>(0.15) | 2.09<br>(0.39) |
+| EVA | 485,640 | 4.10<br>(0.63) | 82.6<br>(10.9) | 0.44<br>(0.14) | 3.47<br>(2.12) |
+| Latex | 77,360 | 4.77<br>(0.66) | 87.6<br>(5.9) | 0.38<br>(0.07) | 3.08<br>(0.54) |
 
 ### Support
 
-| Material   |    Stacks | Peak force (kN) | Compression (%) | Force at 5 ms (kN) | Sample weight (g) |
-| ---------- | --------: | --------------: | --------------: | -----------------: | ----------------: |
-| Soft EVA   | 1,103,460 |     4.66 (1.06) |     85.6 (12.0) |        0.38 (0.15) |       2.05 (1.29) |
-| Medium EVA |   662,076 |     4.53 (0.99) |     84.6 (12.2) |        0.39 (0.16) |       2.35 (1.25) |
-| Firm EVA   |   441,384 |     4.50 (0.92) |     83.3 (12.2) |        0.39 (0.17) |       2.70 (1.08) |
+| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Soft EVA | 1,103,460 | 4.66<br>(1.06) | 85.6<br>(12.0) | 0.38<br>(0.15) | 2.05<br>(1.29) |
+| Medium EVA | 662,076 | 4.53<br>(0.99) | 84.6<br>(12.2) | 0.39<br>(0.16) | 2.35<br>(1.25) |
+| Firm EVA | 441,384 | 4.50<br>(0.92) | 83.3<br>(12.2) | 0.39<br>(0.17) | 2.70<br>(1.08) |
 
 ### Comfort
 
-| Material |    Stacks | Peak force (kN) | Compression (%) | Force at 5 ms (kN) | Sample weight (g) |
-| -------- | --------: | --------------: | --------------: | -----------------: | ----------------: |
-| PU       | 1,102,620 |     4.67 (1.04) |     85.2 (11.9) |        0.37 (0.15) |       2.23 (1.26) |
-| HR       | 1,104,300 |     4.50 (0.99) |     84.5 (12.3) |        0.40 (0.16) |       2.30 (1.27) |
+| Material | Stacks | Peak force (kN) | Compression (%) | Force 5 ms (kN) | Sample weight (g) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| PU | 1,102,620 | 4.67<br>(1.04) | 85.2<br>(11.9) | 0.37<br>(0.15) | 2.23<br>(1.26) |
+| HR | 1,104,300 | 4.50<br>(0.99) | 84.5<br>(12.3) | 0.40<br>(0.16) | 2.30<br>(1.27) |
 
 ## Early impact response
 
