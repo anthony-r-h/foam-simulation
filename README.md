@@ -2,6 +2,14 @@
 
 This project compares the modeled impact response of layered boxing-glove padding. It combines commercial foam data, published compression-response models, glove geometry, and punch conditions to examine how material choice and layer thickness affect force, compression, timing, and weight.
 
+## Interactive simulator
+
+The [interactive simulator](https://foam.believe.cv/) provides a visual interface for the browser implementation. It can be used to vary the impact condition, foam material, and thickness of each glove layer, and to inspect the resulting force, compression, timing, and weight alongside the full impact traces.
+
+![Impact and layer controls in the interactive simulator](figures/app-simulator-overview.png)
+
+![Simulation results, layer compression, and force trace](figures/app-simulator-results.png)
+
 The repository contains two implementations of the same loading model:
 
 - `simulation.py` is the authoritative Python engine used for analysis.

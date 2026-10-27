@@ -1,5 +1,3 @@
-Simulating the impact response of layered boxing-glove padding
-
 # Introduction
 
 Most boxing gloves are sold by weight, closure type, colour, and price. Those attributes help someone choose a product, but they do not describe how the padding compresses, builds resistance, recovers, or changes with repeated use. Two gloves with the same weight and similar construction can therefore behave very differently on the hand and during impact.
@@ -639,13 +637,15 @@ Values are mean (SD).
 
 ## Early impact response
 
-The force at 5 ms placed each stack in one of three response bands:
+Force at 5 ms was used to distinguish the initial buildup of resistance from peak force. Lower values represented a gentler initial response, while higher values represented a firmer and more immediate response. We set 0.50 and 0.70 kN as design cutoffs for clearly separated soft and responsive profiles, leaving the interval between them as neutral. The same bands were then applied to every stack.
 
 | Response   | Force at 5 ms (kN) |
 | :--------- | :----------------- |
 | Soft       | Below 0.50         |
 | Neutral    | 0.50 to below 0.70 |
 | Responsive | 0.70 or higher     |
+
+With the bands fixed, the distribution by main-cushion family showed how that layer changed both the typical early response and the range available for tuning it.
 
 ![Force at 5 ms by main-cushion family, with soft/neutral/responsive boundaries](../figures/figure2-force_at_5ms_n.png)
 
