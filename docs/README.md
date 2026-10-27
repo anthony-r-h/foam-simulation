@@ -775,7 +775,7 @@ Architecture created the difference. The soft family placed 13 mm of compliant P
 
 ## Sensitivity to thickness and punch energy
 
-The selected recipes were tested beyond the 50 mm, 77 J condition. Every layer was scaled proportionally from 25 to 60 mm, and energy varied from 60 to 120 J.
+The sensitivity analysis tested how total foam thickness and punch energy changed each recipe's protection and response. Total thickness varied from 25 to 60 mm while layer proportions were held constant, and punch energy varied from 60 to 120 J.
 
 ### Protection depended on the operating range
 
@@ -797,13 +797,13 @@ Early-force shaping remained useful only while the stack could manage the rest o
 
 ![Force at 5 ms across the complete thickness and energy grid](../figures/figure6-force_at_5ms_n.png)
 
-Soft remained relatively softer at every matched condition but did not remain in the soft band. At 50 mm it was soft at 60-70 J, neutral at 80-110 J, and responsive at 120 J; no tested thickness kept it soft at 100-120 J. Responsive was neutral at 60 J and crossed into its responsive band at 70 J. The recipe names therefore describe their relationship near the selection condition rather than permanent material classifications.
+Soft remained relatively softer at every matched condition but did not remain in the soft band. At 50 mm it was soft at 60-70 J, neutral at 80-110 J, and responsive at 120 J; no tested thickness kept it soft at 100-120 J. Responsive was neutral at 60 J and crossed into its responsive band at 70 J. A recipe could move from one response band to another as impact energy increased.
 
 ### The design has to match the use case
 
 Soft suited the lower-energy condition when a gentle initial response mattered. Responsive was firmer and initially carried reserve that was not yet needed, producing a small peak-force penalty in thicker low-energy configurations. As energy rose, the soft design consumed too much travel and its peak force increased rapidly, while Responsive converted earlier resistance into useful reserve and better high-energy protection.
 
-Recipe selection therefore needs a defined impact range, thickness limit, weight budget, and intended response. Future selection should score performance across that range instead of optimizing one impact and treating the result as universal. The high-energy comparison also depends on the assumed high-compression curves: at 50 mm and 120 J, both cores exceeded their reference-fit range. Measurements are needed before the modeled separation can be treated as a verified impact limit.
+The preferred recipe depends on the intended impact range, thickness limit, weight budget, and response. The high-energy comparison also depends on the assumed high-compression curves: at 50 mm and 120 J, both cores exceeded their reference-fit range. Measurements are needed before the modeled separation can be treated as a verified impact limit.
 
 # Conclusion
 
