@@ -54,5 +54,4 @@ output/*
 *.sw?
 
 # Local agent configuration
-AGENTS.md
-.agents/*
+
